@@ -2,7 +2,8 @@
 
 ### IntelliJ IDEA ###
 /.idea
-.idea
+/.mvn
+/target
 *.iws
 *.iml
 *.ipr
