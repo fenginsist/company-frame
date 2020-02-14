@@ -3,6 +3,7 @@ package com.feng.companyframe.utils;
 import com.feng.companyframe.exception.BusinessException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.stereotype.Component;
 
 import java.util.*;
 import java.util.concurrent.TimeUnit;
@@ -12,6 +13,7 @@ import java.util.concurrent.TimeUnit;
  * author: 冯凡利
  * create:  2020/2/1 15:13
  */
+@Component
 public class RedisUtils {
     @Autowired
     private RedisTemplate<String, Object> redisTemplate;

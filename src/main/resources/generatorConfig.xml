@@ -62,7 +62,7 @@
         </javaClientGenerator>
 
 
-          <table tableName="sys_user" domainObjectName="SysUser"
+        <!--<table tableName="sys_user" domainObjectName="SysUser"
                enableCountByExample="false"
                enableUpdateByExample="false"
                enableDeleteByExample="false"
@@ -72,9 +72,8 @@
             <columnOverride column="status" javaType="java.lang.Integer"/>
             <columnOverride column="create_where" javaType="java.lang.Integer"/>
             <columnOverride column="deleted" javaType="java.lang.Integer"/>
-        </table>
+        </table>-->
         <table tableName="sys_dept" domainObjectName="SysDept"
-
                enableCountByExample="false"
                enableUpdateByExample="false"
                enableDeleteByExample="false"

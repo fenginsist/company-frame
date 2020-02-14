@@ -2,7 +2,7 @@ package com.feng.companyframe.exception.code;
 
 /**
  * @ClassName: BaseResponseCode
- * @Description： 定义的与前端约定好的 code 和 msg
+ * @Description： 响应码约定
  * @Author: 冯凡利
  * @UpdateUser: 冯凡利
  * @Version: 0.0.1

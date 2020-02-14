@@ -1,13 +1,14 @@
 package com.feng.companyframe;
 
-//import org.junit.jupiter.api.Test;
-import org.springframework.boot.test.context.SpringBootTest;
+import org.junit.Test;
 
-@SpringBootTest
-class CompanyFrameApplicationTests {
+public class CompanyFrameApplicationTests {
 
-//    @Test
-    void contextLoads() {
+    @Test
+    public void contextLoads() {
+        System.out.println("2222");
     }
+
+
 
 }

@@ -2,6 +2,7 @@ package com.feng.companyframe.exception;
 
 
 import com.feng.companyframe.exception.code.BaseResponseCode;
+import com.feng.companyframe.exception.code.ResponseCodeInterface;
 
 /**
  * @ClassName: BusinessException
@@ -15,17 +16,34 @@ public class BusinessException extends RuntimeException{
      */
     private final int code;
 
-    /**
+       /**
      *  异常提示
      */
     public final String defaultMessage;
 
+    /**
+     * 构造函数
+     * @param code ResponseCodeInterface 异常码
+     */
+    public BusinessException(ResponseCodeInterface code) {
+        this(code.getCode(), code.getMsg());
+    }
+
+    /**
+     * 正常的 构造函数
+     * @param code 异常码
+     * @param defaultMessage 异常信息
+     */
     public BusinessException(int code, String defaultMessage) {
         super(defaultMessage);
         this.code = code;
         this.defaultMessage = defaultMessage;
     }
 
+    /**
+     *  构造函数
+     * @param baseResponseCode  传入的枚举类，异常码
+     */
     public BusinessException(BaseResponseCode baseResponseCode){
         this(baseResponseCode.getCode(), baseResponseCode.getMsg());
     }

@@ -1,5 +1,5 @@
 server:
-  port: 8083
+  port: 8080
 spring:
   application:
     name: company-frame
@@ -10,43 +10,69 @@ spring:
       url: jdbc:mysql://123.56.30.106:3306/company_frame?useUnicode=true&characterEncoding=utf-8&useSSL=false
       username: root
       password: 123456
-      ##################    ?????????    ################
-      initial-size: 5  #?????????????????????????
-      max-active: 20   #
-      min-idle: 5
-      max-wait: 5
-      pool-prepared-statements: true
+      ################## 连接池配置 ################
+      initial-size: 5  #连接池建立时创建的初始化连接数
+      max-active: 20   #连接池中最大的活跃连接数
+      min-idle: 5      #连接池中最小的活跃连接数
+      max-wait: 5      # 配置获取连接等待超时的时间
+      pool-prepared-statements: true  # 打开PSCache，并且指定每个连接上PSCache的大小
       max-pool-prepared-statement-per-connection-size: 20
       validation-query: SELECT 1 FROM DUAL
       validation-query-timeout: 30000
-      test-on-borrow: false
-      test-on-return: false
-      test-while-idle: true
-      time-between-eviction-runs-millis: 60000
-      min-evictable-idle-time-millis: 300000
-      filters: stat,wall
-  #redis??????
+      test-on-borrow: false   #是否在获得连接后检测其可用性
+      test-on-return: false   #是否在连接放回连接池后检测其可用性
+      test-while-idle: true   #是否在连接空闲一段时间后检测其可用性
+      time-between-eviction-runs-millis: 60000    # 配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒
+      min-evictable-idle-time-millis: 300000      # 配置一个连接在池中最小生存的时间，单位是毫秒
+      filters: stat,wall                          # 配置监控统计拦截的filters，去掉后监控界面sql无法统计，'wall'用于防火墙
+  #redis配置
   redis:
-    # redis ?????????
-    host: 123.56.30.106
-    # Redis ????????????
+    # redis  服务器地址
+    host: 127.0.0.1
+    # Redis 端口
     port: 6379
-    #redis ???????????????? ?????????
+    #redis 服务器连接密码（默认为空）
     #password:
     lettuce:
       pool:
-        max-active: 1024   #????????????????????????????????
-        max-wait: PT10S      # ????????????????????????????????10??
-        max-idle: 200 # ??????��?????????
-        min-idle: 0   # ??????��?��????????
+        max-active: 1024   # 连接池最大连接数（使用负值表示没有限制）
+        max-wait: PT10S      # 连接池最大阻塞等待时间（使用负值表示没有限制）10秒
+        max-idle: 200 # 连接池中的最大空闲连接
+        min-idle: 0   # 连接池中的最小空闲连接
       shutdown-timeout: PT10S
-
+  #thymeleaf
+  thymeleaf:
+    # 前缀 默认读取 classpath:/templates/
+    prefix: classpath:/templates/
+    # 后缀
+    suffix: .html
+    charset: UTF-8
+    servlet:
+      content-type: text/html
+    # 缓存
+    cache: false
 mybatis:
   type-aliases-package: com.feng.companyframe.bean
-  #???????????? ??????? mapper.xml ??��??
+  #加入以下配置 对应生成 mapper.xml 的路径
   mapper-locations: classpath:mapper/*.xml
-  #???? ? ?
 #swagger
 swagger2:
   enable: true
+
+#JWT  自定义属性
+jwt:
+#  secretKey: 78944878877848fg)   # 秘钥
+  secretKey: fengfanli            # 秘钥
+  accessTokenExpireTime: PT2H    # 过期时间 两个小时
+  refreshTokenExpireTime: PT8H   # 刷新token，
+  refreshTokenExpireAppTime: P30D
+  issuer: fengfanli.com           # 签名：
+
+pagehelper:
+  # 分页插件会自动检测当前的数据库链接，自动选择合适的分页方式。你也可以配置helperDialect属性来指定分页插件使用哪种方言
+  helper-dialect: mysql
+  # 分页合理化参数，默认值为false。当该参数设置为 true 时，pageNum<=0 时会查询第一页， pageNum>pages（超
+  # 过总数时），会查询最后一页。默认false 时，直接根据参数进行查询
+  reasonable: true
+
 

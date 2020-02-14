@@ -6,7 +6,7 @@ import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
 /**
- * description: DataResult
+ * description: 与前端统一返回的数据 格式
  * author: 冯凡利
  * create:  2020/2/1 15:22
  */
