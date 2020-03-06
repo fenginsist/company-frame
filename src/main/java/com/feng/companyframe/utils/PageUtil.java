@@ -14,11 +14,15 @@ import java.util.List;
  * @Version: 0.0.1
  */
 public class PageUtil {
-    private PageUtil(){}
-    public static <T> PageRespVO<T> getPageVO(List<T> list){
-        PageRespVO<T> result=new PageRespVO<>();
-        if(list instanceof Page){
-            Page<T> page= (Page<T>) list; // 插件的 类
+
+    private PageUtil() {
+    }
+
+    public static <T> PageRespVO<T> getPageVO(List<T> list) {
+        PageRespVO<T> result = new PageRespVO<>();
+
+        if (list instanceof Page) {
+            Page<T> page = (Page<T>) list; // 插件的 类
             result.setTotalRows(page.getTotal()); // 总记录数
             result.setTotalPages(page.getPages());// 总页数
             result.setNowPageNum(page.getPageNum());// 当前页数

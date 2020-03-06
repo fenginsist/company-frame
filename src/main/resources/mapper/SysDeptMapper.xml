@@ -174,4 +174,49 @@
       deleted = #{deleted,jdbcType=TINYINT}
     where id = #{id,jdbcType=VARCHAR}
   </update>
+  
+  <!--查询所有的部门数据-->
+  <select id="getAllDept" resultMap="BaseResultMap">
+    select <include refid="Base_Column_List"></include>
+    from sys_dept
+    <where>
+      deleted = 1
+    </where>
+  </select>
+
+  <!--@Description: 维护 新的层级关系-->
+  <update id="updateRelationCode" parameterType="String">
+    update sys_dept
+    set relation_code = replace(relation_code, #{oldStr}, #{newStr})
+    where relation_code like concat(#{relationCode}, '%')
+  </update>
+
+  <!--@Description: 通过层级关系查找所有叶子节点-->
+  <select id="getChildIds" parameterType="String" resultType="String">
+    select id
+    from sys_dept
+    <where>
+      deleted = 1
+      and
+      relation_code LIKE CONCAT(#{relationCode},'%')
+    </where>
+  </select>
+
+  <!--@Description: 逻辑删除部门信息-->
+  <update id="deletedDepts">
+    update sys_dept
+    <set>
+      deleted = 0
+      <if test="updateTime != null">
+        update_time = #{updateTime, jdbcType = TIMESTAMP},
+      </if>
+    </set>
+    <where>
+      id in
+      <foreach collection="list" item="item" open="(" close=")" separator=",">
+        #{item}
+      </foreach>
+    </where>
+  </update>
+
 </mapper>

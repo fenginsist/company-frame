@@ -8,7 +8,7 @@ package com.feng.companyframe.constant;
  * @UpdateUser: 冯凡利
  * @Version: 0.0.1
  */
-public class Constants {
+public class Constant {
     /**
      * 用户名称 key
      */
@@ -72,5 +72,15 @@ public class Constants {
      * 标记用户是否已经删除
      */
     public static final String DELETED_USER_KEY="deleted-user-key_";
+
+    /**
+     * 部门编码key
+     */
+    public static final String DEPT_CODE_KEY="dept-code-key_";
+
+    /**
+     * 用户权鉴缓存 key
+     */
+    public static final String IDENTIFY_CACHE_KEY="com.feng.companyframe.shiro.CustomRealm.authorizationCache:";
 }
 

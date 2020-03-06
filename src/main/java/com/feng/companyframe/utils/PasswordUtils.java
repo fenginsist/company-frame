@@ -40,4 +40,10 @@ public class PasswordUtils {
 	public static String getSalt() {
 		return UUID.randomUUID().toString().replaceAll("-", "").substring(0, 20);
 	}
+
+	public static void main(String[] args) {
+		// 给密码 和 salt，看密码密文
+		String encode = encode("123456", "d3709b4efe9d47fcaba0");
+		System.out.println(encode);
+	}
 }

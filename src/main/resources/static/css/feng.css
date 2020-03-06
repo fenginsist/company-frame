@@ -1,0 +1,17 @@
+.layui-btn+.layui-btn {
+    /* margin-left: 10px; */
+    margin-top: 10px;
+}
+
+.login {
+    height: 250px;
+    width: 340px;
+    padding: 20px;
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 4px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin: -150px 0 0 -150px;
+    z-index: 99;
+}

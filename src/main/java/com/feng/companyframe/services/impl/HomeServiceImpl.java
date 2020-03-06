@@ -1,9 +1,11 @@
 package com.feng.companyframe.services.impl;
 
 import com.alibaba.fastjson.JSON;
+import com.feng.companyframe.bean.SysPermission;
 import com.feng.companyframe.bean.SysUser;
 import com.feng.companyframe.mapper.SysUserMapper;
 import com.feng.companyframe.services.HomeService;
+import com.feng.companyframe.services.PermissionService;
 import com.feng.companyframe.vo.resp.HomeRespVO;
 import com.feng.companyframe.vo.resp.PermissionRespNodeVO;
 import com.feng.companyframe.vo.resp.UserInfoRespVO;
@@ -28,12 +30,15 @@ public class HomeServiceImpl implements HomeService {
     @Resource
     private SysUserMapper sysUserMapper;
 
+    @Resource
+    private PermissionService permissionService;
+
     @Override
     public HomeRespVO getHome(String userId) {
         HomeRespVO homeRespVO = new HomeRespVO();
         // 假数据
         //String home="[{\"children\":[{\"children\":[{\"children\":[{\"children\":[{\"children\":[],\"id\":\"6\",\"title\":\"五级类目5-6\",\"url\":\"string\"}],\"id\":\"5\",\"title\":\"四级类目4-5\",\"url\":\"string\"}],\"id\":\"4\",\"title\":\"三级类目3-4\",\"url\":\"string\"}],\"id\":\"3\",\"title\":\"二级类目2-3\",\"url\":\"string\"}],\"id\":\"1\",\"title\":\"类目1\",\"url\":\"string\"},{\"children\":[],\"id\":\"2\",\"title\":\"类目2\",\"url\":\"string\"}]";
-        String home="[\n" +
+        /*String home="[\n" +
                 " {\n" +
                 " \"children\": [\n" +
                 " {\n" +
@@ -53,11 +58,13 @@ public class HomeServiceImpl implements HomeService {
                 " \"title\": \"类目2\",\n" +
                 " \"url\": \"string\"\n" +
                 " }\n" +
-                "]";
+                "]";*/
 
-        List<PermissionRespNodeVO> list = JSON.parseArray(home, PermissionRespNodeVO.class);
+        List<PermissionRespNodeVO> permissionTreeList = permissionService.getPermissionTreeList(userId);
+
+//        List<PermissionRespNodeVO> permissionTreeList = JSON.parseArray(home, PermissionRespNodeVO.class);
         // 设置菜单数据
-        homeRespVO.setMenus(list);
+        homeRespVO.setMenus(permissionTreeList);
         SysUser sysUser = sysUserMapper.selectByPrimaryKey(userId);
         UserInfoRespVO userInfoRespVO = new UserInfoRespVO();
         if (null != userInfoRespVO){

@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+    <title>Hello, World</title>
+    <style type="text/css">
+        html {
+            height: 100%
+        }
+
+        body {
+            height: 100%;
+            margin: 0px;
+            padding: 0px
+        }
+
+        #container {
+            height: 100%
+        }
+    </style>
+    <!--引用百度地图API文件-->
+    <script type="text/javascript" src="http://api.map.baidu.com/api?v=3.0&ak=Z3ohEbScaR1CyncjtVRAY1Y6ASVayxEE">
+        //v3.0版本的引用方式：src="http://api.map.baidu.com/api?v=3.0&ak=您的密钥"
+    </script>
+</head>
+
+<body>
+<div>
+    <input type="button" onclick="addOverlayMarker()" value="添加点标注"/>
+    <input type="button" onclick="addOverlayPolyline()" value="添加折线标注"/>
+    <input type="button" onclick="addOverlayCircle()" value="添加圆标注"/>
+    <input type="button" onclick="addOverlayPolygon()" value="添加多边形标注"/>
+    <input type="button" onclick="addOverlayRectangle()" value="添加矩形标注"/>
+    <input type="button" onclick="remove_overlay()" value="清除覆盖物"/>
+</div>
+
+<!--创建地图容器元素-->
+<div id="container"></div>
+
+
+<script type="text/javascript">
+    // 创建地图实例
+    var map = new BMap.Map("container");
+
+    var point = new BMap.Point(116.404, 39.915);
+    map.centerAndZoom(point, 15);
+    map.enableScrollWheelZoom(true);
+
+    // 添加一个平移缩放控件、一个比例尺控件和一个缩略图控件
+    map.addControl(new BMap.NavigationControl());
+    var opts = {offset: new BMap.Size(150, 5)}
+    map.addControl(new BMap.ScaleControl(opts));
+    map.addControl(new BMap.OverviewMapControl());
+    map.addControl(new BMap.MapTypeControl());
+
+    // 设置个性化地图样式
+    map.setMapStyleV2({
+        styleId: '038600444e88e82f14fc33a432c00f04'
+    });
+
+    // 创建点 标注
+    var marker = new BMap.Marker(new BMap.Point(116.404, 39.915));
+    // 将标注添加到地图中
+    function addOverlayMarker() {
+        map.addOverlay(marker)
+    }
+
+
+    // 创建折线
+    var polyline = new BMap.Polyline([
+        new BMap.Point(116.399, 39.910),
+        new BMap.Point(116.405, 39.920),
+        new BMap.Point(116.425, 39.900)
+    ], {strokeColor: 'blue', strokeWeight: 2, strokeOpacity: 0.5});
+    // 将标注添加到地图中
+    function addOverlayPolyline() {
+        map.addOverlay(polyline)
+    }
+
+
+    //创建圆
+    var circle = new BMap.Circle(
+        point,
+        500,
+        {strokeColor: "blue", strokeWeight: 2, strokeOpacity: 0.5});
+    // 将标注添加到地图中
+    function addOverlayCircle() {
+        map.addOverlay(circle)
+    }
+
+
+    //创建多边形
+    var polygon = new BMap.Polygon([
+        new BMap.Point(116.387112,39.920977),
+        new BMap.Point(116.385243,39.913063),
+        new BMap.Point(116.394226,39.917988),
+        new BMap.Point(116.401772,39.921364),
+        new BMap.Point(116.41248,39.927893)
+    ], {strokeColor:"blue", strokeWeight:2, strokeOpacity:0.5});
+    // 将标注添加到地图中
+    function addOverlayPolygon() {
+        map.addOverlay(polygon)
+    }
+
+
+    //创建矩形
+    var pStart = new BMap.Point(116.392214,39.918985);
+    var pEnd = new BMap.Point(116.41478,39.911901);
+    var rectangle = new BMap.Polygon([
+        new BMap.Point(pStart.lng,pStart.lat),
+        new BMap.Point(pEnd.lng,pStart.lat),
+        new BMap.Point(pEnd.lng,pEnd.lat),
+        new BMap.Point(pStart.lng,pEnd.lat)
+    ], {strokeColor:"blue", strokeWeight:2, strokeOpacity:0.5});
+    // 将标注添加到地图中
+    function addOverlayRectangle() {
+        map.addOverlay(rectangle)
+    }
+
+    //清除覆盖物
+    function remove_overlay(){
+        map.clearOverlays();
+    }
+
+    // 设置监听
+    marker.addEventListener("click", function(){
+        alert("您点击了标注");
+    });
+
+
+</script>
+
+</body>
+</html>

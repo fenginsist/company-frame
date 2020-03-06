@@ -2,8 +2,9 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>登录</title>
+    <title>智慧社区管理系统</title>
     <link rel="stylesheet" href="/layui/css/layui.css">
+    <link rel="stylesheet" href="/css/feng.css">
     <style type="text/css">
         .login {
             height: 190px;
@@ -49,6 +50,7 @@
                    autocomplete="off" class="layui-input">
             <br>
             <a class="layui-btn layui-btn-normal" lay-filter="submit" lay-submit="" id="submit">登陆</a>
+<!--            <a class="layui-btn layui-btn-normal" lay-filter="submit" lay-submit="" id="1">注册</a>-->
         </form>
     </div>
 </div>
@@ -67,7 +69,7 @@
             form.on('submit(submit)', function (data) {
                 CoreUtil.sendAjax("/api/user/login", JSON.stringify(data.field), function (res) {
                     layer.msg(res.msg,res.code);
-                    // 存到 数据库中
+                    // 存到 本地数据库中
                     CoreUtil.setData("access_token", res.data.accessToken);
                     CoreUtil.setData("refresh_token", res.data.refreshToken);
                     // 跳转到 主页面
@@ -85,7 +87,6 @@
                 , width: '100%'
                 , arrow: 'none'
             });
-
         }
     );
 </script>

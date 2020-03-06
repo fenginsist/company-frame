@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!--添加一个meta标签，以便使您的页面更好的在移动平台上展示-->
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+    <title>Hello, World</title>
+    <style type="text/css">
+        html {
+            height: 100%
+        }
+
+        body {
+            height: 100%;
+            margin: 0px;
+            padding: 0px
+        }
+
+        #container {
+            height: 100%
+        }
+    </style>
+    <!--引用百度地图API文件-->
+    <script type="text/javascript" src="http://api.map.baidu.com/api?v=3.0&ak=Z3ohEbScaR1CyncjtVRAY1Y6ASVayxEE">
+        //v3.0版本的引用方式：src="http://api.map.baidu.com/api?v=3.0&ak=您的密钥"
+    </script>
+</head>
+
+<body>
+<!--创建地图容器元素-->
+<div id="container"></div>
+
+<script type="text/javascript">
+    // 创建地图实例
+    var map = new BMap.Map("container", {
+        enableBizAuthLogo: false
+    });
+
+    //JSAPI商用授权挂件默认开启，关闭需要修改调用JSAPI的代码。方式有两种
+    //1.初始化地图时，进行关闭配置
+    // var map = new BMap.Map("container", {
+    //     enableBizAuthLogo: false
+    // });
+    //2.使用地图的方法进行配置
+    // map.disableBizAuthLogo(); //关闭
+    // map.enableBizAuthLogo(); //开启
+
+    // 创建中心点坐标
+    var point = new BMap.Point(116.404, 39.915);
+    // 初始化地图，设置中心点坐标和地图级别
+    map.centerAndZoom(point, 15);
+    //开启鼠标滚轮缩放
+    map.enableScrollWheelZoom(true);
+
+    // 可以使用Map.addControl()方法向地图添加控件。
+    //一个 平移缩放 控件, 默认位于地图左上方，它包含控制地图的平移和缩放的功能。
+    map.addControl(new BMap.NavigationControl());
+    /**
+     * 一个比例尺控件 默认位于地图左上方，显示地图的比例关系
+     * 通过偏移量来指示控件距离地图边界有多少像素
+     * @type {{offset: BMap.Size}}
+     */
+    var opts = {offset: new BMap.Size(150, 5)}
+    map.addControl(new BMap.ScaleControl(opts));
+    //一个缩略图控件  默认位于地图右下方，是一个可折叠的缩略地图
+    map.addControl(new BMap.OverviewMapControl());
+    //地图类型 默认位于地图右上方
+    map.addControl(new BMap.MapTypeControl());
+    // map.setCurrentCity("北京"); // 仅当设置城市信息时，MapTypeControl的切换功能才能可用
+
+    // 设置个性化地图样式
+    map.setMapStyleV2({
+        styleId: '038600444e88e82f14fc33a432c00f04'
+    });
+
+
+
+    //等待两秒钟后，地图它会移动到新中心点。
+    // panTo()方法将让地图平滑移动至新中心点，如果移动距离超过了当前地图区域大小，则地图会直跳到该点。
+    // window.setTimeout(function () {
+    //     map.panTo(new BMap.Point(116.409, 39.918));
+    // }, 2000);
+
+
+</script>
+
+</body>
+</html>

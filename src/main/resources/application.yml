@@ -28,7 +28,7 @@ spring:
   #redis配置
   redis:
     # redis  服务器地址
-    host: 127.0.0.1
+    host: 123.56.30.106
     # Redis 端口
     port: 6379
     #redis 服务器连接密码（默认为空）
@@ -52,9 +52,19 @@ spring:
     # 缓存
     cache: false
 mybatis:
-  type-aliases-package: com.feng.companyframe.bean
+  # 配置多个 type-aliases-package
+  type-aliases-package: com.feng.companyframe.bean, com.feng.companyframe.vo
   #加入以下配置 对应生成 mapper.xml 的路径
   mapper-locations: classpath:mapper/*.xml
+
+#logging 配置
+logging:
+  path: logs
+  file: ${logging.path}/${spring.application.name}.log
+  level:
+    # 下面为包名
+    com.feng.companyframe: debug
+
 #swagger
 swagger2:
   enable: true
@@ -63,8 +73,8 @@ swagger2:
 jwt:
 #  secretKey: 78944878877848fg)   # 秘钥
   secretKey: fengfanli            # 秘钥
-  accessTokenExpireTime: PT2H    # 过期时间 两个小时
-  refreshTokenExpireTime: PT8H   # 刷新token，
+  accessTokenExpireTime: PT2H     # 过期时间 两个小时
+  refreshTokenExpireTime: PT8H    # 刷新token，
   refreshTokenExpireAppTime: P30D
   issuer: fengfanli.com           # 签名：
 

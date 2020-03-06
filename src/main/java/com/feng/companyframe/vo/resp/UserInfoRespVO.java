@@ -14,7 +14,7 @@ import lombok.Data;
 @Data
 public class UserInfoRespVO {
 
-    @ApiModelProperty(value = "id")
+    @ApiModelProperty(value = "用户id")
     private String id;
 
     @ApiModelProperty(value = "账号")

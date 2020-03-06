@@ -37,4 +37,9 @@ public class SysDept implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
+    /**
+     * 新增 父级部门名称
+     */
+    private String pidName;
+
 }

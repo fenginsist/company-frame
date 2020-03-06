@@ -26,7 +26,7 @@ public class IndexController {
     }
 
     @ApiOperation(value = "进入登录页面")
-    @GetMapping("/login")
+    @GetMapping(value = {"/login","/"})
     public String login(){
         return "login";
     }
@@ -48,5 +48,50 @@ public class IndexController {
     public String getMenu(){
         return "menus/menu";
     }
+
+    @ApiOperation(value = "跳转角色管理页面")
+    @GetMapping(value = "/role")
+    public String getRole(){
+        return "roles/role";
+    }
+
+    @ApiOperation(value = "跳转部门管理页面")
+    @GetMapping("/depts")
+    public String deptList(){
+        return "depts/dept";
+    }
+
+    @GetMapping("/users")
+    @ApiOperation(value = "跳转用户管理页面")
+    public String userList(){
+        return "users/user";
+    }
+
+    @GetMapping("/logs")
+    @ApiOperation(value = "跳转日志管理页面")
+    public String logList(){
+        return "logs/log";
+    }
+
+    @ApiOperation(value = "跳转个人用户信息编辑页面")
+    @GetMapping("/user/updateSelfInfo")
+    public String userDetail(){
+        return "users/user_edit";
+    }
+
+    @ApiOperation(value = "跳转个人用户编辑密码页面")
+    @GetMapping("/user/editPassword")
+    public String userPwd(){
+        return "users/edit_password";
+    }
+
+
+    @ApiOperation(value = "跳转到地图界面")
+    @GetMapping("/map")
+    public String toMap(){
+        return "maps/map";
+    }
+
+
 }
 

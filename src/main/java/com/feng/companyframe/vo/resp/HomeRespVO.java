@@ -7,7 +7,7 @@ import java.util.List;
 
 /**
  * @ClassName: HomeRespVO
- * @Description： 响应 菜单 信息,
+ * @Description： 响应 菜单 信息, 菜单权限树 包装成的 POJO 返回到前端
  *                包装类
  *                包含 用户信息和权限信息（菜单）
  * @createTime: 2020/2/11 12:24

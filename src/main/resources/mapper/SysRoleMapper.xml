@@ -114,4 +114,42 @@
       deleted = #{deleted,jdbcType=TINYINT}
     where id = #{id,jdbcType=VARCHAR}
   </update>
+
+  <!--@Description: 根据条件查询所有角色数据-->
+  <select id="getAllRole" parameterType="RolePageReqVO" resultMap="BaseResultMap">
+    select <include refid="Base_Column_List"></include>
+    from sys_role
+    <where>
+      deleted = 1
+      <if test="roleId != null and roleId != ''">
+        and id = #{roleId}
+      </if>
+      <if test="roleName != null and roleName != ''">
+        and name like concat('%', #{roleName}, '%')
+      </if>
+      <if test="status != null and status != ''">
+        and status = #{status}
+      </if>
+      <if test="startTime != null and startTime != ''">
+        and create_time &gt;= #{startTime}
+      </if>
+      <if test="endTime != null and endTime != ''">
+        and create_time &lt;= #{endTime}
+      </if>
+    </where>
+  </select>
+
+  <!--@Description: 根据角色id集合 获取 角色信息-->
+  <select id="getRoleInfoByRoleIds" parameterType="String" resultMap="BaseResultMap">
+    select <include refid="Base_Column_List"></include>
+    from sys_role
+    <where>
+      id in
+      <foreach collection="list" item="item" open="(" close=")" separator=",">
+        #{item}
+      </foreach>
+    </where>
+  </select>
+
+
 </mapper>

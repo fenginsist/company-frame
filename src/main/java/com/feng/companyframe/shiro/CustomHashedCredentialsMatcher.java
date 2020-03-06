@@ -1,10 +1,10 @@
 package com.feng.companyframe.shiro;
 
-import com.feng.companyframe.constant.Constants;
+import com.feng.companyframe.constant.Constant;
 import com.feng.companyframe.exception.BusinessException;
 import com.feng.companyframe.exception.code.BaseResponseCode;
 import com.feng.companyframe.jwt.JwtTokenUtil;
-import com.feng.companyframe.utils.RedisUtils;
+import com.feng.companyframe.utils.RedisUtil;
 import org.apache.shiro.authc.AuthenticationInfo;
 import org.apache.shiro.authc.AuthenticationToken;
 import org.apache.shiro.authc.credential.HashedCredentialsMatcher;
@@ -23,7 +23,7 @@ import java.util.concurrent.TimeUnit;
 public class CustomHashedCredentialsMatcher extends HashedCredentialsMatcher {
 
     @Autowired
-    private RedisUtils redisUtils;
+    private RedisUtil redisUtil;
 
 
     @Override
@@ -36,7 +36,7 @@ public class CustomHashedCredentialsMatcher extends HashedCredentialsMatcher {
          * 否：下一步。
          * 是：引导到登录界面。
          */
-        if (redisUtils.hasKey(Constants.ACCOUNT_LOCK_KEY + userId)) {
+        if (redisUtil.hasKey(Constant.ACCOUNT_LOCK_KEY + userId)) {
             throw new BusinessException(BaseResponseCode.ACCOUNT_LOCK);
         }
         /**
@@ -44,7 +44,7 @@ public class CustomHashedCredentialsMatcher extends HashedCredentialsMatcher {
          * 否：下一步。
          * 是：引导到登录界面。
          */
-        if (redisUtils.hasKey(Constants.DELETED_USER_KEY + userId)) {
+        if (redisUtil.hasKey(Constant.DELETED_USER_KEY + userId)) {
             throw new BusinessException(BaseResponseCode.ACCOUNT_HAS_DELETED_ERROR);
         }
         /**
@@ -53,7 +53,7 @@ public class CustomHashedCredentialsMatcher extends HashedCredentialsMatcher {
          * 否：下一步。
          * 是：引导到登录界面。
          */
-        if (redisUtils.hasKey(Constants.JWT_ACCESS_TOKEN_BLACKLIST + accessToken)) {
+        if (redisUtil.hasKey(Constant.JWT_ACCESS_TOKEN_BLACKLIST + accessToken)) {
             throw new BusinessException(BaseResponseCode.TOKEN_ERROR);
         }
         /**
@@ -70,25 +70,42 @@ public class CustomHashedCredentialsMatcher extends HashedCredentialsMatcher {
 
         /**
          * 第五步：判断这个登录用户是否要主动去刷新
-         * (因为后台修改了用户所拥有的角色/菜单权限的时候  需要把相关联用户都用redis标记起来(过期时间为
-         * access_token 生成的过期时间)，需要刷新 access_token 重新分配角色)但是呢 需要排除重新登录的用户 所以呢还要比较这个
+         * (因为后台修改了用户所拥有的角色/菜单权限的时候  需要把相关联用户都用 redis 标记起来(过期时间为
+         * access_token 生成的过期时间，需要刷新 access_token 重新分配角色)但是呢 需要排除重新登录的用户 所以呢还要比较这个
          * accessToken 和 Constant.JWT_REFRESH_KEY+userId 两者的剩余过期时间。
          * 满足条件：下一步。
          * 不满足：放行 处理相关业务。
          *
-         * 如果 key=Constant.JWT_REFRESH_KEY+userId 大于 accessToken 说明是在 accessToken 不是重新生成的
-         * 这样就要判断它是否刷新过了/或者是否是新生成的token
+         * 如果 key = Constant.JWT_REFRESH_KEY+userId 大于 accessToken 说明是在 accessToken 不是重新生成的
+         * 这样就要判断它是否刷新过了/或者是否是新生成的 token
          **/
-        if (redisUtils.hasKey(Constants.JWT_REFRESH_KEY + userId)
-                && redisUtils.getExpire(Constants.JWT_REFRESH_KEY + userId, TimeUnit.MILLISECONDS)
-                > JwtTokenUtil.getRemainingTime(accessToken)) {
+        /*
+        * 在赋予用户 角色的时候 会 set 这个值：Constant.JWT_REFRESH_KEY + userId， 约定好
+        * */
+//        if (redisUtil.hasKey(Constant.JWT_REFRESH_KEY + userId)
+//                && redisUtil.getExpire(Constant.JWT_REFRESH_KEY + userId, TimeUnit.MILLISECONDS)
+//                > JwtTokenUtil.getRemainingTime(accessToken)) {
+//            /**
+//             * 是否存在刷新的标识
+//             * 这个标志 会在 刷新token进行set，refreshToken()方法中。
+//             */
+//            if (!redisUtil.hasKey(Constant.JWT_REFRESH_IDENTIFICATION + accessToken)) {
+//                //  返回到前端，进行主动刷新。
+//                throw new BusinessException(BaseResponseCode.TOKEN_PAST_DUE);
+//            }
+//        }
+        if (redisUtil.hasKey(Constant.JWT_REFRESH_KEY + userId)) {
             /**
-             * 是否存在刷新的标识
+             * 通过剩余的过期时间比较如果token的剩余过期时间 大于 标记key的剩余过期时间
+             * 就说明这个 token 是在这个标记 key 之后生成的
              */
-            if (!redisUtils.hasKey(Constants.JWT_REFRESH_IDENTIFICATION + accessToken)) {
+            if (redisUtil.getExpire(Constant.JWT_REFRESH_KEY + userId, TimeUnit.MILLISECONDS)
+                    > JwtTokenUtil.getRemainingTime(accessToken)) {
+                //  返回到前端，进行主动刷新。
                 throw new BusinessException(BaseResponseCode.TOKEN_PAST_DUE);
             }
         }
+
         return true;
     }
 }

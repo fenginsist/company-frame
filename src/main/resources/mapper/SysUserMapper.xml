@@ -232,7 +232,7 @@
     where id = #{id,jdbcType=VARCHAR}
   </update>
 
-  <!--@Description: 通过name获取user-->
+  <!--@Description: 通过 name 获取 user ,登录时使用-->
   <select id="getUserInfoByName" parameterType="java.lang.String" resultMap="BaseResultMap">
     select <include refid="Base_Column_List"></include>
     from sys_user
@@ -241,13 +241,65 @@
     username=#{name}
   </select>
 
-  <!--@Description: 查询所有用户-->
-  <select id="getAllSysUser" parameterType="com.feng.companyframe.vo.req.UserPageReqVO" resultMap="BaseResultMap">
+  <!--@Description: 根据条件，查询所有用户-->
+  <select id="getAllSysUser" parameterType="UserPageReqVO" resultMap="BaseResultMap">
     select <include refid="Base_Column_List"></include>
     from sys_user
     <where>
       deleted = 1
+
+      <if test="userId != null and userId != ''">
+        and id = #{userId}
+      </if>
+      <if test="username != null and username != ''">
+        and username like concat('%', #{username}, '%')
+      </if>
+      <if test="nickName != null and nickName != ''">
+        and nick_name like concat('%', #{nickName}, '%')
+      </if>
+      <if test="status != null and status != '' or status==0">
+        and status = #{status}
+      </if>
+      <if test="startTime != null and startTime != ''">
+        and create_time &gt;= #{startTime}
+      </if>
+      <if test="endTime != null and endTime != ''">
+        and create_time &lt;= #{endTime}
+      </if>
     </where>
   </select>
+
+  <!--@Description: 删除 用户-->
+  <update id="deletedUsers" parameterType="SysUser">
+    update sys_user
+    <set>
+       deleted = 0,
+       <if test="sysUser.updateId != null and sysUser.updateId != ''">
+         update_id = #{sysUser.updateId},
+       </if>
+      <if test="sysUser.updateTime != null">
+         update_time = #{sysUser.updateTime},
+      </if>
+    </set>
+    where id in
+    <foreach collection="list" item="item" separator="," open="(" close=")">
+      #{item}
+    </foreach>
+  </update>
+
+
+  <!--@Description: 根据部门id集合 获取 用户信息-->
+  <select id="getUserInfoByDeptIds" parameterType="String" resultType="SysUser">
+    select <include refid="Base_Column_List"></include>
+    from sys_user
+    <where>
+      dept_id in
+      <foreach collection="list" item="item" open="(" close=")" separator=",">
+        #{item}
+      </foreach>
+    </where>
+  </select>
+
+
 
 </mapper>

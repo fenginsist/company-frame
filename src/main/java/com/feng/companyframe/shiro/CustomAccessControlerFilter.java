@@ -1,7 +1,7 @@
 package com.feng.companyframe.shiro;
 
 import com.alibaba.fastjson.JSON;
-import com.feng.companyframe.constant.Constants;
+import com.feng.companyframe.constant.Constant;
 import com.feng.companyframe.exception.BusinessException;
 import com.feng.companyframe.exception.code.BaseResponseCode;
 import com.feng.companyframe.utils.DataResult;
@@ -35,7 +35,7 @@ public class CustomAccessControlerFilter extends AccessControlFilter {
     /**
      * 是否 允许 访问下一层
      * true： 允许，交下一个Filter 处理
-     * false： 往下执行 onAccessDenied 方法
+     * false： 交给自己处理，往下执行 onAccessDenied 方法
      * @param servletRequest
      * @param servletResponse
      * @param o
@@ -64,13 +64,13 @@ public class CustomAccessControlerFilter extends AccessControlFilter {
         log.info(request.getRequestURL().toString());
         //判断客户端是否携带accessToken
         try {
-            String accessToken=request.getHeader(Constants.ACCESS_TOKEN);
+            String accessToken=request.getHeader(Constant.ACCESS_TOKEN);
             if(StringUtils.isEmpty(accessToken)){  // 判断 token 是否为空
                 throw new BusinessException(BaseResponseCode.TOKEN_NOT_NULL);
             }
-            //  自己以后得改成 jwt 的 token
             CustomUsernamePasswordToken token=new CustomUsernamePasswordToken(accessToken);
             getSubject(servletRequest,servletResponse).login(token);
+            // 登录之后， 进入CustomRealm类 进入认证与授权
         } catch (BusinessException e) {
             customRsponse(e.getCode(),e.getDefaultMessage(),servletResponse);
             return false; // 直接返回客户端

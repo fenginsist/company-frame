@@ -17,6 +17,21 @@ public interface SysPermissionMapper {
 
     int updateByPrimaryKey(SysPermission record);
 
-    // 自己编写
+    // 查询所有的菜单权限数据
     List<SysPermission> getAllPermissions();
+
+    /**
+     *  查询 该权限的子集
+     *  将 权限id 传过来，pid 为 权限id 的所有记录，都为权限ID 的子集。看数据库便明白
+     * @param permissionId
+     * @return
+     */
+    List<SysPermission> getChild(String permissionId);
+
+    /**
+     * 根据权限id集合 获取 权限集合
+     * @param permissionIds
+     * @return
+     */
+    List<SysPermission> getPermissionByPermissionIds(List<String> permissionIds);
 }

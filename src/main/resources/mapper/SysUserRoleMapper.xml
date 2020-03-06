@@ -79,4 +79,68 @@
       create_time = #{createTime,jdbcType=TIMESTAMP}
     where id = #{id,jdbcType=VARCHAR}
   </update>
+
+  <!-- @Description: 根据用户id 查出 关联角色id 集合-->
+  <select id="getRoleIdsByUserId" resultType="java.lang.String">
+    SELECT role_id
+    from sys_user_role
+    where user_id =#{userId}
+  </select>
+
+  <!--@Description:根据用户id 删除和该用户关联的角色关联表数据  其实删除的是多条数据-->
+  <delete id="removeByUserId">
+    delete
+    from sys_user_role
+    where user_id = #{userId}
+  </delete>
+
+  <!--@Description:批量插入用户和角色关联数据-->
+  <insert id="batchUserRole" parameterType="SysUserRole">
+    insert
+    into sys_user_role(
+    id,
+    role_id,
+    user_id,
+    create_time
+    )
+    values
+    <foreach collection="list" item="item" index="index" separator=",">
+      (
+      #{item.id},
+      #{item.roleId},
+      #{item.userId},
+      #{item.createTime}
+      )
+    </foreach>
+  </insert>
+
+  <!-- @Description: 获取和该角色集合相关连的用户id-->
+  <select id="getUserIdsByRoleIds" parameterType="String" resultType="String">
+    select user_id
+    from sys_user_role
+    <where>
+      role_id in
+      <foreach collection="list" item="item" separator="," open="(" close=")">
+        #{item}
+      </foreach>
+    </where>
+  </select>
+
+  <!--@Description: 根据角色id 获取 用户id集合-->
+  <select id="getUserIdsByRoleId" parameterType="String" resultType="String">
+    select user_id
+    from sys_user_role
+    <where>
+      role_id = #{roleId}
+    </where>
+  </select>
+
+  <!--@Description: 根据角色id 删除 用户、角色 关联的所有数据-->
+  <delete id="removeByRoleId" parameterType="String">
+    delete
+    from sys_user_role
+    <where>
+      role_id = #{roleId}
+    </where>
+  </delete>
 </mapper>

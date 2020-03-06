@@ -1,8 +1,9 @@
 package com.feng.companyframe.shiro;
 
 import com.alibaba.fastjson.JSON;
+import com.feng.companyframe.constant.Constant;
 import com.feng.companyframe.jwt.JwtTokenUtil;
-import com.feng.companyframe.utils.RedisUtils;
+import com.feng.companyframe.utils.RedisUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.collections.CollectionUtils;
 import org.apache.shiro.authz.SimpleAuthorizationInfo;
@@ -12,7 +13,6 @@ import org.apache.shiro.cache.CacheException;
 
 import java.util.*;
 import java.util.concurrent.TimeUnit;
-import java.util.concurrent.locks.ReadWriteLock;
 
 /**
  * @ClassName: RedisCache
@@ -35,11 +35,12 @@ public class RedisCache<K, V> implements Cache<K,V> {
     private String cacheKey;
     private long expire = 24;  // 24 小时
 
-    private RedisUtils redisUtils;
+    private RedisUtil redisUtil;
 
-    public RedisCache(String name,RedisUtils redisUtils){
-        this.cacheKey=PREFIX+name+":";
-        this.redisUtils=redisUtils;
+      public RedisCache(String name, RedisUtil redisUtil){
+//        this.cacheKey=PREFIX+name+":";
+        this.cacheKey= Constant.IDENTIFY_CACHE_KEY;
+        this.redisUtil = redisUtil;
     }
 
 
@@ -57,7 +58,7 @@ public class RedisCache<K, V> implements Cache<K,V> {
         }
         try {
             String redisCacheKey = getRedisCacheKey(key);
-            Object rawValue = redisUtils.get(redisCacheKey);  // 根据key 获取 数据
+            Object rawValue = redisUtil.get(redisCacheKey);  // 根据key 获取 数据
             if (rawValue == null) {
                 return null;
             }
@@ -86,7 +87,7 @@ public class RedisCache<K, V> implements Cache<K,V> {
         }
         try {
             String redisCacheKey = getRedisCacheKey(key);
-            redisUtils.set(redisCacheKey, value != null ? value : null, expire, TimeUnit.HOURS);
+            redisUtil.set(redisCacheKey, value != null ? value : null, expire, TimeUnit.HOURS);
             return value;
         } catch (Exception e) {
             throw new CacheException(e);
@@ -107,9 +108,9 @@ public class RedisCache<K, V> implements Cache<K,V> {
         }
         try {
             String redisCacheKey = getRedisCacheKey(key);
-            Object rawValue = redisUtils.get(redisCacheKey);
+            Object rawValue = redisUtil.get(redisCacheKey);
             V previous = (V) rawValue;
-            redisUtils.delete(redisCacheKey);
+            redisUtil.delete(redisCacheKey);
             return previous;
         } catch (Exception e) {
             throw new CacheException(e);
@@ -126,7 +127,7 @@ public class RedisCache<K, V> implements Cache<K,V> {
         log.debug("clear cache");
         Set<String> keys = null;
         try {
-            keys = redisUtils.keys(this.cacheKey + "*");
+            keys = redisUtil.keys(this.cacheKey + "*");
         } catch (Exception e) {
             log.error("get keys error", e);
         }
@@ -134,7 +135,7 @@ public class RedisCache<K, V> implements Cache<K,V> {
             return;
         }
         for (String key: keys) {
-            redisUtils.delete(key);
+            redisUtil.delete(key);
         }
     }
 
@@ -147,7 +148,7 @@ public class RedisCache<K, V> implements Cache<K,V> {
     public int size() {
         int result = 0;
         try {
-            result = redisUtils.keys(this.cacheKey + "*").size();
+            result = redisUtil.keys(this.cacheKey + "*").size();
         } catch (Exception e) {
             log.error("get keys error", e);
         }
@@ -164,7 +165,7 @@ public class RedisCache<K, V> implements Cache<K,V> {
     public Set<K> keys() {
         Set<String> keys = null;
         try {
-            keys = redisUtils.keys(this.cacheKey + "*");
+            keys = redisUtil.keys(this.cacheKey + "*");
         } catch (Exception e) {
             log.error("get keys error", e);
             return Collections.emptySet();
@@ -192,7 +193,7 @@ public class RedisCache<K, V> implements Cache<K,V> {
     public Collection<V> values() {
         Set<String> keys = null;
         try {
-            keys = redisUtils.keys(this.cacheKey + "*");
+            keys = redisUtil.keys(this.cacheKey + "*");
         } catch (Exception e) {
             log.error("get values error", e);
             return Collections.emptySet();
@@ -204,7 +205,7 @@ public class RedisCache<K, V> implements Cache<K,V> {
         for (String key : keys) {
             V value = null;
             try {
-                value = (V) redisUtils.get(key);
+                value = (V) redisUtil.get(key);
             } catch (Exception e) {
                 log.error("deserialize values= error", e);
             }

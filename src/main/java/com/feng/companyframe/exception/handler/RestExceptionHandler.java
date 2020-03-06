@@ -78,6 +78,7 @@ public class RestExceptionHandler {
 
     /**
      * 没有权限 异常 捕获
+     * @RequiresPermissions("sys:user:role:update") 这个注解所爆出的异常 UnauthorizedException
      *
      * @param e
      * @return

@@ -1,6 +1,6 @@
 package com.feng.companyframe.jwt;
 
-import com.feng.companyframe.constant.Constants;
+import com.feng.companyframe.constant.Constant;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.JwtBuilder;
 import io.jsonwebtoken.Jwts;
@@ -40,14 +40,6 @@ public class JwtTokenUtil {
         refreshTokenExpireAppTime = jwtPropertiesConfig.getRefreshTokenExpireAppTime();
         issuer = jwtPropertiesConfig.getIssuer();
     }
-
-    /*public JwtTokenUtil(JwtPropertiesConfig jwtPropertiesConfig){
-        this.secretKey = jwtPropertiesConfig.getSecretKey();
-        this.accessTokenExpireTime = jwtPropertiesConfig.getAccessTokenExpireTime();
-        this.refreshTokenExpireTime = jwtPropertiesConfig.getRefreshTokenExpireTime();
-        this.refreshTokenExpireAppTime = jwtPropertiesConfig.getRefreshTokenExpireAppTime();
-        this.issuer = jwtPropertiesConfig.getIssuer();
-    }*/
 
     /**
      * 生成 access_token
@@ -119,6 +111,7 @@ public class JwtTokenUtil {
         if (nowMills >= 0) {
             long expMillis = nowMills + ttlMillis;
             Date exp = new Date(expMillis);
+            // 设置过期时间
             builder.setExpiration(exp);
         }
         // 拿着 算法和 秘钥进行 签名
@@ -173,7 +166,7 @@ public class JwtTokenUtil {
         String username = null;
         try {
             Claims claims = getClaimsFromToken(token);
-            username = (String) claims.get(Constants.JWT_USER_NAME);
+            username = (String) claims.get(Constant.JWT_USER_NAME);
         } catch (Exception e) {
             log.error("eror={}", e);
         }

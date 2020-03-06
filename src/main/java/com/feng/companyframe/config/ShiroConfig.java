@@ -1,5 +1,6 @@
 package com.feng.companyframe.config;
 
+import at.pollux.thymeleaf.shiro.dialect.ShiroDialect;
 import com.feng.companyframe.shiro.CustomAccessControlerFilter;
 import com.feng.companyframe.shiro.CustomHashedCredentialsMatcher;
 import com.feng.companyframe.shiro.CustomRealm;
@@ -43,8 +44,10 @@ public class ShiroConfig {
     public CustomRealm getCustomRealm(@Qualifier("customHashedCredentialsMatcher") CustomHashedCredentialsMatcher customHashedCredentialsMatcher,
                                       @Qualifier("redisCacheManager") RedisCacheManager redisCacheManager){
         CustomRealm customRealm = new CustomRealm();
-        customRealm.setCredentialsMatcher(customHashedCredentialsMatcher); // 自定义 处理 token 算法
-        customRealm.setCacheManager(redisCacheManager); // 自定义 缓存管理器
+        // 自定义 处理 token 算法
+        customRealm.setCredentialsMatcher(customHashedCredentialsMatcher);
+        // 自定义 缓存管理器
+        customRealm.setCacheManager(redisCacheManager);
         return customRealm;
     }
 
@@ -74,6 +77,7 @@ public class ShiroConfig {
         // 配置不会被拦截的链接 顺序判断
         filterChainDefinitionMap.put("/api/user/login", "anon");
         filterChainDefinitionMap.put("/index/**", "anon");
+        filterChainDefinitionMap.put("/api/user/token", "anon");
         // 以下四个 为 静态资源
         filterChainDefinitionMap.put("/images/**", "anon");
         filterChainDefinitionMap.put("/js/**", "anon");
@@ -94,7 +98,7 @@ public class ShiroConfig {
         // 拦截所有
         filterChainDefinitionMap.put("/**","token,authc");
 
-        // 配置 shiro 默认登录界面地址，前后端分离中登录界面跳转应由前端路由控制，后台仅返回 json 数据
+        // 没有登录的用户请求需要登录的页面时自动跳转到登录页面。 配置 shiro 默认登录界面地址，
         shiroFilterFactoryBean.setLoginUrl("/api/user/login");
         shiroFilterFactoryBean.setFilterChainDefinitionMap(filterChainDefinitionMap);
         return shiroFilterFactoryBean;
@@ -124,6 +128,15 @@ public class ShiroConfig {
         DefaultAdvisorAutoProxyCreator defaultAdvisorAutoProxyCreator = new DefaultAdvisorAutoProxyCreator();
         defaultAdvisorAutoProxyCreator.setProxyTargetClass(true);
         return defaultAdvisorAutoProxyCreator;
+    }
+
+    /**
+     *  shiro 标签方言支持,加上这个之后，可以支持前端 的 shiro标签属性
+     * @return
+     */
+    @Bean
+    public ShiroDialect shiroDialect() {
+        return new ShiroDialect();
     }
 
 }

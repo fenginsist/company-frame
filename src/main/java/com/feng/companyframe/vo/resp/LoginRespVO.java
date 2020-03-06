@@ -26,7 +26,7 @@ public class LoginRespVO {
     @ApiModelProperty(value = "手机号")
     private String phone;
 
-    @ApiModelProperty(value = "账号")
+    @ApiModelProperty(value = "用户名")
     private String username;
 }
 

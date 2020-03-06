@@ -79,4 +79,73 @@
       create_time = #{createTime,jdbcType=TIMESTAMP}
     where id = #{id,jdbcType=VARCHAR}
   </update>
+
+  <!--批量插入 角色和菜单权限关联数据-->
+  <insert id="batchInsertRolePermission" parameterType="com.feng.companyframe.bean.SysRolePermission" >
+    insert into sys_role_permission
+    (
+    id,
+    role_id,
+    permission_id,
+    create_time
+    )
+    values
+    <foreach collection="list" item="item" separator=",">
+      (
+      #{item.id},
+      #{item.roleId},
+      #{item.permissionId},
+      #{item.createTime}
+      )
+    </foreach>
+  </insert>
+
+  <!--@Description: 根据菜单权限id 获取 关联的角色id集合 -->
+  <select id="getRoleIdsByPermissionId" parameterType="String" resultType="String">
+    select role_id
+    from sys_role_permission
+    <where>
+      permission_id = #{permissionId}
+    </where>
+  </select>
+
+  <!--@Description: 通过权限id 删除关联的角色-->
+  <delete id="removeByPermissionId" parameterType="String" >
+    delete
+    from sys_role_permission
+    where permission_id = #{permissionId}
+  </delete>
+
+  <!--@Description: 根据角色id获取该角色关联的菜单权限id集合-->
+  <select id="getPermissionIdsByRoleId" parameterType="java.lang.String" resultType="java.lang.String">
+    select permission_id
+    from sys_role_permission
+    <where>
+      role_id = #{roleId}
+    </where>
+  </select>
+
+
+  <!--@Description: 根据 角色id 删除角色和菜单权限关联表相关数据-->
+  <delete id="removeByRoleId" parameterType="String">
+    delete
+    from sys_role_permission
+    <where>
+      role_id = #{roleId}
+    </where>
+  </delete>
+
+
+  <!--@Description: 根据 角色id 删除角色和菜单权限关联表相关数据-->
+  <select id="getPermissionIdsByRoleIds"  parameterType="String"  resultType="java.lang.String">
+    select permission_id
+    from sys_role_permission
+    <where>
+      role_id in
+      <foreach collection="list" item="item" open="(" close=")" separator=",">
+        #{item}
+      </foreach>
+    </where>
+  </select>
+
 </mapper>

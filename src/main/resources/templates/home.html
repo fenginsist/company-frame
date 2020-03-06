@@ -18,7 +18,7 @@
 <body class="layui-layout-body">
 <div class="layui-layout layui-layout-admin">
     <div class="layui-header">
-        <div class="layui-logo">迎学后台管理系统</div>
+        <div class="layui-logo">智慧社区管理系统</div>
 
         <!-- 头部区域（可配合layui已有的水平导航） -->
         <ul class="layui-nav layui-layout-right">
@@ -29,9 +29,9 @@
                     <span id="nickName"></span>
                 </a>
                 <dl class="layui-nav-child">
-                    <dd><a href="javascript:;" data-id="userProper" data-title="基本资料" data-url=""
+                    <dd><a href="javascript:;" data-id="userProper" data-title="编辑基本资料" data-url="/index/user/updateSelfInfo"
                            class="menuNvaBar">基本资料</a></dd>
-                    <dd><a href="javascript:;" data-id="userSafe" data-title="安全设置" data-url=""
+                    <dd><a href="javascript:;" data-id="userSafe" data-title="安全设置" data-url="/index/user/editPassword"
                            class="menuNvaBar">更换密码</a></dd>
                 </dl>
             </li>
@@ -53,6 +53,7 @@
                 <li class="first-tab layui-this">主页</li>
             </ul>
             <div class="layui-tab-content">
+                <!--通过 iframe 标签进行选中 -->
                 <div class="layui-tab-item layui-show">
                     <iframe th:src="@{/index/main}" frameborder="0" name="content" width="100%"
                             id="home"></iframe>
@@ -72,32 +73,17 @@
         var element = layui.element;
         frameWH();
 
-        /*设置主体内容层高度*/
+        /*设置  主体内容层  高度*/
         function frameWH() {
             var h = $(window).height() - 41 - 10 - 35 - 10 - 44 - 10;
             $("iframe").css("height", h + "px");
         };
 
 /*
-* 以下 左边栏的 侧边展示
+* 以下为 左边栏的 侧边展示
+* 后期 使用 react 进行开发改变
+* 这里就是对权限菜单的 动态展示
 * */
-        //递归获取 导航栏 无线层级
-        var getChild = function (item, ulHtml) {
-            ulHtml += '<dl class="layui-nav-child">';
-            $.each(item, function (index, child) {
-                if (child.children != null && child.children.length > 0) {
-                    ulHtml += '<a>' + child.title + '</a>';
-                    ulHtml += getChild(child.children, "");
-                } else {
-                    ulHtml += '<dd><a href="javascript:;" data-url="' + child.url + '" data-title="' + child.title + '" data-id="' + child.id + '" class="menuNvaBar">';
-                    ulHtml += '<cite>' + child.title + '</cite></a></dd>';
-                }
-            });
-
-            ulHtml += "</dl>";
-            return ulHtml;
-        };
-
         // ajax 获取数据
         CoreUtil.sendAjax("/api/home", null, function (res) {
             console.log(res.data);
@@ -122,6 +108,7 @@
                             $.each(item.children, function (index, child) {
                                 if (child.children != null && child.children.length > 0) {
                                     ulHtml += '<a>' + child.title + '</a>';
+                                    // 使用递归方法 获取 子菜单
                                     ulHtml += getChild(child.children, "");
                                 } else {
                                     ulHtml += '<dd><a href="javascript:;" data-url="' + child.url + '" data-title="' + child.title + '" data-id="' + child.id + '" class="menuNvaBar">';
@@ -144,6 +131,22 @@
 
             top.layer.closeAll();
         }, "GET", false);  //false：为了设置 token。
+
+        // 递归获取 导航栏 无线层级
+        var getChild = function (item, ulHtml) {
+            ulHtml += '<dl class="layui-nav-child">';
+            $.each(item, function (index, child) {
+                if (child.children != null && child.children.length > 0) {
+                    ulHtml += '<a>' + child.title + '</a>';
+                    ulHtml += getChild(child.children, "");
+                } else {
+                    ulHtml += '<dd><a href="javascript:;" data-url="' + child.url + '" data-title="' + child.title + '" data-id="' + child.id + '" class="menuNvaBar">';
+                    ulHtml += '<cite>' + child.title + '</cite></a></dd>';
+                }
+            });
+            ulHtml += "</dl>";
+            return ulHtml;
+        };
 
         /**
          * 绑定事件
@@ -186,8 +189,10 @@
             // 改变
             tabChange: function (id) {
                 //切换到指定Tab项
-                element.tabChange('tab', id); //切换到：用户管理
-                $("iframe[data-frameid='" + id + "']").attr("src", $("iframe[data-frameid='" + id + "']").attr("src"))//切换后刷新框架
+                //切换到：用户管理
+                element.tabChange('tab', id);
+                //切换后刷新框架
+                $("iframe[data-frameid='" + id + "']").attr("src", $("iframe[data-frameid='" + id + "']").attr("src"))
             },
 
             // 删除
@@ -201,7 +206,7 @@
             logoutDialog();
         });
 
-        //删除前确认对话框
+        //登录确认对话框
         var logoutDialog = function () {
             layer.open({
                 content: '确定要退出登录么？',
@@ -213,6 +218,7 @@
                 }
             });
         };
+
     });
 </script>
 </html>

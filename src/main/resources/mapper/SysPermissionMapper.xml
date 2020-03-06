@@ -186,12 +186,39 @@
     where id = #{id,jdbcType=VARCHAR}
   </update>
 
-  <!--查询所有的菜单权限数据-->
+  <!--@Description: 查询所有的菜单权限数据 order by order_num desc  默认升序asc，降序使用 desc-->
   <select id="getAllPermissions" resultMap="BaseResultMap">
     select <include refid="Base_Column_List"></include>
     from sys_permission
     <where>
       deleted = 1
+      order by order_num desc
     </where>
+  </select>
+
+  <!--@Description: 查询该权限的子集权限-->
+  <select id="getChild" parameterType="String" resultMap="BaseResultMap">
+    select <include refid="Base_Column_List"></include>
+    from sys_permission
+    <where>
+      pid = #{permissionId}
+      and
+      deleted = 1
+    </where>
+
+  </select>
+
+  <!--@Description: 查询该权限的子集权限-->
+  <select id="getPermissionByPermissionIds" parameterType="String" resultType="com.feng.companyframe.bean.SysPermission">
+    select <include refid="Base_Column_List"></include>
+    from sys_permission
+    <where>
+      id in
+      <foreach collection="list" item="item" open="(" close=")" separator=",">
+        #{item}
+      </foreach>
+    </where>
+    and deleted = 1
+    order by order_num desc
   </select>
 </mapper>

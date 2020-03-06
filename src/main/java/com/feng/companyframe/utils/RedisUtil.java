@@ -14,7 +14,7 @@ import java.util.concurrent.TimeUnit;
  * create:  2020/2/1 15:13
  */
 @Component
-public class RedisUtils {
+public class RedisUtil {
     @Autowired
     private RedisTemplate<String, Object> redisTemplate;
     /** -------------------key相关操作--------------------- */
@@ -25,7 +25,7 @@ public class RedisUtils {
      * @param key
      * @return java.lang.Boolean
      * @throws
-     * @Author: 小霍
+     * @Author: 冯安辰
      * @UpdateUser:
      * @Version: 0.0.1
      */
@@ -42,7 +42,7 @@ public class RedisUtils {
      * @param key
      * @return Boolean  成功返回true 失败返回false
      * @throws
-     * @Author: 小霍
+     * @Author: 冯安辰
      * @UpdateUser:
      * @Version: 0.0.1
      */
@@ -59,7 +59,7 @@ public class RedisUtils {
      * @param keys
      * @return Long 返回成功删除key的数量
      * @throws
-     * @Author: 小霍
+     * @Author: 冯安辰
      * @CreateDate: 2019/8/27 20:27
      * @UpdateUser:
      * @UpdateDate: 2019/8/27 20:27
@@ -78,7 +78,7 @@ public class RedisUtils {
      * @param unit
      * @return java.lang.Boolean
      * @throws
-     * @Author: 小霍
+     * @Author: 冯安辰
      * @UpdateUser:
      * @Version: 0.0.1
      */
@@ -95,7 +95,7 @@ public class RedisUtils {
      * @param pattern
      * @return java.util.Set<java.lang.String>
      * @throws
-     * @Author: 小霍
+     * @Author: 冯安辰
      * @UpdateUser:
      * @Version: 0.0.1
      */
@@ -113,7 +113,7 @@ public class RedisUtils {
      * @param key
      * @return java.lang.Boolean
      * @throws
-     * @Author: 小霍
+     * @Author: 冯安辰
      * @UpdateUser:
      * @Version: 0.0.1
      */
@@ -131,7 +131,7 @@ public class RedisUtils {
      * @param unit
      * @return java.lang.Long 当 key 不存在时，返回 -2 。当 key 存在但没有设置剩余生存时间时，返回 -1 。否则，以秒为单位，返回 key的剩余生存时间
      * @throws
-     * @Author: 小霍
+     * @Author: 冯安辰
      * @UpdateUser:
      * @Version: 0.0.1
      */
@@ -151,7 +151,7 @@ public class RedisUtils {
      * @param value
      * @return void
      * @throws
-     * @Author: 小霍
+     * @Author: 冯安辰
      * @UpdateUser:
      * @Version: 0.0.1
      */
@@ -172,7 +172,7 @@ public class RedisUtils {
      * @param unit
      * @return void
      * @throws
-     * @Author: 小霍
+     * @Author: 冯安辰
      * @UpdateUser:
      * @Version: 0.0.1
      */
@@ -195,7 +195,7 @@ public class RedisUtils {
      * @param unit
      * @return java.lang.Boolean
      * @throws
-     * @Author: 小霍
+     * @Author: 冯安辰
      * @UpdateUser:
      * @Version: 0.0.1
      */
@@ -214,7 +214,7 @@ public class RedisUtils {
      * @param key
      * @return java.lang.Object
      * @throws
-     * @Author: 小霍
+     * @Author: 冯安辰
      * @UpdateUser:
      * @Version: 0.0.1
      */
@@ -233,7 +233,7 @@ public class RedisUtils {
      * @param value
      * @return java.lang.Object
      * @throws
-     * @Author: 小霍
+     * @Author: 冯安辰
      * @UpdateUser:
      * @Version: 0.0.1
      */
@@ -251,7 +251,7 @@ public class RedisUtils {
      * @param keys
      * @return java.util.List<java.lang.Object>
      * @throws
-     * @Author: 小霍
+     * @Author: 冯安辰
      * @UpdateUser:
      * @Version: 0.0.1
      */
@@ -264,14 +264,14 @@ public class RedisUtils {
     }
 
     /**
-     * 将指定Key的Value原子性的增加increment。如果该Key不存在，其初始值为0，在incrby之后其值为increment。
-     * 如果Value的值不能转换为整型值，如Hi，该操作将执行失败并抛出相应异常。操作成功则返回增加后的value值。
+     * 将指定 Key 的 Value 原子性的增加 increment。如果该 Key 不存在，其初始值为 0，在 incrby 之后其值为 increment。
+     * 如果 Value 的值不能转换为整型值，如 Hi，该操作将执行失败并抛出相应异常。操作成功则返回增加后的value值。
      *
      * @param key
      * @param increment
      * @return long
      * @throws
-     * @Author: 小霍
+     * @Author: 冯安辰
      * @UpdateUser:
      * @Version: 0.0.1
      */
@@ -291,7 +291,7 @@ public class RedisUtils {
      * @param decrement
      * @return java.lang.Long
      * @throws
-     * @Author: 小霍
+     * @Author: 冯安辰
      * @UpdateUser:
      * @Version: 0.0.1
      */
@@ -310,7 +310,7 @@ public class RedisUtils {
      * @param value
      * @return java.lang.Integer
      * @throws
-     * @Author: 小霍
+     * @Author: 冯安辰
      * @UpdateUser:
      * @Version: 0.0.1
      */
@@ -329,7 +329,7 @@ public class RedisUtils {
      * @param field
      * @return java.lang.Object
      * @throws
-     * @Author: 小霍
+     * @Author: 冯安辰
      * @UpdateUser:
      * @Version: 0.0.1
      */
@@ -350,7 +350,7 @@ public class RedisUtils {
      * @param value
      * @return
      * @throws
-     * @Author: 小霍
+     * @Author: 冯安辰
      * @UpdateUser:
      * @Version: 0.0.1
      */
@@ -368,7 +368,7 @@ public class RedisUtils {
      * @param field
      * @return java.lang.Boolean
      * @throws
-     * @Author: 小霍
+     * @Author: 冯安辰
      * @UpdateUser:
      * @Version: 0.0.1
      */
@@ -387,7 +387,7 @@ public class RedisUtils {
      * @param fields
      * @return java.lang.Long
      * @throws
-     * @Author: 小霍
+     * @Author: 冯安辰
      * @UpdateUser:
      * @Version: 0.0.1
      */
@@ -405,7 +405,7 @@ public class RedisUtils {
      * @param key
      * @return java.util.Map<java.lang.Object, java.lang.Object>
      * @throws
-     * @Author: 小霍
+     * @Author: 冯安辰
      * @UpdateUser:
      * @Version: 0.0.1
      */
@@ -424,7 +424,7 @@ public class RedisUtils {
      * @param hash
      * @return
      * @throws
-     * @Author: 小霍
+     * @Author: 冯安辰
      * @UpdateUser:
      * @Version: 0.0.1
      */
@@ -444,7 +444,7 @@ public class RedisUtils {
      * @param fields
      * @return java.util.List<java.lang.Object>
      * @throws
-     * @Author: 小霍
+     * @Author: 冯安辰
      * @UpdateUser:
      * @Version: 0.0.1
      */
@@ -465,7 +465,7 @@ public class RedisUtils {
      * @param increment
      * @return java.lang.Long
      * @throws
-     * @Author: 小霍
+     * @Author: 冯安辰
      * @UpdateUser:
      * @Version: 0.0.1
      */
@@ -486,7 +486,7 @@ public class RedisUtils {
      * @param strs 可以使一个string 也可以使string数组
      * @return java.lang.Long 返回操作的value个数
      * @throws
-     * @Author: 小霍
+     * @Author: 冯安辰
      * @UpdateUser:
      * @Version: 0.0.1
      */
@@ -505,7 +505,7 @@ public class RedisUtils {
      * @param strs 可以使一个string 也可以使string数组
      * @return java.lang.Long 返回操作的value个数
      * @throws
-     * @Author: 小霍
+     * @Author: 冯安辰
      * @UpdateUser:
      * @Version: 0.0.1
      */
@@ -523,7 +523,7 @@ public class RedisUtils {
      * @param key
      * @return java.lang.Object
      * @throws
-     * @Author: 小霍
+     * @Author: 冯安辰
      * @UpdateUser:
      * @Version: 0.0.1
      */
@@ -541,7 +541,7 @@ public class RedisUtils {
      * @param key
      * @return java.lang.Object
      * @throws
-     * @Author: 小霍
+     * @Author: 冯安辰
      * @UpdateUser:
      * @Version: 0.0.1
      */
@@ -564,7 +564,7 @@ public class RedisUtils {
      * @param end
      * @return java.util.List<java.lang.Object>
      * @throws
-     * @Author: 小霍
+     * @Author: 冯安辰
      * @UpdateUser:
      * @Version: 0.0.1
      */
@@ -585,7 +585,7 @@ public class RedisUtils {
      * @param end
      * @return
      * @throws
-     * @Author: 小霍
+     * @Author: 冯安辰
      * @UpdateUser:
      * @Version: 0.0.1
      */
@@ -604,7 +604,7 @@ public class RedisUtils {
      * @param index
      * @return java.lang.Object
      * @throws
-     * @Author: 小霍
+     * @Author: 冯安辰
      * @UpdateUser:
      * @Version: 0.0.1
      */
@@ -621,7 +621,7 @@ public class RedisUtils {
      * @param key
      * @return java.lang.Long
      * @throws
-     * @Author: 小霍
+     * @Author: 冯安辰
      * @UpdateUser:
      * @Version: 0.0.1
      */
@@ -642,7 +642,7 @@ public class RedisUtils {
      * @param members 可以是一个String 也可以是一个String数组
      * @return java.lang.Long 添加成功的个数
      * @throws
-     * @Author: 小霍
+     * @Author: 冯安辰
      * @UpdateUser:
      * @Version: 0.0.1
      */
@@ -660,7 +660,7 @@ public class RedisUtils {
      * @param key
      * @return java.lang.Long
      * @throws
-     * @Author: 小霍
+     * @Author: 冯安辰
      * @UpdateUser:
      * @Version: 0.0.1
      */
@@ -679,7 +679,7 @@ public class RedisUtils {
      * @param member
      * @return java.lang.Boolean
      * @throws
-     * @Author: 小霍
+     * @Author: 冯安辰
      * @UpdateUser:
      * @Version: 0.0.1
      */
@@ -697,7 +697,7 @@ public class RedisUtils {
      * @param key
      * @return java.lang.String
      * @throws
-     * @Author: 小霍
+     * @Author: 冯安辰
      * @UpdateUser:
      * @Version: 0.0.1
      */
@@ -721,7 +721,7 @@ public class RedisUtils {
      * @param count
      * @return java.util.List<java.lang.String>
      * @throws
-     * @Author: 小霍
+     * @Author: 冯安辰
      * @UpdateUser:
      * @Version: 0.0.1
      */
@@ -739,7 +739,7 @@ public class RedisUtils {
      * @param key
      * @return java.lang.String
      * @throws
-     * @Author: 小霍
+     * @Author: 冯安辰
      * @UpdateUser:
      * @Version: 0.0.1
      */
@@ -757,7 +757,7 @@ public class RedisUtils {
      * @param key
      * @return java.util.Set<java.lang.String>
      * @throws
-     * @Author: 小霍
+     * @Author: 冯安辰
      * @UpdateUser:
      * @Version: 0.0.1
      */
@@ -777,7 +777,7 @@ public class RedisUtils {
      * @param members
      * @return java.lang.Long
      * @throws
-     * @Author: 小霍
+     * @Author: 冯安辰
      * @UpdateUser:
      * @Version: 0.0.1
      */
@@ -797,7 +797,7 @@ public class RedisUtils {
      * @param member
      * @return java.lang.Long
      * @throws
-     * @Author: 小霍
+     * @Author: 冯安辰
      * @UpdateUser:
      * @Version: 0.0.1
      */
@@ -817,7 +817,7 @@ public class RedisUtils {
      * @param otherKeys
      * @return java.util.Set<java.lang.Object> 返回两个集合合并值
      * @throws
-     * @Author: 小霍
+     * @Author: 冯安辰
      * @UpdateUser:
      * @Version: 0.0.1
      */
@@ -839,7 +839,7 @@ public class RedisUtils {
      * @param member
      * @return java.lang.Long
      * @throws
-     * @Author: 小霍
+     * @Author: 冯安辰
      * @UpdateUser:
      * @Version: 0.0.1
      */
@@ -860,7 +860,7 @@ public class RedisUtils {
      * @param members 可以使一个string 也可以是一个string数组
      * @return java.lang.Long
      * @throws
-     * @Author: 小霍
+     * @Author: 冯安辰
      * @UpdateUser:
      * @Version: 0.0.1
      */
@@ -878,7 +878,7 @@ public class RedisUtils {
      * @param key
      * @return java.lang.Long
      * @throws
-     * @Author: 小霍
+     * @Author: 冯安辰
      * @UpdateUser:
      * @Version: 0.0.1
      */
@@ -900,7 +900,7 @@ public class RedisUtils {
      * @param member
      * @return java.lang.Double
      * @throws
-     * @Author: 小霍
+     * @Author: 冯安辰
      * @UpdateUser:
      * @Version: 0.0.1
      */
@@ -921,7 +921,7 @@ public class RedisUtils {
      * @param max
      * @return java.lang.Long
      * @throws
-     * @Author: 小霍
+     * @Author: 冯安辰
      * @UpdateUser:
      * @Version: 0.0.1
      */
@@ -941,7 +941,7 @@ public class RedisUtils {
      * @param member
      * @return java.lang.Long
      * @throws
-     * @Author: 小霍
+     * @Author: 冯安辰
      * @UpdateUser:
      * @Version: 0.0.1
      */
@@ -960,7 +960,7 @@ public class RedisUtils {
      * @param member
      * @return java.lang.Double
      * @throws
-     * @Author: 小霍
+     * @Author: 冯安辰
      * @UpdateUser:
      * @Version: 0.0.1
      */
@@ -982,7 +982,7 @@ public class RedisUtils {
      * @param max
      * @return java.util.Set<java.lang.String> 指定区间内的有序集成员的列表。
      * @throws
-     * @Author: 小霍
+     * @Author: 冯安辰
      * @UpdateUser:
      * @Version: 0.0.1
      */
@@ -1003,7 +1003,7 @@ public class RedisUtils {
      * @param end
      * @return java.util.Set<java.lang.String>
      * @throws
-     * @Author: 小霍
+     * @Author: 冯安辰
      * @UpdateUser:
      * @Version: 0.0.1
      */
@@ -1027,7 +1027,7 @@ public class RedisUtils {
      * @param min
      * @return java.util.Set<java.lang.String>
      * @throws
-     * @Author: 小霍
+     * @Author: 冯安辰
      * @UpdateUser:
      * @Version: 0.0.1
      */
@@ -1049,7 +1049,7 @@ public class RedisUtils {
      * @param min
      * @return java.util.Set<java.lang.String>
      * @throws
-     * @Author: 小霍
+     * @Author: 冯安辰
      * @UpdateUser:
      * @Version: 0.0.1
      */

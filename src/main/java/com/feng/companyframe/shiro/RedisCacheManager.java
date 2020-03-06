@@ -1,6 +1,6 @@
 package com.feng.companyframe.shiro;
 
-import com.feng.companyframe.utils.RedisUtils;
+import com.feng.companyframe.utils.RedisUtil;
 import org.apache.shiro.cache.Cache;
 import org.apache.shiro.cache.CacheException;
 import org.apache.shiro.cache.CacheManager;
@@ -17,11 +17,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 public class RedisCacheManager implements CacheManager {
 
     @Autowired
-    private RedisUtils redisUtils;
+    private RedisUtil redisUtil;
 
     @Override
     public <K, V> Cache<K, V> getCache(String s) throws CacheException {
-        return new RedisCache<>(s, redisUtils);
+        return new RedisCache<>(s, redisUtil);
     }
 }
 
