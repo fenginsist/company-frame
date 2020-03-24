@@ -1,8 +1,7 @@
-
-
 ### IntelliJ IDEA ###
 /.idea
 /.mvn
+/logs
 /target
 *.iws
 *.iml

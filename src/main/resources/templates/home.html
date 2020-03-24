@@ -84,7 +84,7 @@
 * 后期 使用 react 进行开发改变
 * 这里就是对权限菜单的 动态展示
 * */
-        // ajax 获取数据
+        // ajax 获取数据/api/home
         CoreUtil.sendAjax("/api/home", null, function (res) {
             console.log(res.data);
             $("#deptName").html("所属机构:" + res.data.userInfoVO.deptName);

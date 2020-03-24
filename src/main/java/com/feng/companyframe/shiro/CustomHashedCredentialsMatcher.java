@@ -14,7 +14,7 @@ import java.util.concurrent.TimeUnit;
 
 /**
  * @ClassName: CustomHashedCredentialsMatcher
- * @Description： 描述
+ * @Description： token 认证的 过滤
  * @createTime: 2020/2/5 19:21
  * @Author: 冯凡利
  * @UpdateUser: 冯凡利

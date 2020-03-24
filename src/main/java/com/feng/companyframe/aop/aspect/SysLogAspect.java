@@ -30,9 +30,9 @@ import java.util.UUID;
  * @UpdateUser: 冯凡利
  * @Version: 0.0.1
  */
+@Slf4j
 @Aspect
 @Component
-@Slf4j
 public class SysLogAspect {
 
     //环绕增强
@@ -44,9 +44,7 @@ public class SysLogAspect {
      * 只要出现 @MyLog 注解 都会进入
      * */
     @Pointcut("@annotation(com.feng.companyframe.aop.annotation.MyLog)")
-    public void logPointCut() {
-
-    }
+    public void logPointCut() {}
 
     /**
      * 环绕增强
@@ -66,7 +64,7 @@ public class SysLogAspect {
         try {
             saveSysLog(point, time);
         } catch (Exception e) {
-            log.error("e={}", e);
+            log.error("e={}", e.getLocalizedMessage());
         }
         return result;
     }
@@ -77,7 +75,7 @@ public class SysLogAspect {
      * @param joinPoint • * @param time
      * @return void
      * @throws
-     * @Author: 小霍
+     * @Author: 冯凡利
      * @UpdateUser:
      * @Version: 0.0.1
      */
@@ -110,7 +108,7 @@ public class SysLogAspect {
         HttpServletRequest request = HttpContextUtils.getHttpServletRequest();
         //设置IP地址
         sysLog.setIp(IPUtils.getIpAddr(request));
-        log.info("Ip{}，接口地址{}，请求方式{}，入参：{}",sysLog.getIp(),request.getRequestURL(),request.getMethod(),sysLog.getParams());
+        log.info("Ip {}，接口地址{}，请求方式{}，入参：{}",sysLog.getIp(),request.getRequestURL(),request.getMethod(),sysLog.getParams());
         //用户名
         String token = request.getHeader(Constant.ACCESS_TOKEN);
         String userId = JwtTokenUtil.getUserId(token);

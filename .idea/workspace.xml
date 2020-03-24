@@ -2,140 +2,43 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c7dc5c46-225f-4c8d-b26b-5f2bb72fc5c9" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/logs/company-frame.log" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/logs/company-frame.log.2020-02-18.0.gz" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/logs/company-frame.log.2020-02-19.0.gz" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/logs/company-frame.log.2020-02-20.0.gz" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/logs/company-frame.log.2020-02-21.0.gz" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/logs/company-frame.log.2020-02-22.0.gz" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/logs/company-frame.log.2020-02-23.0.gz" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/logs/company-frame.log.2020-02-24.0.gz" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/logs/company-frame.log.2020-02-25.0.gz" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/logs/company-frame.log.2020-02-26.0.gz" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/logs/company-frame.log.2020-02-27.0.gz" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/logs/company-frame.log.2020-02-28.0.gz" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/logs/company-frame.log.2020-02-29.0.gz" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/logs/company-frame.log.2020-03-02.0.gz" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/logs/company-frame.log.2020-03-03.0.gz" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/logs/company-frame.log.2020-03-04.0.gz" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/logs/company-frame.log.2020-03-05.0.gz" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/logs/company-frame.log.2020-03-05.01616993140628000.tmp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/feng/companyframe/aop/annotation/MyLog.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/feng/companyframe/aop/aspect/SysLogAspect.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/feng/companyframe/bean/readme.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/feng/companyframe/controller/DeptController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/feng/companyframe/controller/LogController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/feng/companyframe/controller/RoleController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/feng/companyframe/controller/SlefInfoController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/feng/companyframe/controller/UserRoleController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/feng/companyframe/controller/Zreadme.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/feng/companyframe/mapper/Zreadme.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/feng/companyframe/services/DeptService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/feng/companyframe/services/LogService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/feng/companyframe/services/RolePermissionService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/feng/companyframe/services/RoleService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/feng/companyframe/services/UserRoleService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/feng/companyframe/services/Zreadme.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/feng/companyframe/services/impl/DeptServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/feng/companyframe/services/impl/LogServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/feng/companyframe/services/impl/RolePermissionServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/feng/companyframe/services/impl/RoleServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/feng/companyframe/services/impl/UserRoleServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/feng/companyframe/test/TestList.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/feng/companyframe/utils/CodeUtil.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/feng/companyframe/utils/HttpContextUtils.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/feng/companyframe/utils/IPUtils.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/feng/companyframe/vo/req/DeptAddReqVO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/feng/companyframe/vo/req/DeptUpdateReqVO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/feng/companyframe/vo/req/LogPageReqVO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/feng/companyframe/vo/req/PermissionAddReqVO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/feng/companyframe/vo/req/PermissionUpdateReqVO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/feng/companyframe/vo/req/RoleAddReqVO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/feng/companyframe/vo/req/RolePageReqVO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/feng/companyframe/vo/req/RolePermissionOperationReqVO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/feng/companyframe/vo/req/RoleUpdateReqVO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/feng/companyframe/vo/req/UserAddReqVO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/feng/companyframe/vo/req/UserLoginUpdateDetailInfoReqVO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/feng/companyframe/vo/req/UserOwnRoleReqVO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/feng/companyframe/vo/req/UserUpdatePWDReqVO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/feng/companyframe/vo/req/UserUpdateReqVO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/feng/companyframe/vo/resp/DeptRespNodeVO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/feng/companyframe/vo/resp/UserOwnRoleRespVO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/mapper/readme.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/css/custom.form.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/css/feng.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/js/readme.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/depts/dept.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/logs/log.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/maps/map.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/readme.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/roles/role.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/test/map_Overlay.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/users/edit_password.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/users/user.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/users/user_edit.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/company_frame.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/description.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/image-storage/403.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/image-storage/404.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/image-storage/500.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/image-storage/login.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/image-storage/首页.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/logs/company-frame.log.2020-03-06.0.gz" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/logs/company-frame.log.2020-03-07.0.gz" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/logs/company-frame.log.2020-03-08.0.gz" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/logs/company-frame.log.2020-03-09.0.gz" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/logs/company-frame.log.2020-03-10.0.gz" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/logs/company-frame.log.2020-03-11.0.gz" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/logs/company-frame.log.2020-03-18.0.gz" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/logs/company-frame.log.2020-03-19.0.gz" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/logs/company-frame.log.2020-03-20.0.gz" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/company-frame.log" beforeDir="false" afterPath="$PROJECT_DIR$/logs/company-frame.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/feng/companyframe/bean/SysDept.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/feng/companyframe/bean/SysDept.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/feng/companyframe/bean/SysRole.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/feng/companyframe/bean/SysRole.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/feng/companyframe/bean/SysUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/feng/companyframe/bean/SysUser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/feng/companyframe/CompanyFrameApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/feng/companyframe/CompanyFrameApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/feng/companyframe/aop/aspect/SysLogAspect.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/feng/companyframe/aop/aspect/SysLogAspect.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/feng/companyframe/bean/readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/feng/companyframe/bean/Zreadme.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/feng/companyframe/config/ShiroConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/feng/companyframe/config/ShiroConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/feng/companyframe/config/readMeStudy.md" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/feng/companyframe/config/Zreadme.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/feng/companyframe/constant/Constants.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/feng/companyframe/constant/Constant.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/feng/companyframe/controller/HomeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/feng/companyframe/controller/HomeController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/feng/companyframe/config/SwaggerConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/feng/companyframe/config/SwaggerConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/feng/companyframe/constant/Constant.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/feng/companyframe/constant/Constant.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/feng/companyframe/controller/IndexController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/feng/companyframe/controller/IndexController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/feng/companyframe/controller/PermissionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/feng/companyframe/controller/PermissionController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/feng/companyframe/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/feng/companyframe/controller/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/feng/companyframe/exception/BusinessException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/feng/companyframe/exception/BusinessException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/feng/companyframe/exception/code/BaseResponseCode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/feng/companyframe/exception/code/BaseResponseCode.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/feng/companyframe/exception/handler/RestExceptionHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/feng/companyframe/exception/handler/RestExceptionHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/feng/companyframe/jwt/JwtTokenUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/feng/companyframe/jwt/JwtTokenUtil.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/feng/companyframe/mapper/SysDeptMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/feng/companyframe/mapper/SysDeptMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/feng/companyframe/mapper/SysLogMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/feng/companyframe/mapper/SysLogMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/feng/companyframe/mapper/SysPermissionMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/feng/companyframe/mapper/SysPermissionMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/feng/companyframe/mapper/SysRoleMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/feng/companyframe/mapper/SysRoleMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/feng/companyframe/mapper/SysRolePermissionMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/feng/companyframe/mapper/SysRolePermissionMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/feng/companyframe/mapper/SysUserMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/feng/companyframe/mapper/SysUserMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/feng/companyframe/mapper/SysUserRoleMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/feng/companyframe/mapper/SysUserRoleMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/feng/companyframe/services/HomeService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/feng/companyframe/services/HomeService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/feng/companyframe/services/PermissionService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/feng/companyframe/services/PermissionService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/feng/companyframe/services/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/feng/companyframe/services/UserService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/feng/companyframe/services/impl/HomeServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/feng/companyframe/services/impl/HomeServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/feng/companyframe/services/impl/PermissionServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/feng/companyframe/services/impl/PermissionServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/feng/companyframe/services/impl/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/feng/companyframe/services/impl/UserServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/feng/companyframe/shiro/CustomAccessControlerFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/feng/companyframe/shiro/CustomAccessControlerFilter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/feng/companyframe/shiro/CustomHashedCredentialsMatcher.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/feng/companyframe/shiro/CustomHashedCredentialsMatcher.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/feng/companyframe/shiro/CustomRealm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/feng/companyframe/shiro/CustomRealm.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/feng/companyframe/shiro/RedisCache.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/feng/companyframe/shiro/RedisCache.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/feng/companyframe/shiro/RedisCacheManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/feng/companyframe/shiro/RedisCacheManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/feng/companyframe/shiro/remdme.md" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/feng/companyframe/shiro/Zreadme.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/feng/companyframe/utils/PageUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/feng/companyframe/utils/PageUtil.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/feng/companyframe/utils/PasswordEncoder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/feng/companyframe/utils/PasswordEncoder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/feng/companyframe/utils/PasswordUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/feng/companyframe/utils/PasswordUtils.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/feng/companyframe/utils/RedisUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/feng/companyframe/utils/RedisUtil.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/feng/companyframe/vo/req/UserPageReqVO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/feng/companyframe/vo/req/UserPageReqVO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/feng/companyframe/vo/resp/HomeRespVO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/feng/companyframe/vo/resp/HomeRespVO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/feng/companyframe/vo/resp/LoginRespVO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/feng/companyframe/vo/resp/LoginRespVO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/feng/companyframe/vo/resp/PermissionRespNodeVO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/feng/companyframe/vo/resp/PermissionRespNodeVO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/feng/companyframe/vo/resp/UserInfoRespVO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/feng/companyframe/vo/resp/UserInfoRespVO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/SysDeptMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mapper/SysDeptMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/SysLogMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mapper/SysLogMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/SysPermissionMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mapper/SysPermissionMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/SysRoleMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mapper/SysRoleMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/SysRolePermissionMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mapper/SysRolePermissionMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/SysUserMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mapper/SysUserMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/SysUserRoleMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mapper/SysUserRoleMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/core.util.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/js/core.util.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layui/css/layui.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/layui/css/layui.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/feng/companyframe/shiro/Zreadme.md" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/feng/companyframe/shiro/Zreadme.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/templates/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/home.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/templates/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/login.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/templates/main.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/main.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/menus/menu.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/menus/menu.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/feng/companyframe/CompanyFrameApplicationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/feng/companyframe/CompanyFrameApplicationTests.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/application.yml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/feng/companyframe/controller/TestController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/feng/companyframe/CompanyFrameApplicationTests.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -144,6 +47,9 @@
   </component>
   <component name="CompilerWorkspaceConfiguration">
     <option name="MAKE_PROJECT_ON_SAVE" value="true" />
+  </component>
+  <component name="FavoritesManager">
+    <favorites_list name="company-frame" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -192,7 +98,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/java/com/feng/companyframe/utils" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/image-storage" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -204,6 +110,9 @@
     <property name="settings.editor.splitter.proportion" value="0.2814739" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\Users\IDEA\company-frame\docx" />
+    </key>
     <key name="CreateClassDialog.RecentsKey">
       <recent name="com.feng.companyframe.config" />
     </key>
@@ -211,11 +120,11 @@
       <recent name="com.feng.companyframe.exception" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\Users\IDEA\company-frame\image-storage" />
+      <recent name="D:\Users\IDEA\company-frame\docx" />
       <recent name="D:\Users\IDEA\company-frame\src\main\java\com\feng\companyframe\utils" />
       <recent name="D:\Users\IDEA\company-frame\src\main\resources\static" />
       <recent name="D:\Users\IDEA\company-frame\src\main\resources\templates" />
-      <recent name="D:\Users\IDEA\company-frame\src\main\resources" />
-      <recent name="D:\Users\IDEA\company-frame\src\main\java\com\feng\companyframe\exception" />
     </key>
   </component>
   <component name="RunManager" selected="Spring Boot.CompanyFrameApplication">
@@ -373,7 +282,17 @@
       <workItem from="1583034129479" duration="16647000" />
       <workItem from="1583291219818" duration="8546000" />
       <workItem from="1583374347229" duration="16982000" />
-      <workItem from="1583456501460" duration="12662000" />
+      <workItem from="1583456501460" duration="15347000" />
+      <workItem from="1583549845584" duration="10564000" />
+      <workItem from="1583628446410" duration="5453000" />
+      <workItem from="1583725158819" duration="7317000" />
+      <workItem from="1583807600917" duration="12343000" />
+      <workItem from="1583898947272" duration="13925000" />
+      <workItem from="1584500101010" duration="4932000" />
+      <workItem from="1584586101204" duration="8140000" />
+      <workItem from="1584671605221" duration="4108000" />
+      <workItem from="1584844283676" duration="2262000" />
+      <workItem from="1585053322649" duration="4803000" />
     </task>
     <servers />
   </component>
@@ -433,74 +352,99 @@
       <screen x="1366" y="0" width="1360" height="738" />
     </state>
     <state x="1641" y="0" key="CommitChangelistDialog2/0.0.1366.738/1366.0.1360.738@1366.0.1360.738" timestamp="1583460934845" />
-    <state width="1060" height="438" key="DebuggerActiveHint" timestamp="1583386890568">
+    <state width="1060" height="438" key="DebuggerActiveHint" timestamp="1584586897937">
       <screen x="1366" y="0" width="1360" height="738" />
     </state>
-    <state width="1060" height="438" key="DebuggerActiveHint/0.0.1366.738/1366.0.1360.738@1366.0.1360.738" timestamp="1583386890568" />
+    <state width="1065" height="438" key="DebuggerActiveHint/0.0.1366.738/1366.0.1360.738@0.0.1366.738" timestamp="1583564689155" />
+    <state width="1060" height="438" key="DebuggerActiveHint/0.0.1366.738/1366.0.1360.738@1366.0.1360.738" timestamp="1584586897937" />
     <state x="1826" y="127" key="FileChooserDialogImpl" timestamp="1580535841818">
       <screen x="1366" y="0" width="1360" height="738" />
     </state>
     <state x="1826" y="127" key="FileChooserDialogImpl/0.0.1366.738/1366.0.1360.738@1366.0.1360.738" timestamp="1580535841818" />
-    <state width="1317" height="2" key="GridCell.Tab.0.bottom" timestamp="1583490140986">
+    <state width="1317" height="128" key="GridCell.Tab.0.bottom" timestamp="1585059543334">
       <screen x="1366" y="0" width="1360" height="738" />
     </state>
-    <state width="1323" height="34" key="GridCell.Tab.0.bottom/0.0.1366.738/1366.0.1360.738@0.0.1366.738" timestamp="1583410560445" />
-    <state width="1317" height="2" key="GridCell.Tab.0.bottom/0.0.1366.738/1366.0.1360.738@1366.0.1360.738" timestamp="1583490140986" />
-    <state width="1317" height="2" key="GridCell.Tab.0.center" timestamp="1583490140986">
+    <state width="1323" height="106" key="GridCell.Tab.0.bottom/0.0.1366.738/1366.0.1024.738@0.0.1366.738" timestamp="1583730947639" />
+    <state width="981" height="158" key="GridCell.Tab.0.bottom/0.0.1366.738/1366.0.1024.738@1366.0.1024.738" timestamp="1583730248782" />
+    <state width="1300" height="154" key="GridCell.Tab.0.bottom/0.0.1366.738/1366.0.1360.738@0.0.1366.738" timestamp="1584705840944" />
+    <state width="1317" height="128" key="GridCell.Tab.0.bottom/0.0.1366.738/1366.0.1360.738@1366.0.1360.738" timestamp="1585059543334" />
+    <state width="1317" height="128" key="GridCell.Tab.0.center" timestamp="1585059543334">
       <screen x="1366" y="0" width="1360" height="738" />
     </state>
-    <state width="1323" height="34" key="GridCell.Tab.0.center/0.0.1366.738/1366.0.1360.738@0.0.1366.738" timestamp="1583410560444" />
-    <state width="1317" height="2" key="GridCell.Tab.0.center/0.0.1366.738/1366.0.1360.738@1366.0.1360.738" timestamp="1583490140986" />
-    <state width="1317" height="2" key="GridCell.Tab.0.left" timestamp="1583490140986">
+    <state width="1323" height="106" key="GridCell.Tab.0.center/0.0.1366.738/1366.0.1024.738@0.0.1366.738" timestamp="1583730947638" />
+    <state width="981" height="158" key="GridCell.Tab.0.center/0.0.1366.738/1366.0.1024.738@1366.0.1024.738" timestamp="1583730248782" />
+    <state width="1300" height="154" key="GridCell.Tab.0.center/0.0.1366.738/1366.0.1360.738@0.0.1366.738" timestamp="1584705840944" />
+    <state width="1317" height="128" key="GridCell.Tab.0.center/0.0.1366.738/1366.0.1360.738@1366.0.1360.738" timestamp="1585059543334" />
+    <state width="1317" height="128" key="GridCell.Tab.0.left" timestamp="1585059543333">
       <screen x="1366" y="0" width="1360" height="738" />
     </state>
-    <state width="1323" height="34" key="GridCell.Tab.0.left/0.0.1366.738/1366.0.1360.738@0.0.1366.738" timestamp="1583410560443" />
-    <state width="1317" height="2" key="GridCell.Tab.0.left/0.0.1366.738/1366.0.1360.738@1366.0.1360.738" timestamp="1583490140986" />
-    <state width="1317" height="2" key="GridCell.Tab.0.right" timestamp="1583490140986">
+    <state width="1323" height="106" key="GridCell.Tab.0.left/0.0.1366.738/1366.0.1024.738@0.0.1366.738" timestamp="1583730947638" />
+    <state width="981" height="158" key="GridCell.Tab.0.left/0.0.1366.738/1366.0.1024.738@1366.0.1024.738" timestamp="1583730248781" />
+    <state width="1300" height="154" key="GridCell.Tab.0.left/0.0.1366.738/1366.0.1360.738@0.0.1366.738" timestamp="1584705840944" />
+    <state width="1317" height="128" key="GridCell.Tab.0.left/0.0.1366.738/1366.0.1360.738@1366.0.1360.738" timestamp="1585059543333" />
+    <state width="1317" height="128" key="GridCell.Tab.0.right" timestamp="1585059543334">
       <screen x="1366" y="0" width="1360" height="738" />
     </state>
-    <state width="1323" height="34" key="GridCell.Tab.0.right/0.0.1366.738/1366.0.1360.738@0.0.1366.738" timestamp="1583410560444" />
-    <state width="1317" height="2" key="GridCell.Tab.0.right/0.0.1366.738/1366.0.1360.738@1366.0.1360.738" timestamp="1583490140986" />
-    <state width="1317" height="146" key="GridCell.Tab.1.bottom" timestamp="1583473808669">
+    <state width="1323" height="106" key="GridCell.Tab.0.right/0.0.1366.738/1366.0.1024.738@0.0.1366.738" timestamp="1583730947639" />
+    <state width="981" height="158" key="GridCell.Tab.0.right/0.0.1366.738/1366.0.1024.738@1366.0.1024.738" timestamp="1583730248782" />
+    <state width="1300" height="154" key="GridCell.Tab.0.right/0.0.1366.738/1366.0.1360.738@0.0.1366.738" timestamp="1584705840944" />
+    <state width="1317" height="128" key="GridCell.Tab.0.right/0.0.1366.738/1366.0.1360.738@1366.0.1360.738" timestamp="1585059543334" />
+    <state width="1317" height="128" key="GridCell.Tab.1.bottom" timestamp="1585059543335">
       <screen x="1366" y="0" width="1360" height="738" />
     </state>
-    <state width="1323" height="384" key="GridCell.Tab.1.bottom/0.0.1366.738/1366.0.1360.738@0.0.1366.738" timestamp="1583411608626" />
-    <state width="1317" height="146" key="GridCell.Tab.1.bottom/0.0.1366.738/1366.0.1360.738@1366.0.1360.738" timestamp="1583473808669" />
-    <state width="1317" height="146" key="GridCell.Tab.1.center" timestamp="1583473808668">
+    <state width="1323" height="106" key="GridCell.Tab.1.bottom/0.0.1366.738/1366.0.1024.738@0.0.1366.738" timestamp="1583730947640" />
+    <state width="981" height="158" key="GridCell.Tab.1.bottom/0.0.1366.738/1366.0.1024.738@1366.0.1024.738" timestamp="1583730248783" />
+    <state width="1300" height="154" key="GridCell.Tab.1.bottom/0.0.1366.738/1366.0.1360.738@0.0.1366.738" timestamp="1584705840944" />
+    <state width="1317" height="128" key="GridCell.Tab.1.bottom/0.0.1366.738/1366.0.1360.738@1366.0.1360.738" timestamp="1585059543335" />
+    <state width="1317" height="128" key="GridCell.Tab.1.center" timestamp="1585059543335">
       <screen x="1366" y="0" width="1360" height="738" />
     </state>
-    <state width="1323" height="384" key="GridCell.Tab.1.center/0.0.1366.738/1366.0.1360.738@0.0.1366.738" timestamp="1583411608626" />
-    <state width="1317" height="146" key="GridCell.Tab.1.center/0.0.1366.738/1366.0.1360.738@1366.0.1360.738" timestamp="1583473808668" />
-    <state width="1317" height="146" key="GridCell.Tab.1.left" timestamp="1583473808668">
+    <state width="1323" height="106" key="GridCell.Tab.1.center/0.0.1366.738/1366.0.1024.738@0.0.1366.738" timestamp="1583730947639" />
+    <state width="981" height="158" key="GridCell.Tab.1.center/0.0.1366.738/1366.0.1024.738@1366.0.1024.738" timestamp="1583730248783" />
+    <state width="1300" height="154" key="GridCell.Tab.1.center/0.0.1366.738/1366.0.1360.738@0.0.1366.738" timestamp="1584705840944" />
+    <state width="1317" height="128" key="GridCell.Tab.1.center/0.0.1366.738/1366.0.1360.738@1366.0.1360.738" timestamp="1585059543335" />
+    <state width="1317" height="128" key="GridCell.Tab.1.left" timestamp="1585059543334">
       <screen x="1366" y="0" width="1360" height="738" />
     </state>
-    <state width="1323" height="384" key="GridCell.Tab.1.left/0.0.1366.738/1366.0.1360.738@0.0.1366.738" timestamp="1583411608625" />
-    <state width="1317" height="146" key="GridCell.Tab.1.left/0.0.1366.738/1366.0.1360.738@1366.0.1360.738" timestamp="1583473808668" />
-    <state width="1317" height="146" key="GridCell.Tab.1.right" timestamp="1583473808668">
+    <state width="1323" height="106" key="GridCell.Tab.1.left/0.0.1366.738/1366.0.1024.738@0.0.1366.738" timestamp="1583730947639" />
+    <state width="981" height="158" key="GridCell.Tab.1.left/0.0.1366.738/1366.0.1024.738@1366.0.1024.738" timestamp="1583730248782" />
+    <state width="1300" height="154" key="GridCell.Tab.1.left/0.0.1366.738/1366.0.1360.738@0.0.1366.738" timestamp="1584705840944" />
+    <state width="1317" height="128" key="GridCell.Tab.1.left/0.0.1366.738/1366.0.1360.738@1366.0.1360.738" timestamp="1585059543334" />
+    <state width="1317" height="128" key="GridCell.Tab.1.right" timestamp="1585059543335">
       <screen x="1366" y="0" width="1360" height="738" />
     </state>
-    <state width="1323" height="384" key="GridCell.Tab.1.right/0.0.1366.738/1366.0.1360.738@0.0.1366.738" timestamp="1583411608626" />
-    <state width="1317" height="146" key="GridCell.Tab.1.right/0.0.1366.738/1366.0.1360.738@1366.0.1360.738" timestamp="1583473808668" />
-    <state width="1317" height="146" key="GridCell.Tab.2.bottom" timestamp="1583473808670">
+    <state width="1323" height="106" key="GridCell.Tab.1.right/0.0.1366.738/1366.0.1024.738@0.0.1366.738" timestamp="1583730947640" />
+    <state width="981" height="158" key="GridCell.Tab.1.right/0.0.1366.738/1366.0.1024.738@1366.0.1024.738" timestamp="1583730248783" />
+    <state width="1300" height="154" key="GridCell.Tab.1.right/0.0.1366.738/1366.0.1360.738@0.0.1366.738" timestamp="1584705840944" />
+    <state width="1317" height="128" key="GridCell.Tab.1.right/0.0.1366.738/1366.0.1360.738@1366.0.1360.738" timestamp="1585059543335" />
+    <state width="1317" height="156" key="GridCell.Tab.2.bottom" timestamp="1585059406139">
       <screen x="1366" y="0" width="1360" height="738" />
     </state>
-    <state width="1323" height="34" key="GridCell.Tab.2.bottom/0.0.1366.738/1366.0.1360.738@0.0.1366.738" timestamp="1583410559837" />
-    <state width="1317" height="146" key="GridCell.Tab.2.bottom/0.0.1366.738/1366.0.1360.738@1366.0.1360.738" timestamp="1583473808670" />
-    <state width="1317" height="146" key="GridCell.Tab.2.center" timestamp="1583473808669">
+    <state width="1323" height="106" key="GridCell.Tab.2.bottom/0.0.1366.738/1366.0.1024.738@0.0.1366.738" timestamp="1583730947641" />
+    <state width="981" height="158" key="GridCell.Tab.2.bottom/0.0.1366.738/1366.0.1024.738@1366.0.1024.738" timestamp="1583730248784" />
+    <state width="1300" height="154" key="GridCell.Tab.2.bottom/0.0.1366.738/1366.0.1360.738@0.0.1366.738" timestamp="1584705840944" />
+    <state width="1317" height="156" key="GridCell.Tab.2.bottom/0.0.1366.738/1366.0.1360.738@1366.0.1360.738" timestamp="1585059406139" />
+    <state width="1317" height="156" key="GridCell.Tab.2.center" timestamp="1585059406139">
       <screen x="1366" y="0" width="1360" height="738" />
     </state>
-    <state width="1323" height="34" key="GridCell.Tab.2.center/0.0.1366.738/1366.0.1360.738@0.0.1366.738" timestamp="1583410559836" />
-    <state width="1317" height="146" key="GridCell.Tab.2.center/0.0.1366.738/1366.0.1360.738@1366.0.1360.738" timestamp="1583473808669" />
-    <state width="1317" height="146" key="GridCell.Tab.2.left" timestamp="1583473808669">
+    <state width="1323" height="106" key="GridCell.Tab.2.center/0.0.1366.738/1366.0.1024.738@0.0.1366.738" timestamp="1583730947640" />
+    <state width="981" height="158" key="GridCell.Tab.2.center/0.0.1366.738/1366.0.1024.738@1366.0.1024.738" timestamp="1583730248783" />
+    <state width="1300" height="154" key="GridCell.Tab.2.center/0.0.1366.738/1366.0.1360.738@0.0.1366.738" timestamp="1584705840944" />
+    <state width="1317" height="156" key="GridCell.Tab.2.center/0.0.1366.738/1366.0.1360.738@1366.0.1360.738" timestamp="1585059406139" />
+    <state width="1317" height="156" key="GridCell.Tab.2.left" timestamp="1585059406139">
       <screen x="1366" y="0" width="1360" height="738" />
     </state>
-    <state width="1323" height="34" key="GridCell.Tab.2.left/0.0.1366.738/1366.0.1360.738@0.0.1366.738" timestamp="1583410559836" />
-    <state width="1317" height="146" key="GridCell.Tab.2.left/0.0.1366.738/1366.0.1360.738@1366.0.1360.738" timestamp="1583473808669" />
-    <state width="1317" height="146" key="GridCell.Tab.2.right" timestamp="1583473808669">
+    <state width="1323" height="106" key="GridCell.Tab.2.left/0.0.1366.738/1366.0.1024.738@0.0.1366.738" timestamp="1583730947640" />
+    <state width="981" height="158" key="GridCell.Tab.2.left/0.0.1366.738/1366.0.1024.738@1366.0.1024.738" timestamp="1583730248783" />
+    <state width="1300" height="154" key="GridCell.Tab.2.left/0.0.1366.738/1366.0.1360.738@0.0.1366.738" timestamp="1584705840944" />
+    <state width="1317" height="156" key="GridCell.Tab.2.left/0.0.1366.738/1366.0.1360.738@1366.0.1360.738" timestamp="1585059406139" />
+    <state width="1317" height="156" key="GridCell.Tab.2.right" timestamp="1585059406139">
       <screen x="1366" y="0" width="1360" height="738" />
     </state>
-    <state width="1323" height="34" key="GridCell.Tab.2.right/0.0.1366.738/1366.0.1360.738@0.0.1366.738" timestamp="1583410559836" />
-    <state width="1317" height="146" key="GridCell.Tab.2.right/0.0.1366.738/1366.0.1360.738@1366.0.1360.738" timestamp="1583473808669" />
+    <state width="1323" height="106" key="GridCell.Tab.2.right/0.0.1366.738/1366.0.1024.738@0.0.1366.738" timestamp="1583730947640" />
+    <state width="981" height="158" key="GridCell.Tab.2.right/0.0.1366.738/1366.0.1024.738@1366.0.1024.738" timestamp="1583730248784" />
+    <state width="1300" height="154" key="GridCell.Tab.2.right/0.0.1366.738/1366.0.1360.738@0.0.1366.738" timestamp="1584705840944" />
+    <state width="1317" height="156" key="GridCell.Tab.2.right/0.0.1366.738/1366.0.1360.738@1366.0.1360.738" timestamp="1585059406139" />
     <state x="1576" y="27" key="Maven.ArtifactSearchDialog" timestamp="1580538809993">
       <screen x="1366" y="0" width="1360" height="738" />
     </state>
@@ -526,20 +470,20 @@
       <screen x="1366" y="0" width="1360" height="738" />
     </state>
     <state x="1647" y="0" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.1366.738/1366.0.1360.738@1366.0.1360.738" timestamp="1580901901935" />
-    <state x="1564" y="108" width="892" height="566" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2" timestamp="1583471828248">
-      <screen x="1366" y="0" width="1360" height="738" />
+    <state x="199" y="108" width="892" height="566" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2" timestamp="1584672895123">
+      <screen x="0" y="0" width="1366" height="738" />
     </state>
-    <state x="199" y="108" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2/0.0.1366.738/1366.0.1360.738@0.0.1366.738" timestamp="1582014921304" />
+    <state x="199" y="108" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2/0.0.1366.738/1366.0.1360.738@0.0.1366.738" timestamp="1584672895123" />
     <state x="1564" y="108" width="892" height="566" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2/0.0.1366.738/1366.0.1360.738@1366.0.1360.738" timestamp="1583471828248" />
     <state x="1776" y="140" key="extract.method.dialog" timestamp="1583376811014">
       <screen x="1366" y="0" width="1360" height="738" />
     </state>
     <state x="1776" y="140" key="extract.method.dialog/0.0.1366.738/1366.0.1360.738@1366.0.1360.738" timestamp="1583376811014" />
-    <state x="1666" y="95" width="759" height="548" key="find.popup" timestamp="1583484940441">
+    <state x="1666" y="95" width="759" height="548" key="find.popup" timestamp="1585059591703">
       <screen x="1366" y="0" width="1360" height="738" />
     </state>
-    <state x="301" y="95" width="763" height="548" key="find.popup/0.0.1366.738/1366.0.1360.738@0.0.1366.738" timestamp="1583042946388" />
-    <state x="1666" y="95" width="759" height="548" key="find.popup/0.0.1366.738/1366.0.1360.738@1366.0.1360.738" timestamp="1583484940441" />
+    <state x="301" y="95" width="763" height="548" key="find.popup/0.0.1366.738/1366.0.1360.738@0.0.1366.738" timestamp="1583904429248" />
+    <state x="1666" y="95" width="759" height="548" key="find.popup/0.0.1366.738/1366.0.1360.738@1366.0.1360.738" timestamp="1585059591703" />
     <state x="67" y="42" key="new project wizard" timestamp="1581063687761">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
@@ -552,10 +496,12 @@
       <screen x="1366" y="0" width="1360" height="738" />
     </state>
     <state x="1702" y="165" key="run.anything.popup/0.0.1366.738/1366.0.1360.738@1366.0.1360.738" timestamp="1583122515280" />
-    <state x="1709" y="59" width="672" height="678" key="search.everywhere.popup" timestamp="1583412654947">
+    <state x="1709" y="59" width="672" height="678" key="search.everywhere.popup" timestamp="1584541542600">
       <screen x="1366" y="0" width="1360" height="738" />
     </state>
-    <state x="1709" y="59" width="672" height="678" key="search.everywhere.popup/0.0.1366.738/1366.0.1360.738@1366.0.1360.738" timestamp="1583412654947" />
+    <state x="1625" y="59" width="672" height="678" key="search.everywhere.popup/0.0.1366.738/1366.0.1024.738@1366.0.1024.738" timestamp="1583728275080" />
+    <state x="345" y="59" width="675" height="678" key="search.everywhere.popup/0.0.1366.738/1366.0.1360.738@0.0.1366.738" timestamp="1583904402948" />
+    <state x="1709" y="59" width="672" height="678" key="search.everywhere.popup/0.0.1366.738/1366.0.1360.738@1366.0.1360.738" timestamp="1584541542600" />
     <state x="1768" y="287" key="vcs.readOnlyHandler.ReadOnlyStatusDialog" timestamp="1581161832839">
       <screen x="1366" y="0" width="1360" height="738" />
     </state>
@@ -609,35 +555,50 @@
           <line>85</line>
           <option name="timeStamp" value="90" />
         </line-breakpoint>
-        <line-breakpoint type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/feng/companyframe/shiro/CustomAccessControlerFilter.java</url>
-          <line>61</line>
-          <option name="timeStamp" value="92" />
-        </line-breakpoint>
-        <line-breakpoint type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/feng/companyframe/shiro/CustomRealm.java</url>
-          <line>58</line>
-          <option name="timeStamp" value="93" />
-        </line-breakpoint>
-        <line-breakpoint type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/feng/companyframe/shiro/CustomRealm.java</url>
-          <line>35</line>
-          <option name="timeStamp" value="94" />
-        </line-breakpoint>
-        <line-breakpoint type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/feng/companyframe/shiro/CustomHashedCredentialsMatcher.java</url>
-          <line>30</line>
-          <option name="timeStamp" value="97" />
-        </line-breakpoint>
-        <line-breakpoint type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/feng/companyframe/shiro/RedisCache.java</url>
-          <line>41</line>
-          <option name="timeStamp" value="99" />
-        </line-breakpoint>
-        <line-breakpoint type="java-line">
+        <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/feng/companyframe/shiro/CustomAccessControlerFilter.java</url>
           <line>46</line>
-          <option name="timeStamp" value="100" />
+          <option name="timeStamp" value="103" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/feng/companyframe/shiro/CustomAccessControlerFilter.java</url>
+          <line>61</line>
+          <option name="timeStamp" value="104" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/feng/companyframe/shiro/CustomHashedCredentialsMatcher.java</url>
+          <line>30</line>
+          <option name="timeStamp" value="105" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/feng/companyframe/shiro/CustomRealm.java</url>
+          <line>91</line>
+          <option name="timeStamp" value="106" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/feng/companyframe/shiro/CustomRealm.java</url>
+          <line>54</line>
+          <option name="timeStamp" value="107" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>jar://$MAVEN_REPOSITORY$/org/apache/shiro/shiro-core/1.4.1/shiro-core-1.4.1.jar!/org/apache/shiro/realm/AuthorizingRealm.class</url>
+          <line>186</line>
+          <option name="timeStamp" value="113" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/feng/companyframe/controller/HomeController.java</url>
+          <line>37</line>
+          <option name="timeStamp" value="115" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/feng/companyframe/controller/PermissionController.java</url>
+          <line>40</line>
+          <option name="timeStamp" value="116" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/feng/companyframe/controller/UserController.java</url>
+          <line>44</line>
+          <option name="timeStamp" value="117" />
         </line-breakpoint>
         <line-breakpoint type="java-method">
           <url>file://$PROJECT_DIR$/src/main/java/com/feng/companyframe/shiro/CustomAccessControlerFilter.java</url>

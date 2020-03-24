@@ -59,7 +59,7 @@ public class HomeServiceImpl implements HomeService {
                 " \"url\": \"string\"\n" +
                 " }\n" +
                 "]";*/
-
+        // 1、用户角色表 根据用户id 获取角色id  2、角色权限表 根据角色id 获取权限id  3、权限表 根据权限id 获取权限信息。
         List<PermissionRespNodeVO> permissionTreeList = permissionService.getPermissionTreeList(userId);
 
 //        List<PermissionRespNodeVO> permissionTreeList = JSON.parseArray(home, PermissionRespNodeVO.class);
@@ -70,7 +70,7 @@ public class HomeServiceImpl implements HomeService {
         if (null != userInfoRespVO){
             // 复制 实体类 的数据
             BeanUtils.copyProperties(sysUser, userInfoRespVO);
-            userInfoRespVO.setDeptName("test部门");
+            userInfoRespVO.setDeptName("智慧社区");
         }
         // 设置用户数据
         homeRespVO.setUserInfoVO(userInfoRespVO);

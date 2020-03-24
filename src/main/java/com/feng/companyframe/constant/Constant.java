@@ -79,7 +79,7 @@ public class Constant {
     public static final String DEPT_CODE_KEY="dept-code-key_";
 
     /**
-     * 用户权鉴缓存 key
+     * 用户 权鉴 缓存 key
      */
     public static final String IDENTIFY_CACHE_KEY="com.feng.companyframe.shiro.CustomRealm.authorizationCache:";
 }

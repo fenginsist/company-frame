@@ -25,11 +25,12 @@ import java.util.concurrent.TimeUnit;
 
 /**
  * 这里的 RedisUtils 不能注入
+ *
  * @param <K>
  * @param <V>
  */
 @Slf4j
-public class RedisCache<K, V> implements Cache<K,V> {
+public class RedisCache<K, V> implements Cache<K, V> {
 
     private final static String PREFIX = "shiro-cache:";
     private String cacheKey;
@@ -37,22 +38,23 @@ public class RedisCache<K, V> implements Cache<K,V> {
 
     private RedisUtil redisUtil;
 
-      public RedisCache(String name, RedisUtil redisUtil){
+    public RedisCache(String name, RedisUtil redisUtil) {
 //        this.cacheKey=PREFIX+name+":";
-        this.cacheKey= Constant.IDENTIFY_CACHE_KEY;
+        this.cacheKey = Constant.IDENTIFY_CACHE_KEY;
         this.redisUtil = redisUtil;
     }
 
 
     /**
      * 根据 key 值 获取 权限信息
-     * @param key
+     *
+     * @param key  jwt
      * @return
      * @throws CacheException
      */
     @Override
     public V get(K key) throws CacheException {
-        log.info("Shiro 从缓存中获取数据 KEY 值[{}]",key);
+        log.info("Shiro 从缓存中获取数据 KEY 值[{}]", key);
         if (key == null) {
             return null;
         }
@@ -62,7 +64,7 @@ public class RedisCache<K, V> implements Cache<K,V> {
             if (rawValue == null) {
                 return null;
             }
-            SimpleAuthorizationInfo info= JSON.parseObject(rawValue.toString(),SimpleAuthorizationInfo.class);
+            SimpleAuthorizationInfo info = JSON.parseObject(rawValue.toString(), SimpleAuthorizationInfo.class);
             V value = (V) info;
             return value;
         } catch (Exception e) {
@@ -71,22 +73,22 @@ public class RedisCache<K, V> implements Cache<K,V> {
     }
 
     /**
-     *  存值
+     * 存值
      *
-     * @param key
+     * @param key jwt
      * @param value
      * @return
      * @throws CacheException
      */
     @Override
     public V put(K key, V value) throws CacheException {
-        log.info("put key [{}]",key);
+        log.info("put key [{}]", key);
         if (key == null) {
             log.warn("Saving a null key is meaningless, return value directly without call Redis.");
             return value;
         }
         try {
-            String redisCacheKey = getRedisCacheKey(key);
+            String redisCacheKey = getRedisCacheKey(key); // cacheKey + userId
             redisUtil.set(redisCacheKey, value != null ? value : null, expire, TimeUnit.HOURS);
             return value;
         } catch (Exception e) {
@@ -96,13 +98,14 @@ public class RedisCache<K, V> implements Cache<K,V> {
 
     /**
      * 根据 key 值 删除缓存的值
+     *
      * @param key
      * @return
      * @throws CacheException
      */
     @Override
     public V remove(K key) throws CacheException {
-        log.info("remove key [{}]",key);
+        log.info("remove key [{}]", key);
         if (key == null) {
             return null;
         }
@@ -134,7 +137,7 @@ public class RedisCache<K, V> implements Cache<K,V> {
         if (keys == null || keys.size() == 0) {
             return;
         }
-        for (String key: keys) {
+        for (String key : keys) {
             redisUtil.delete(key);
         }
     }
@@ -174,7 +177,7 @@ public class RedisCache<K, V> implements Cache<K,V> {
             return Collections.emptySet();
         }
         Set<K> convertedKeys = new HashSet<>();
-        for (String key:keys) {
+        for (String key : keys) {
             try {
                 convertedKeys.add((K) key);
             } catch (Exception e) {
@@ -223,10 +226,10 @@ public class RedisCache<K, V> implements Cache<K,V> {
      * @return
      */
     private String getRedisCacheKey(K key) {
-        if(null==key){
+        if (null == key) {
             return null;
-        }else {
-            return this.cacheKey+ JwtTokenUtil.getUserId(key.toString());
+        } else {
+            return this.cacheKey + JwtTokenUtil.getUserId(key.toString());
         }
     }
 }

@@ -12,6 +12,7 @@ import springfox.documentation.service.ApiInfo;
 import springfox.documentation.service.Parameter;
 import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spring.web.plugins.Docket;
+import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,9 +22,14 @@ import java.util.List;
  * author: 冯凡利
  * create:  2020/2/1 14:37
  */
+@EnableSwagger2
 @Configuration
 public class SwaggerConfig {
 
+    /**
+     * 引入 yml 配置文件中的自定义属性
+     * 用来控制 swagger2 接口文档的开关，因为在生产环境中，是要关闭掉 swagger2 接口文档的
+     */
     @Value("${swagger2.enable}")
     private boolean enable;
 
@@ -44,13 +50,19 @@ public class SwaggerConfig {
          */
         pars.add(tokenPar.build());
         pars.add(refreshTokenPar.build());
+
         return new Docket(DocumentationType.SWAGGER_2)
+                // 自定义的 描述表头信息
                 .apiInfo(apiInfo())
+                // 函数返回一个ApiSerlectorBuilder 实例来控制哪些接口暴露给 Swagger ui 来展示
                 .select()
+                // 指定需要扫描的包路径
                 .apis(RequestHandlerSelectors.basePackage("com.feng.companyframe.controller"))
                 .paths(PathSelectors.any())
                 .build()
+                // 添加请求头等信息
                 .globalOperationParameters(pars)
+                // 设置swagger文档的开关
                 .enable(enable);
     }
 

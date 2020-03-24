@@ -19,10 +19,22 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class IndexController {
 
-    @ApiOperation(value = "跳转404页面")
+    @ApiOperation(value = "跳转 404 页面")
     @GetMapping("/404")
     public String error404(){
         return "error/404";
+    }
+
+    @ApiOperation(value = "跳转 403 页面")
+    @GetMapping("/403")
+    public String error403(){
+        return "error/403";
+    }
+
+    @ApiOperation(value = "跳转 500 页面")
+    @GetMapping("/500")
+    public String error500(){
+        return "error/500";
     }
 
     @ApiOperation(value = "进入登录页面")

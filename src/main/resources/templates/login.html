@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>智慧社区管理系统</title>
     <link rel="stylesheet" href="/layui/css/layui.css">
-    <link rel="stylesheet" href="/css/feng.css">
+<!--    <link rel="stylesheet" href="/css/feng.css">-->
     <style type="text/css">
         .login {
             height: 190px;
@@ -42,6 +42,7 @@
     </div>
     <div class="layui-container login">
         <form id="loginForm" action="/user/login" class="layui-form" method="post" layui-formpane>
+            <!--1 代表 pc 端-->
             <input name="type" type="hidden" value="1">
             <input type="text" name="username" lay-verify="required" placeholder="请输入账号"
                    autocomplete="off" class="layui-input">

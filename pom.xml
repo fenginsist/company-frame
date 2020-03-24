@@ -193,9 +193,9 @@
         <resources>
             <resource>
                 <directory>src/main/resources</directory>
-                <excludes>
+                <!--<excludes>
                     <exclude>*.yml</exclude>
-                </excludes>
+                </excludes>-->
             </resource>
         </resources>
 
