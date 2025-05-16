@@ -20,12 +20,27 @@ public class UserAddReqVO {
     @NotBlank(message = "账号不能为空")
     private String username;
 
+    @ApiModelProperty(value = "头像")
+    private String avatar;
+
     @ApiModelProperty(value = "密码")
     @NotBlank(message = "密码不能为空")
     private String password;
 
     @ApiModelProperty(value = "手机号码")
     private String phone;
+
+    @ApiModelProperty(value = "姓名")
+    private String realName;
+
+    @ApiModelProperty(value = "昵称")
+    private String nickName;
+
+    @ApiModelProperty(value = "邮箱")
+    private String email;
+
+    @ApiModelProperty(value = "性别")
+    private Integer sex;
 
     @ApiModelProperty(value = "创建来源(1.web 2.android 3.ios )")
     private Integer createWhere;
@@ -36,5 +51,8 @@ public class UserAddReqVO {
 
     @ApiModelProperty(value = "账户状态(1.正常 2.锁定 )")
     private Integer status;
+
+    @ApiModelProperty(value = "用户类型（1:管理员添加，2:用户自己注册）")
+    private Integer userType;
 }
 

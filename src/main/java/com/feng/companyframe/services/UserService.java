@@ -103,4 +103,6 @@ public interface UserService {
      * @param refreshToken
      */
     void updateLoginUserPassword(UserUpdatePWDReqVO vo, String accessToken, String refreshToken);
+
+    List<SysUser> getUserInfoByUsername(UserAddReqVO vo);
 }

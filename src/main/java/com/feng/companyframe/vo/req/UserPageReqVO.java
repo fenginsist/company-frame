@@ -32,6 +32,9 @@ public class UserPageReqVO {
     @ApiModelProperty(value = "昵称")
     private String nickName;
 
+    @ApiModelProperty(value = "手机号")
+    private String phone;
+
     @ApiModelProperty(value = "账户状态(1.正常 2.锁定 ")
     private Integer status;
 
@@ -40,5 +43,8 @@ public class UserPageReqVO {
 
     @ApiModelProperty(value = "结束时间")
     private String endTime;
+
+    @ApiModelProperty(value = "用户类型（1:管理员添加，2:用户自己注册）")
+    private String userType;
 }
 

@@ -10,6 +10,8 @@ import com.feng.companyframe.utils.DataResult;
 import com.feng.companyframe.vo.req.*;
 import com.feng.companyframe.vo.resp.LoginRespVO;
 import com.feng.companyframe.vo.resp.PageRespVO;
+import com.feng.companyframe.vo.resp.UserRespVO;
+import io.jsonwebtoken.Claims;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
@@ -30,6 +32,7 @@ import java.util.List;
  * @UpdateUser: 冯凡利
  * @Version: 0.0.1
  */
+@CrossOrigin
 @Slf4j
 @RestController
 @RequestMapping("/api")
@@ -68,6 +71,17 @@ public class UserController {
         return result;
     }
 
+    @ApiOperation(value = "获取用户信息")
+    @GetMapping("/user/getUserInfo")
+    public DataResult getUserInfo(HttpServletRequest request) {
+        String accessToken = request.getHeader(Constant.ACCESS_TOKEN);
+        Claims claims = JwtTokenUtil.getClaimsFromToken(accessToken);
+        List<String> roles = (List<String>) claims.get(Constant.JWT_ROLES_KEY);
+        DataResult result = DataResult.success();
+        result.setData(roles);
+        return result;
+    }
+
     @ApiOperation(value = "分页获取用户列表接口")
     @MyLog(title = "组织管理-用户管理",action = "分页获取用户列表接口")
     @RequiresPermissions("sys:user:list")
@@ -83,6 +97,12 @@ public class UserController {
     @RequiresPermissions("sys:user:add")
     @PostMapping("/addUser")
     public DataResult addUser(@RequestBody @Valid UserAddReqVO vo){
+        // 判断数据库是否有该用户
+        List<SysUser> sysUsers = userService.getUserInfoByUsername(vo);
+        if (sysUsers.size() != 0) {
+            System.out.println("用户名已存在，请更换用户名");
+            return DataResult.getResult(400, "用户名已存在，请更换用户名");
+        }
         userService.addUser(vo);
         return DataResult.success();
     }

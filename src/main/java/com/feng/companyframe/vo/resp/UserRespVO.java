@@ -1,4 +1,4 @@
-package com.feng.companyframe.bean;
+package com.feng.companyframe.vo.resp;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -10,7 +10,7 @@ import java.util.Date;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class SysUser implements Serializable {
+public class UserRespVO implements Serializable {
     private String id;
 
     private String avatar;
@@ -37,21 +37,18 @@ public class SysUser implements Serializable {
 
     private Integer deleted;
 
-    private Integer userType;
-
     private String createId;
 
     private String updateId;
 
     private Integer createWhere;
 
-    private Date createTime;
+    private String createTime;
 
-    private Date updateTime;
+    private String updateTime;
 
     // 后添加
     private String deptName;
 
     private static final long serialVersionUID = 1L;
-
 }

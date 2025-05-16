@@ -21,7 +21,7 @@
 8. 地图管理： 使用百度地图api, 展示地图。
 
 # 四、项目预览
-预览地址[http://123.56.30.106:8080/index/login](http://123.56.30.106:8080/index/login)  
+预览地址[http://localhost:8080/index/login](http://localhost:8080/index/login)  
 用户名： admin  
 密码： 666666  
 请勿在数据进行删除(可以进行添加)

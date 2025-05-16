@@ -3,6 +3,7 @@
 <mapper namespace="com.feng.companyframe.mapper.SysUserMapper">
   <resultMap id="BaseResultMap" type="com.feng.companyframe.bean.SysUser">
     <id column="id" jdbcType="VARCHAR" property="id" />
+    <result column="avatar" jdbcType="VARCHAR" property="avatar" />
     <result column="username" jdbcType="VARCHAR" property="username" />
     <result column="salt" jdbcType="VARCHAR" property="salt" />
     <result column="password" jdbcType="VARCHAR" property="password" />
@@ -13,6 +14,7 @@
     <result column="email" jdbcType="VARCHAR" property="email" />
     <result column="status" jdbcType="INTEGER" property="status" />
     <result column="sex" jdbcType="INTEGER" property="sex" />
+    <result column="user_type" jdbcType="INTEGER" property="userType" />
     <result column="deleted" jdbcType="INTEGER" property="deleted" />
     <result column="create_id" jdbcType="VARCHAR" property="createId" />
     <result column="update_id" jdbcType="VARCHAR" property="updateId" />
@@ -21,8 +23,8 @@
     <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
   </resultMap>
   <sql id="Base_Column_List">
-    id, username, salt, `password`, phone, dept_id, real_name, nick_name, email, `status`, 
-    sex, deleted, create_id, update_id, create_where, create_time, update_time
+    id, avatar, username, salt, `password`, phone, dept_id, real_name, nick_name, email, `status`,
+    sex, user_type, deleted, create_id, update_id, create_where, create_time, update_time
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
     select 
@@ -87,6 +89,9 @@
       <if test="deleted != null">
         deleted,
       </if>
+      <if test="userType != null">
+        user_type,
+      </if>
       <if test="createId != null">
         create_id,
       </if>
@@ -139,6 +144,9 @@
       </if>
       <if test="deleted != null">
         #{deleted,jdbcType=INTEGER},
+      </if>
+      <if test="userType != null">
+        #{userType,jdbcType=INTEGER},
       </if>
       <if test="createId != null">
         #{createId,jdbcType=VARCHAR},
@@ -257,6 +265,9 @@
       <if test="nickName != null and nickName != ''">
         and nick_name like concat('%', #{nickName}, '%')
       </if>
+      <if test="phone != null and phone != ''">
+        and phone = #{phone}
+      </if>
       <if test="status != null and status != '' or status==0">
         and status = #{status}
       </if>
@@ -266,7 +277,11 @@
       <if test="endTime != null and endTime != ''">
         and create_time &lt;= #{endTime}
       </if>
+      <if test="userType != null and userType != ''">
+        and user_type = #{userType}
+      </if>
     </where>
+    ORDER BY create_time ASC
   </select>
 
   <!--@Description: 删除 用户-->

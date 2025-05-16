@@ -302,6 +302,7 @@ public class UserServiceImpl implements UserService {
         if (StringUtils.isEmpty(vo.getPassword())){
             sysUser.setPassword(null);
         }else{
+            // 重制密码
             String salt = PasswordUtils.getSalt();
             String endPwd = PasswordUtils.encode(vo.getPassword(), salt);
             sysUser.setSalt(salt);
@@ -466,7 +467,12 @@ public class UserServiceImpl implements UserService {
     }
 
 
-
-
+    @Override
+    public List<SysUser> getUserInfoByUsername(UserAddReqVO vo) {
+        UserPageReqVO userPageReqVO = new UserPageReqVO();
+        userPageReqVO.setUsername(vo.getUsername());
+        List<SysUser> sysUsers = sysUserMapper.getAllSysUser(userPageReqVO);
+        return sysUsers;
+    }
 }
 

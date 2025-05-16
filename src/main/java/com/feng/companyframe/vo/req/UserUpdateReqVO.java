@@ -24,11 +24,26 @@ public class UserUpdateReqVO {
     @ApiModelProperty(value = "账号")
     private String username;
 
+    @ApiModelProperty(value = "头像")
+    private String avatar;
+
     @ApiModelProperty(value = "密码")
     private String password;
 
     @ApiModelProperty(value = "手机号")
     private String phone;
+
+    @ApiModelProperty(value = "姓名")
+    private String realName;
+
+    @ApiModelProperty(value = "昵称")
+    private String nickName;
+
+    @ApiModelProperty(value = "邮箱")
+    private String email;
+
+    @ApiModelProperty(value = "性别")
+    private Integer sex;
 
     @ApiModelProperty(value = "状态(1:正常，2：锁定)")
     private Integer status;
