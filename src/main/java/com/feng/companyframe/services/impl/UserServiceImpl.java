@@ -300,15 +300,20 @@ public class UserServiceImpl implements UserService {
         sysUser.setUpdateTime(new Date());
         sysUser.setUpdateId(operationId);
         if (StringUtils.isEmpty(vo.getPassword())){
+            // 如果没有设置密码，则为空
             sysUser.setPassword(null);
         }else{
             // 重制密码
-            String salt = PasswordUtils.getSalt();
-            String endPwd = PasswordUtils.encode(vo.getPassword(), salt);
-            sysUser.setSalt(salt);
-            sysUser.setPassword(endPwd);
+            SysUser userFromSource = sysUserMapper.selectByPrimaryKey(vo.getId());
+            if (!userFromSource.getPassword().equals(vo.getPassword())){
+                // 若密码变了，需要更新密码。
+                String salt = PasswordUtils.getSalt();
+                String endPwd = PasswordUtils.encode(vo.getPassword(), salt);
+                sysUser.setSalt(salt);
+                sysUser.setPassword(endPwd);
+            }
+            // 若密码没有变，则应该还是加密后的密码，则不修改
         }
-
         int i = sysUserMapper.updateByPrimaryKeySelective(sysUser);
         if (1!=i){
             throw new BusinessException(BaseResponseCode.OPERATION_ERROR);
