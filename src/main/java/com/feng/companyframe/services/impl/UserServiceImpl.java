@@ -311,8 +311,11 @@ public class UserServiceImpl implements UserService {
                 String endPwd = PasswordUtils.encode(vo.getPassword(), salt);
                 sysUser.setSalt(salt);
                 sysUser.setPassword(endPwd);
+            } else {
+                // 若密码没有变，则应该还是加密后的密码，则不修改
+                sysUser.setSalt(null);
+                sysUser.setPassword(null);
             }
-            // 若密码没有变，则应该还是加密后的密码，则不修改
         }
         int i = sysUserMapper.updateByPrimaryKeySelective(sysUser);
         if (1!=i){
