@@ -215,26 +215,54 @@ INSERT INTO `sys_role_permission` VALUES ('f79a8fd4-f1dc-4151-a24c-c81f6b4a9d6b'
 -- Table structure for sys_user
 -- ----------------------------
 DROP TABLE IF EXISTS `sys_user`;
-CREATE TABLE `sys_user`  (
-  `id` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '用户id',
-  `username` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '账户名称',
-  `salt` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '加密盐值',
-  `password` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '用户密码密文',
-  `phone` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '手机号码',
-  `dept_id` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '部门id',
-  `real_name` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '真实姓名',
-  `nick_name` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '昵称',
-  `email` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '邮箱',
-  `status` int(11) NULL DEFAULT 1 COMMENT '账户状态1正常2锁定',
-  `sex` int(11) NULL DEFAULT NULL COMMENT '性别1男2女',
-  `deleted` int(11) NULL DEFAULT 1 COMMENT '是否删除1未删除0已删除',
-  `create_id` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '创建人',
-  `update_id` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '更新人',
-  `create_where` int(11) NULL DEFAULT NULL COMMENT '创建来源1web2Android3iOS',
-  `create_time` datetime(0) NULL DEFAULT NULL COMMENT '创建时间',
-  `update_time` datetime(0) NULL DEFAULT NULL,
+--CREATE TABLE `sys_user`  (
+--  `id` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '用户id',
+--  `username` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '账户名称',
+--  `salt` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '加密盐值',
+--  `password` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '用户密码密文',
+--  `phone` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '手机号码',
+--  `dept_id` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '部门id',
+--  `real_name` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '真实姓名',
+--  `nick_name` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '昵称',
+--  `email` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '邮箱',
+--  `status` int(11) NULL DEFAULT 1 COMMENT '账户状态1正常2锁定',
+--  `sex` int(11) NULL DEFAULT NULL COMMENT '性别1男2女',
+--  `deleted` int(11) NULL DEFAULT 1 COMMENT '是否删除1未删除0已删除',
+--  `create_id` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '创建人',
+--  `update_id` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '更新人',
+--  `create_where` int(11) NULL DEFAULT NULL COMMENT '创建来源1web2Android3iOS',
+--  `create_time` datetime(0) NULL DEFAULT NULL COMMENT '创建时间',
+--  `update_time` datetime(0) NULL DEFAULT NULL,
+--  PRIMARY KEY (`id`) USING BTREE
+--) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+
+
+-- 20250610，更新的表结构
+-- feng_company_frame.sys_user definition
+
+CREATE TABLE `sys_user` (
+  `id` varchar(64) NOT NULL COMMENT '用户id',
+  `avatar` varchar(1000) DEFAULT 'https://macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/20180615/5ad83a4fN6ff67ecd.jpg!cc_350x449.jpg' COMMENT '头像',
+  `username` varchar(255) NOT NULL COMMENT '账户名称',
+  `salt` varchar(255) DEFAULT NULL COMMENT '加密盐值',
+  `password` varchar(255) DEFAULT NULL COMMENT '用户密码密文',
+  `phone` varchar(255) DEFAULT NULL COMMENT '手机号码',
+  `dept_id` varchar(255) DEFAULT NULL COMMENT '部门id',
+  `real_name` varchar(255) DEFAULT NULL COMMENT '真实姓名',
+  `nick_name` varchar(255) DEFAULT NULL COMMENT '昵称',
+  `email` varchar(255) DEFAULT NULL COMMENT '邮箱',
+  `status` int(11) DEFAULT '1' COMMENT '账户状态1正常2锁定',
+  `sex` int(11) DEFAULT NULL COMMENT '性别1男2女',
+  `user_type` int(11) DEFAULT '1' COMMENT '1:管理员添加，2:用户自己注册',
+  `deleted` int(11) DEFAULT '1' COMMENT '是否删除1未删除0已删除',
+  `create_id` varchar(255) DEFAULT NULL COMMENT '创建人',
+  `update_id` varchar(255) DEFAULT NULL COMMENT '更新人',
+  `create_where` int(11) DEFAULT '1' COMMENT '创建来源1web2Android3iOS',
+  `create_time` datetime DEFAULT NULL COMMENT '创建时间',
+  `update_time` datetime DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
+
 
 -- ----------------------------
 -- Records of sys_user
@@ -245,6 +273,46 @@ INSERT INTO `sys_user` VALUES ('7e872c3f-9958-4996-87be-c56c663dde23', 'feng', '
 INSERT INTO `sys_user` VALUES ('8a938151-53e6-4182-925a-684f3be840e8', 'feng', '9ef7440dc3bd48e7a6c6', '53d903c19dc3c7f092fe8f88e2a56e93', '17862970812', '22d93869-b95e-4c9a-ba0c-afc79cff9713', NULL, NULL, NULL, 1, NULL, 1, NULL, NULL, NULL, '2020-03-06 21:51:42', NULL);
 INSERT INTO `sys_user` VALUES ('9a26f5f1-cbd2-473d-82db-1d6dcf4598f4', 'dev123', '324ce32d86224b00a02b', 'ac7e435db19997a46e3b390e69cb148b', '13666666666', '09e56250-ca9f-424f-96fb-99cd38c63a54', NULL, NULL, 'yingxue@163.com', 1, 1, 0, NULL, '7e872c3f-9958-4996-87be-c56c663dde23', 3, '2019-09-22 19:38:05', '2020-02-24 17:45:50');
 INSERT INTO `sys_user` VALUES ('9a26f5f1-cbd2-473d-82db-1d6dcf4598f8', 'admin', '324ce32d86224b00a02b', 'ac7e435db19997a46e3b390e69cb148b', '13888888888', '06d45b3d-2134-4b36-a9df-d43d2e35041f', '冯凡利', NULL, 'yingxue@163.com', 1, 1, 1, NULL, '9a26f5f1-cbd2-473d-82db-1d6dcf4598f8', 3, '2019-09-22 19:38:05', '2020-03-10 10:40:58');
+
+-- 更新的表数据
+-- 20250610
+
+INSERT INTO feng_company_frame.sys_user VALUES('193374a0-dbae-4e62-803b-6f605ca141ba', 'https://macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/20180615/5ad83a4fN6ff67ecd.jpg!cc_350x449.jpg', 'xiaozhang', '63ff9ebe1e2d46d7ae8b', 'dc275a0f9ba8c7681eca1ddbbd8952ab', '15645640126', 'YXD0000001', '小张', '小张', 'xiaozhang@163.com', 1, 1, 1, 1, NULL, '9a26f5f1-cbd2-473d-82db-1d6dcf4598f8', 1, '2025-05-17 20:46:40', '2025-05-22 09:22:36');
+INSERT INTO feng_company_frame.sys_user VALUES('1f9f61ed-3a2b-49bc-8c2a-6ac7dfce7307', 'https://macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/20180615/5ad83a4fN6ff67ecd.jpg!cc_350x449.jpg', '田立彬', '74138f1c191e479ab950', 'b0c661c983179f5667df5e5096726864', '', 'YXD0000001', '', '', '', 1, NULL, 1, 1, NULL, NULL, 1, '2025-05-17 20:40:20', NULL);
+INSERT INTO feng_company_frame.sys_user VALUES('1fb1d1b5-dd8f-4f4f-ac7b-4cabe1471992', 'https://macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/20180615/5ad83a4fN6ff67ecd.jpg!cc_350x449.jpg', 'xiaoliuliu', '4c257e1c86204bf9aa0c', 'c8cf6d35bdc71105fa247819ba4bd330', '14785236936', 'YXD0000001', '刘某', '', '', 1, 2, 2, 1, NULL, NULL, 1, '2025-05-20 15:09:58', NULL);
+INSERT INTO feng_company_frame.sys_user VALUES('2467077a-d8ba-4fc2-a689-a6eca63490c0', 'https://macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/20180615/5ad83a4fN6ff67ecd.jpg!cc_350x449.jpg', 'Tbinbin', '913c325858c84f5681a8', '415c4eee8c9cca5386c423e9716ba8ab', '19550993787', 'YXD0000001', '田立彬', '', '', 1, 1, 2, 0, NULL, '9a26f5f1-cbd2-473d-82db-1d6dcf4598f8', 1, '2025-05-20 16:06:03', '2025-05-20 16:22:44');
+INSERT INTO feng_company_frame.sys_user VALUES('27739ac4-5e56-4a00-99f0-37006a5a5941', 'https://macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/20180615/5ad83a4fN6ff67ecd.jpg!cc_350x449.jpg', 'dev', '1b1b2968794247579385', '372b513e517b582aa50078f1f13a3ecb', '12636546980', '06d45b3d-2134-4b36-a9df-d43d2e35041f', '高启强', NULL, 'feng@163.com', 1, 1, 1, 1, NULL, '9a26f5f1-cbd2-473d-82db-1d6dcf4598f8', NULL, '2020-02-27 22:43:16', '2020-03-10 10:40:30');
+INSERT INTO feng_company_frame.sys_user VALUES('279cd150-806f-4567-83c1-12fbb11b865c', 'https://macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/20180615/5ad83a4fN6ff67ecd.jpg!cc_350x449.jpg', 'Tbin', '2d92cc8a00a54c89a632', '78913dd3a98a8d4f34a8294c97702fcf', '', 'YXD0000001', '', '', '', 1, NULL, 2, 0, NULL, '9a26f5f1-cbd2-473d-82db-1d6dcf4598f8', 1, '2025-05-13 08:54:09', '2025-05-17 14:22:57');
+INSERT INTO feng_company_frame.sys_user VALUES('30c8fbff-66bb-4396-aa9e-e4516d406916', 'https://macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/20180615/5ad83a4fN6ff67ecd.jpg!cc_350x449.jpg', 'Tbinbin', '56ab6a37995141b0971c', '118c2f0408305ba35dd6cc01072a4bad', '19550993787', 'YXD0000001', '田立彬', '', '', 1, 1, 2, 0, NULL, '9a26f5f1-cbd2-473d-82db-1d6dcf4598f8', 1, '2025-05-20 13:20:47', '2025-05-20 14:04:55');
+INSERT INTO feng_company_frame.sys_user VALUES('332cc760-629c-44f3-8fbd-56a4e52d8a21', 'https://macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/20180615/5ad83a4fN6ff67ecd.jpg!cc_350x449.jpg', 'tianbin', '4d66c3c732d14f54a0e8', 'd9c4b3f7f60640ed9c37a7127ef65700', '14965840135', 'YXD0000001', '田彬', 'tbinbin', '147411526@qq.com', 1, NULL, 2, 0, NULL, '9a26f5f1-cbd2-473d-82db-1d6dcf4598f8', 1, '2025-05-11 17:19:09', '2025-05-17 14:25:08');
+INSERT INTO feng_company_frame.sys_user VALUES('3699379b-da25-46c6-a86d-6ceb19e5ca20', 'https://macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/20180615/5ad83a4fN6ff67ecd.jpg!cc_350x449.jpg', 'Tbinbin', '8daf17b3ef534c2d8792', 'f1cc3dac1ec45ba863634cfde7dd5a3e', '', 'YXD0000001', '', '', '', 1, NULL, 2, 0, NULL, '9a26f5f1-cbd2-473d-82db-1d6dcf4598f8', 1, '2025-05-13 08:34:54', '2025-05-17 14:23:05');
+INSERT INTO feng_company_frame.sys_user VALUES('39903d11-9340-4a5b-aee3-9ea1d1dbc8f2', 'https://macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/20180615/5ad83a4fN6ff67ecd.jpg!cc_350x449.jpg', 'fengfanli', '81ac673918da4e328866', '2c7dc03c6dbef02e2b6dbcd79ae0ec82', '17862970812', '06d45b3d-2134-4b36-a9df-d43d2e35041f', '高启圣', NULL, 'feng@163.com', 1, 1, 1, 1, NULL, NULL, NULL, '2020-03-10 10:31:55', NULL);
+INSERT INTO feng_company_frame.sys_user VALUES('3b160f2b-e096-4b6e-b63e-a83af76c7192', 'https://macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/20180615/5ad83a4fN6ff67ecd.jpg!cc_350x449.jpg', 'fan', '8a2a314f4fc84771bb4b', '4e078758393d3ce18fb73b3843a10334', '15106757434', 'YXD0000001', NULL, NULL, 'fan@163.com', 3, NULL, 2, 0, NULL, '9a26f5f1-cbd2-473d-82db-1d6dcf4598f8', NULL, '2025-05-05 13:40:11', '2025-05-19 19:57:28');
+INSERT INTO feng_company_frame.sys_user VALUES('3e64eb76-0fd1-4c5d-a65d-270688cc1f00', 'https://macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/20180615/5ad83a4fN6ff67ecd.jpg!cc_350x449.jpg', 'li', 'd827c563743b492b9b21', '358ab58e5a10a02e5ec4dd4ba3eef775', '15106757434', 'YXD0000001', NULL, NULL, 'li@163.com', 1, NULL, 2, 0, NULL, '9a26f5f1-cbd2-473d-82db-1d6dcf4598f8', NULL, '2025-05-05 13:37:31', '2025-05-17 16:00:31');
+INSERT INTO feng_company_frame.sys_user VALUES('43eda638-b247-4abe-a77c-a10ccce84831', 'https://macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/20180615/5ad83a4fN6ff67ecd.jpg!cc_350x449.jpg', 'fengjianchiq', '60471a4b334945209969', 'c86695effc61f072ff5ad15295a2d245', '15106757434', 'no', '冯坚持', '坚持', 'fengjianchi@163.com', 1, NULL, 1, 1, NULL, '9a26f5f1-cbd2-473d-82db-1d6dcf4598f8', 1, '2025-05-14 17:49:11', '2025-05-15 17:31:38');
+INSERT INTO feng_company_frame.sys_user VALUES('47b7cc70-0bbe-42a5-af07-5d4e796376bc', 'https://macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/20180615/5ad83a4fN6ff67ecd.jpg!cc_350x449.jpg', 'Tbinbin', 'a950350ca7c3459a9af7', '5628fe4c922dae29f3a869d527606518', '19550993787', 'YXD0000001', '田立彬', '', '', 1, 1, 2, 0, NULL, '9a26f5f1-cbd2-473d-82db-1d6dcf4598f8', 1, '2025-05-20 16:52:40', '2025-05-20 16:52:51');
+INSERT INTO feng_company_frame.sys_user VALUES('49cc2a69-8a31-448d-9d8f-2783cb1a0f93', 'https://macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/20180615/5ad83a4fN6ff67ecd.jpg!cc_350x449.jpg', '田立彬', 'fad7180514314f0a8dd5', '2bf0bb82945d1bf54375defeeb6b6289', '', 'YXD0000001', '', '', '', 1, NULL, 2, 0, NULL, '9a26f5f1-cbd2-473d-82db-1d6dcf4598f8', 1, '2025-05-10 11:26:25', '2025-05-20 15:04:40');
+INSERT INTO feng_company_frame.sys_user VALUES('4ba2f08a-d19d-423e-9ad4-d986d7e92144', 'https://macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/20180615/5ad83a4fN6ff67ecd.jpg!cc_350x449.jpg', 'xiaoliu', '86b5bb2dffcd4fa283e6', 'a67a7e23826e5aa455dc46f030d02bc7', '15966021371', 'YXD0000001', '小刘', '小刘', 'xiaoliu@163.com', 1, 1, 1, 1, NULL, '6133051a-9300-4195-93a0-ddeb5d1b1bfe', 1, '2025-05-17 20:42:57', '2025-05-28 00:14:33');
+INSERT INTO feng_company_frame.sys_user VALUES('5997f989-c531-4879-a708-42f92360ad68', 'https://macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/20180615/5ad83a4fN6ff67ecd.jpg!cc_350x449.jpg', 'chen', '47a1cb27135141d19779', 'f920bc929df4b5789e5dc43190dfd9dd', '15106757434', 'YXD0000001', NULL, NULL, 'chen@163.com', 3, NULL, 2, 1, NULL, '9a26f5f1-cbd2-473d-82db-1d6dcf4598f8', 1, '2025-05-05 13:53:22', '2025-05-17 15:08:02');
+INSERT INTO feng_company_frame.sys_user VALUES('6133051a-9300-4195-93a0-ddeb5d1b1bfe', 'https://macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/20180615/5ad83a4fN6ff67ecd.jpg!cc_350x449.jpg', 'yueyue', '3d67eb7782de4895aa55', 'aec7dbe0d69416813c9d35c1276ffdc6', '15106757434', 'no', '悦', '悦', 'yueyue@163.com', 1, 1, 1, 1, NULL, NULL, 1, '2025-05-28 00:12:51', NULL);
+INSERT INTO feng_company_frame.sys_user VALUES('662291c7-97b1-4570-acb3-7aace5079be7', 'https://macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/20180615/5ad83a4fN6ff67ecd.jpg!cc_350x449.jpg', '刘姐', '892f04786a7c4a0cb867', '9304d5eb30617f57ca0fdad7ec9ca5f4', '19550993787', 'YXD0000001', 'liuming', 'liuming', '1474115262@qq.com', 1, NULL, 2, 0, NULL, '9a26f5f1-cbd2-473d-82db-1d6dcf4598f8', 1, '2025-05-10 11:28:18', '2025-05-20 15:04:18');
+INSERT INTO feng_company_frame.sys_user VALUES('68307378-eb65-414e-91ba-576f9718345d', 'https://macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/20180615/5ad83a4fN6ff67ecd.jpg!cc_350x449.jpg', 'tianlibin', '7fa29388c9bf4ac3a558', '8526be951187806bbfdf76e53015078a', '', 'YXD0000001', '', '', '', 1, NULL, 2, 0, NULL, '9a26f5f1-cbd2-473d-82db-1d6dcf4598f8', 1, '2025-05-11 10:51:26', '2025-05-19 15:50:24');
+INSERT INTO feng_company_frame.sys_user VALUES('7e872c3f-9958-4996-87be-c56c663dde23', 'https://macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/20180615/5ad83a4fN6ff67ecd.jpg!cc_350x449.jpg', 'feng', '8215608fd77d497790bc', '9a66d4268c3f9353be3db7b858c64adf', '7851946', '06d45b3d-2134-4b36-a9df-d43d2e35041f', '高启兰', NULL, 'feng@163.com', 1, 1, 1, 0, NULL, '7e872c3f-9958-4996-87be-c56c663dde23', NULL, '2020-02-19 17:51:47', '2020-02-24 17:46:05');
+INSERT INTO feng_company_frame.sys_user VALUES('87632215-b2ea-4a62-8fde-e1d23584bf89', 'https://macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/20180615/5ad83a4fN6ff67ecd.jpg!cc_350x449.jpg', 'Tbinbin', '0f2bc4f9a0804127abb9', '7e444c18802ad40338288b14205f2e98', '19550993787', 'YXD0000002', '田立彬', '', '', 1, 1, 2, 0, NULL, '9a26f5f1-cbd2-473d-82db-1d6dcf4598f8', 1, '2025-05-20 16:23:42', '2025-05-20 16:31:21');
+INSERT INTO feng_company_frame.sys_user VALUES('8802cac7-0210-4224-a185-c010d106dff7', 'https://macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/20180615/5ad83a4fN6ff67ecd.jpg!cc_350x449.jpg', 'admin3', '4ad6ca4c0ea84cf58ccf', 'cdafd567158a00e10ff7fd74bde0066c', '15145678909', 'YXD0000001', '管理员789', '11789', '78987@163.com', 1, 1, 1, 1, NULL, '9a26f5f1-cbd2-473d-82db-1d6dcf4598f8', 1, '2025-05-14 17:52:07', '2025-05-17 19:04:34');
+INSERT INTO feng_company_frame.sys_user VALUES('8805b531-a6a5-4ea1-b6c9-167dabe6f1c8', 'https://macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/20180615/5ad83a4fN6ff67ecd.jpg!cc_350x449.jpg', 'Tbinbin', 'a6fc77c5b4594fa1bc60', '372b513e517b582aa50078f1f13a3ecb', '19550993787', 'YXD0000001', '田立彬', '', '', 1, 1, 2, 1, NULL, '9a26f5f1-cbd2-473d-82db-1d6dcf4598f8', 1, '2025-05-20 17:10:39', '2025-05-20 17:16:04');
+INSERT INTO feng_company_frame.sys_user VALUES('8a938151-53e6-4182-925a-684f3be840e8', 'https://macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/20180615/5ad83a4fN6ff67ecd.jpg!cc_350x449.jpg', 'feng', '9ef7440dc3bd48e7a6c6', '53d903c19dc3c7f092fe8f88e2a56e93', '17862970812', '06d45b3d-2134-4b36-a9df-d43d2e35041f', '高小虎', NULL, 'feng@163.com', 1, 1, 1, 1, NULL, NULL, NULL, '2020-03-06 21:51:42', NULL);
+INSERT INTO feng_company_frame.sys_user VALUES('94280219-91ff-414f-af96-86a891516fb3', 'https://macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/20180615/5ad83a4fN6ff67ecd.jpg!cc_350x449.jpg', 'tianlibin', '8b36f5198aa04443a38d', 'bec685d36ef73d56f189de0fbceafd2f', '110', 'YXD0000001', '110', '110', '110', 1, NULL, 2, 1, NULL, NULL, 1, '2025-05-08 14:00:17', NULL);
+INSERT INTO feng_company_frame.sys_user VALUES('9a26f5f1-cbd2-473d-82db-1d6dcf4598f8', 'https://macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/20180615/5ad83a4fN6ff67ecd.jpg!cc_350x449.jpg', 'admin', '324ce32d86224b00a02b', 'ac7e435db19997a46e3b390e69cb148b', '15106757434', 'YXD0000001', '管理员', '11', 'ffl@163.com', 1, 1, 1, 1, NULL, NULL, 1, '2020-02-18 17:51:47', NULL);
+INSERT INTO feng_company_frame.sys_user VALUES('9d09e1b9-67f1-4751-871e-2cf9a6869bc1', 'https://macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/20180615/5ad83a4fN6ff67ecd.jpg!cc_350x449.jpg', 'Tbinin', '00841ac02962416a9a62', '18e4f021ef95050b0b02ad1a537d7736', '15966021340', 'YXD0000001', '', '', '', 1, NULL, 2, 1, NULL, NULL, 1, '2025-05-19 20:11:52', NULL);
+INSERT INTO feng_company_frame.sys_user VALUES('ab4f6465-e78d-406b-8d97-62cf85d5fd3a', 'https://macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/20180615/5ad83a4fN6ff67ecd.jpg!cc_350x449.jpg', 'tian', '97a32b7adbed4737bfaf', '90d4d2d5ccb84bc00cfad77c8dcc634e', '', 'YXD0000001', '', '', '', 1, NULL, 2, 1, NULL, NULL, 1, '2025-05-11 16:20:10', NULL);
+INSERT INTO feng_company_frame.sys_user VALUES('cb757554-ef53-4922-b3ce-f9cdf2c9efe8', 'https://macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/20180615/5ad83a4fN6ff67ecd.jpg!cc_350x449.jpg', 'chenchen', 'ad32c5bedaf64c8da517', '85512027ca7ecbf45a74af4ce98eb057', 'chenchen', 'YXD0000001', 'chenchen', 'chenchen', 'chenchen', 3, NULL, 2, 1, NULL, '9a26f5f1-cbd2-473d-82db-1d6dcf4598f8', 1, '2025-05-05 13:56:43', '2025-05-17 15:06:23');
+INSERT INTO feng_company_frame.sys_user VALUES('d1fa0ce1-61d3-4ea9-8148-06e339a357c5', 'https://macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/20180615/5ad83a4fN6ff67ecd.jpg!cc_350x449.jpg', 'Tbinbin', 'f2885371bc93400da39d', 'c32ffc4a1ff8652eb38ebad89438a075', '19550993787', 'YXD0000001', '田立彬', '', '', 1, 1, 2, 0, NULL, '9a26f5f1-cbd2-473d-82db-1d6dcf4598f8', 1, '2025-05-20 16:37:06', '2025-05-20 16:46:19');
+INSERT INTO feng_company_frame.sys_user VALUES('dd33bc8a-8b97-443f-959d-eadd865cc24a', 'https://macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/20180615/5ad83a4fN6ff67ecd.jpg!cc_350x449.jpg', 'fengjianchi', 'ea4a1ae0866b4937909f', '324f4b026f08143bb208400429b77baa', '15106757434', 'no', '冯坚持', '坚持', 'fengjianchi@163.com', 1, NULL, 1, 1, NULL, '9a26f5f1-cbd2-473d-82db-1d6dcf4598f8', 1, '2025-05-14 16:51:40', '2025-05-15 17:31:42');
+INSERT INTO feng_company_frame.sys_user VALUES('dd5753db-fd6a-410f-9b63-a0610cf9fcd4', 'https://macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/20180615/5ad83a4fN6ff67ecd.jpg!cc_350x449.jpg', 'xiaowang', '3ff4bd7fbbbe40ef87fa', 'a6571241befcc260b97f60a57c643a81', '15966021170', 'YXD0000001', '王斌', '王斌', '1474115262@qq.com', 1, 1, 2, 1, NULL, '9a26f5f1-cbd2-473d-82db-1d6dcf4598f8', 1, '2025-05-20 10:24:23', '2025-05-20 10:24:48');
+INSERT INTO feng_company_frame.sys_user VALUES('ead57ebb-22b7-4ec9-a4ee-5b5c3e878ad9', 'https://macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/20180615/5ad83a4fN6ff67ecd.jpg!cc_350x449.jpg', 'sdsdsd', 'db2f29be6e5a4721a179', '65ac257b82f9b04dd0de0df35a113d86', '15219273', 'YXD0000001', '田立彬', '彬', 'sdsdsd@163.com', 1, NULL, 2, 0, NULL, '9a26f5f1-cbd2-473d-82db-1d6dcf4598f8', 1, '2025-05-10 00:40:57', '2025-05-20 16:47:20');
+INSERT INTO feng_company_frame.sys_user VALUES('f8ec584b-a312-48d0-9838-ff6a78781847', 'https://macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/20180615/5ad83a4fN6ff67ecd.jpg!cc_350x449.jpg', 'chensi', '81d3db9ed1f348b49660', '35fbff6d634a9d37a4e50a16a5aff651', '12', 'YXD0000001', '', '', '12', 1, NULL, 2, 1, NULL, NULL, 1, '2025-05-05 13:55:58', NULL);
+
 
 -- ----------------------------
 -- Table structure for sys_user_role
