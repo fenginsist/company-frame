@@ -166,11 +166,13 @@ public class RoleServiceImpl implements RoleService {
             throw new BusinessException(BaseResponseCode.OPERATION_ERROR);
         }
 
-        //2. 修改  角色和菜单权限 关联数据
-        RolePermissionOperationReqVO rolePermissionOperationReqVO = new RolePermissionOperationReqVO();
-        rolePermissionOperationReqVO.setRoleId(vo.getId());
-        rolePermissionOperationReqVO.setPermissionIds(vo.getPermissionIds());
-        rolePermissionService.addRolePermission(rolePermissionOperationReqVO);
+        //2. 修改  角色和菜单权限 关联数据。(有权限列表数据才更新)
+        if (vo.getPermissionIds() != null && vo.getPermissionIds().size() > 0) {
+            RolePermissionOperationReqVO rolePermissionOperationReqVO = new RolePermissionOperationReqVO();
+            rolePermissionOperationReqVO.setRoleId(vo.getId());
+            rolePermissionOperationReqVO.setPermissionIds(vo.getPermissionIds());
+            rolePermissionService.addRolePermission(rolePermissionOperationReqVO);
+        }
 
         // 3.标记关联用户,让其主动刷新
         List<String> userIdsByRoleId = userRoleService.getUserIdsByRoleId(vo.getId());

@@ -207,7 +207,7 @@ public class PermissionServiceImpl implements PermissionService {
             case 1: // 目录
                 if (parent != null) {
                     if (parent.getType() != 1) {
-                        // 父级权限不为 1 时，抛出异常：操作后的菜单类型是目录，所属菜单必须为默认顶级菜单或者目录
+                        // 父级类型不为 1 时，抛出异常：操作后的菜单类型是目录，所属菜单必须为默认顶级菜单或者目录
                         throw new BusinessException(BaseResponseCode.OPERATION_MENU_PERMISSION_CATALOG_ERROR);
                     }
 
@@ -320,9 +320,9 @@ public class PermissionServiceImpl implements PermissionService {
                                 jwtPropertiesConfig.getAccessTokenExpireTime().toMillis(),
                                 TimeUnit.MILLISECONDS);
                         /*
-                        * 清除用户授权数据缓存
-                        * */
-                        redisUtil.delete(Constant.IDENTIFY_CACHE_KEY+userId);
+                         * 清除用户授权数据缓存
+                         * */
+                        redisUtil.delete(Constant.IDENTIFY_CACHE_KEY + userId);
                     }
                 }
             }
@@ -375,7 +375,7 @@ public class PermissionServiceImpl implements PermissionService {
                     /*
                      * 清除用户授权数据缓存
                      * */
-                    redisUtil.delete(Constant.IDENTIFY_CACHE_KEY+userId);
+                    redisUtil.delete(Constant.IDENTIFY_CACHE_KEY + userId);
                 }
             }
         }

@@ -140,6 +140,7 @@
         * */
         var reloadTreeTable = function(){
             CoreUtil.sendAjax("/api/permissions", null, function (res) {
+                console.log("/api/permissions res.data 值:", res.data);  // 添加这行来打印数据
                 renderTable(res.data);
             }, "GET", false, function (res) {
                 //无权限访问菜单权限列表提示
@@ -229,6 +230,7 @@
         //初始化 菜单权限树
         var initTree = function () {
             CoreUtil.sendAjax("/api/permission/tree", null, function (res) {
+                console.log("/api/permission/tree res.data 值:", res.data);  // 添加这行来打印数据
                 loadPermissionTree(res.data);
             }, "GET", false, function (res) {
                 //无权限获取菜单权限树提示

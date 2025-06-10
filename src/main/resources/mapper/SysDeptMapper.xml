@@ -206,7 +206,7 @@
   <update id="deletedDepts">
     update sys_dept
     <set>
-      deleted = 0
+      deleted = 0,
       <if test="updateTime != null">
         update_time = #{updateTime, jdbcType = TIMESTAMP},
       </if>

@@ -137,6 +137,7 @@
         and create_time &lt;= #{endTime}
       </if>
     </where>
+    order by create_time ASC
   </select>
 
   <!--@Description: 根据角色id集合 获取 角色信息-->
