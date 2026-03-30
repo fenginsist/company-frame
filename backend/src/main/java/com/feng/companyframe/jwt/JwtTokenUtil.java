@@ -8,8 +8,9 @@ import io.jsonwebtoken.SignatureAlgorithm;
 import lombok.extern.slf4j.Slf4j;
 import org.thymeleaf.util.StringUtils;
 
-import javax.xml.bind.DatatypeConverter;
+import java.nio.charset.StandardCharsets;
 import java.time.Duration;
+import java.util.Base64;
 import java.util.Date;
 import java.util.Map;
 
@@ -92,8 +93,7 @@ public class JwtTokenUtil {
         long nowMills = System.currentTimeMillis();
         Date now = new Date(nowMills);
 
-        // 对秘钥进行编码 成数组
-        byte[] signingKey = DatatypeConverter.parseBase64Binary(secret);
+        byte[] signingKey = getSigningKeyBytes(secret);
 
         // 创建 jwt 构造器
         JwtBuilder builder = Jwts.builder();
@@ -120,6 +120,17 @@ public class JwtTokenUtil {
         return builder.compact();
     }
 
+    private static byte[] getSigningKeyBytes(String secret) {
+        if (StringUtils.isEmpty(secret)) {
+            return new byte[0];
+        }
+        try {
+            return Base64.getDecoder().decode(secret);
+        } catch (IllegalArgumentException ignored) {
+            return secret.getBytes(StandardCharsets.UTF_8);
+        }
+    }
+
 // 以下为 对token 的操作静态方法
 
     /**
@@ -131,7 +142,7 @@ public class JwtTokenUtil {
     public static Claims getClaimsFromToken(String token) {
         Claims claims;
         try {
-            claims = Jwts.parser().setSigningKey(DatatypeConverter.parseBase64Binary(secretKey))
+            claims = Jwts.parser().setSigningKey(getSigningKeyBytes(secretKey))
                     .parseClaimsJws(token).getBody();
         } catch (Exception e) {
             claims = null;
