@@ -18,7 +18,7 @@ public enum BaseResponseCode implements ResponseCodeInterface {
      * code=5000001：系统异常
      */
     SUCCESS(0, "操作成功"),
-    SYSTEM_ERROR(5000001, "系统异常请稍后再试"),
+    SYSTEM_ERROR(5000001, "系统异常请稍后再试, 请联系管理员"),
     DATA_ERROR(4000001, "传入数据异常"),
     METHOD_IDENTITY_ERROR(4000002, "数据校验异常"),
     ACCOUNT_ERROR(4000003, "该账号不存在"),

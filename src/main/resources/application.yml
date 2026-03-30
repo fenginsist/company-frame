@@ -7,9 +7,9 @@ spring:
     type: com.alibaba.druid.pool.DruidDataSource
     druid:
       driver-class-name: com.mysql.jdbc.Driver
-      url: jdbc:mysql://123.56.30.106:3306/company_frame?useUnicode=true&characterEncoding=utf-8&useSSL=false
+      url: jdbc:mysql://39.105.1.143:3306/feng_company_frame?useUnicode=true&characterEncoding=utf-8&useSSL=false
       username: root
-      password: 123456
+      password: bjtu_insis_2020+-w
       ################## 连接池配置 ################
       initial-size: 5  #连接池建立时创建的初始化连接数
       max-active: 20   #连接池中最大的活跃连接数
@@ -28,11 +28,11 @@ spring:
   #redis配置
   redis:
     # redis  服务器地址
-    host: 123.56.30.106
+    host: 47.97.229.171
     # Redis 端口
-    port: 6379
+    port: 6380
     #redis 服务器连接密码（默认为空）
-    #password:
+    password: Cvicse@2025
     lettuce:
       pool:
         max-active: 1024   # 连接池最大连接数（使用负值表示没有限制）
