@@ -4,11 +4,12 @@ import com.alibaba.fastjson.JSON;
 import com.feng.companyframe.constant.Constant;
 import com.feng.companyframe.jwt.JwtTokenUtil;
 import com.feng.companyframe.utils.RedisUtil;
-import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.collections.CollectionUtils;
 import org.apache.shiro.authz.SimpleAuthorizationInfo;
 import org.apache.shiro.cache.Cache;
 import org.apache.shiro.cache.CacheException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 
 import java.util.*;
@@ -16,25 +17,25 @@ import java.util.concurrent.TimeUnit;
 
 /**
  * @ClassName: RedisCache
- * @Description： 缓存工具类
+ * @Description? ?????
  * @createTime: 2020/2/9 20:42
- * @Author: 冯凡利
- * @UpdateUser: 冯凡利
+ * @Author: ???
+ * @UpdateUser: ???
  * @Version: 0.0.1
  */
 
 /**
- * 这里的 RedisUtils 不能注入
+ * ??? RedisUtils ????
  *
  * @param <K>
  * @param <V>
  */
-@Slf4j
 public class RedisCache<K, V> implements Cache<K, V> {
+    private static final Logger log = LoggerFactory.getLogger(RedisCache.class);
 
     private final static String PREFIX = "shiro-cache:";
     private String cacheKey;
-    private long expire = 24;  // 24 小时
+    private long expire = 24;  // 24 ??
 
     private RedisUtil redisUtil;
 
@@ -46,7 +47,7 @@ public class RedisCache<K, V> implements Cache<K, V> {
 
 
     /**
-     * 根据 key 值 获取 权限信息
+     * ?? key ? ?? ????
      *
      * @param key  jwt
      * @return
@@ -54,13 +55,13 @@ public class RedisCache<K, V> implements Cache<K, V> {
      */
     @Override
     public V get(K key) throws CacheException {
-        log.info("Shiro 从缓存中获取数据 KEY 值[{}]", key);
+        log.info("Shiro ???????? KEY ?[{}]", key);
         if (key == null) {
             return null;
         }
         try {
             String redisCacheKey = getRedisCacheKey(key);
-            Object rawValue = redisUtil.get(redisCacheKey);  // 根据key 获取 数据
+            Object rawValue = redisUtil.get(redisCacheKey);  // ??key ?? ??
             if (rawValue == null) {
                 return null;
             }
@@ -73,7 +74,7 @@ public class RedisCache<K, V> implements Cache<K, V> {
     }
 
     /**
-     * 存值
+     * ??
      *
      * @param key jwt
      * @param value
@@ -97,7 +98,7 @@ public class RedisCache<K, V> implements Cache<K, V> {
     }
 
     /**
-     * 根据 key 值 删除缓存的值
+     * ?? key ? ??????
      *
      * @param key
      * @return
@@ -121,7 +122,7 @@ public class RedisCache<K, V> implements Cache<K, V> {
     }
 
     /**
-     * 清除 所有的值
+     * ?? ????
      *
      * @throws CacheException
      */
@@ -143,7 +144,7 @@ public class RedisCache<K, V> implements Cache<K, V> {
     }
 
     /**
-     * 获取 redis 所存的 缓存数的大小
+     * ?? redis ??? ??????
      *
      * @return
      */
@@ -159,7 +160,7 @@ public class RedisCache<K, V> implements Cache<K, V> {
     }
 
     /**
-     * 获取key值
+     * ??key?
      *
      * @return
      */
@@ -188,7 +189,7 @@ public class RedisCache<K, V> implements Cache<K, V> {
     }
 
     /**
-     * 获取 value值
+     * ?? value?
      *
      * @return
      */
@@ -220,7 +221,7 @@ public class RedisCache<K, V> implements Cache<K, V> {
     }
 
     /**
-     * 获取 redis 中的 缓存 key  ,很重要，
+     * ?? redis ?? ?? key  ,????
      *
      * @param key
      * @return
@@ -233,4 +234,3 @@ public class RedisCache<K, V> implements Cache<K, V> {
         }
     }
 }
-

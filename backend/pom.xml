@@ -126,13 +126,6 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-aop</artifactId>
         </dependency>
-        <!--lombok-->
-        <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
-            <version>1.18.30</version> <!-- 使用最新稳定版 -->
-            <scope>provided</scope>
-        </dependency>
         <!--test-->
         <dependency>
             <groupId>org.springframework.boot</groupId>

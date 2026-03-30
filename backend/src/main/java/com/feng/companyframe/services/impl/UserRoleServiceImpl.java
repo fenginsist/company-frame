@@ -6,7 +6,8 @@ import com.feng.companyframe.exception.code.BaseResponseCode;
 import com.feng.companyframe.mapper.SysUserRoleMapper;
 import com.feng.companyframe.services.UserRoleService;
 import com.feng.companyframe.vo.req.UserOwnRoleReqVO;
-import lombok.extern.slf4j.Slf4j;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -24,9 +25,9 @@ import java.util.UUID;
  * @UpdateUser: 冯凡利
  * @Version: 0.0.1
  */
-@Slf4j
 @Service
 public class UserRoleServiceImpl implements UserRoleService {
+    private static final Logger log = LoggerFactory.getLogger(UserRoleServiceImpl.class);
 
     @Resource
     private SysUserRoleMapper sysUserRoleMapper;
@@ -99,4 +100,3 @@ public class UserRoleServiceImpl implements UserRoleService {
         return sysUserRoleMapper.removeByRoleId(roleId);
     }
 }
-

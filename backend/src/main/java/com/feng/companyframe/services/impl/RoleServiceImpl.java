@@ -16,7 +16,8 @@ import com.feng.companyframe.vo.req.RoleUpdateReqVO;
 import com.feng.companyframe.vo.resp.PageRespVO;
 import com.feng.companyframe.vo.resp.PermissionRespNodeVO;
 import com.github.pagehelper.PageHelper;
-import lombok.extern.slf4j.Slf4j;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -34,9 +35,9 @@ import java.util.concurrent.TimeUnit;
  * @UpdateUser: 冯凡利
  * @Version: 0.0.1
  */
-@Slf4j
 @Service
 public class RoleServiceImpl implements RoleService {
+    private static final Logger log = LoggerFactory.getLogger(RoleServiceImpl.class);
 
     @Resource
     private SysRoleMapper sysRoleMapper;
@@ -266,4 +267,3 @@ public class RoleServiceImpl implements RoleService {
         return sysRoleMapper.getRoleInfoByRoleIds(roleIds);
     }
 }
-

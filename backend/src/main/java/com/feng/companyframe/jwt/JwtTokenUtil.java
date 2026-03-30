@@ -5,8 +5,9 @@ import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.JwtBuilder;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
-import lombok.extern.slf4j.Slf4j;
 import org.thymeleaf.util.StringUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.nio.charset.StandardCharsets;
 import java.time.Duration;
@@ -22,8 +23,8 @@ import java.util.Map;
  * @UpdateUser: 冯凡利
  * @Version: 0.0.1
  */
-@Slf4j
 public class JwtTokenUtil {
+    private static final Logger log = LoggerFactory.getLogger(JwtTokenUtil.class);
     private static String secretKey;
     private static Duration accessTokenExpireTime;  // java.time.Duration;
     private static Duration refreshTokenExpireTime;

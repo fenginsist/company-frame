@@ -1,9 +1,9 @@
 package com.feng.companyframe.vo.resp;
 
 import io.swagger.annotations.ApiModelProperty;
-import lombok.Data;
 
 import java.util.List;
+import java.util.Objects;
 
 /**
  * @ClassName: DeptRespNodeVO
@@ -13,7 +13,6 @@ import java.util.List;
  * @UpdateUser: 冯凡利
  * @Version: 0.0.1
  */
-@Data
 public class DeptRespNodeVO {
 
     /**
@@ -30,5 +29,69 @@ public class DeptRespNodeVO {
 
     @ApiModelProperty(value = "子集叶子节点")
     private List<?> children;
-}
 
+    public DeptRespNodeVO() {
+    }
+
+    public DeptRespNodeVO(String id, String title, boolean spread, List<?> children) {
+        this.id = id;
+        this.title = title;
+        this.spread = spread;
+        this.children = children;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public boolean isSpread() {
+        return spread;
+    }
+
+    public void setSpread(boolean spread) {
+        this.spread = spread;
+    }
+
+    public List<?> getChildren() {
+        return children;
+    }
+
+    public void setChildren(List<?> children) {
+        this.children = children;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        DeptRespNodeVO that = (DeptRespNodeVO) o;
+        return spread == that.spread && Objects.equals(id, that.id) && Objects.equals(title, that.title) && Objects.equals(children, that.children);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, title, spread, children);
+    }
+
+    @Override
+    public String toString() {
+        return "DeptRespNodeVO{" +
+                "id='" + id + '\'' +
+                ", title='" + title + '\'' +
+                ", spread=" + spread +
+                ", children=" + children +
+                '}';
+    }
+}

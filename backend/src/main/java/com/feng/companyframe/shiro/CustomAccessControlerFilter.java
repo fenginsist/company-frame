@@ -5,9 +5,10 @@ import com.feng.companyframe.constant.Constant;
 import com.feng.companyframe.exception.BusinessException;
 import com.feng.companyframe.exception.code.BaseResponseCode;
 import com.feng.companyframe.utils.DataResult;
-import lombok.extern.slf4j.Slf4j;
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.web.filter.AccessControlFilter;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.util.StringUtils;
 
 import javax.servlet.ServletRequest;
@@ -29,8 +30,8 @@ import java.nio.charset.StandardCharsets;
 /**
  * 这里的异常，全局异常无法处理，比较高级没有到达 方法，所以需要自己处理  try-catch
  */
-@Slf4j
 public class CustomAccessControlerFilter extends AccessControlFilter {
+    private static final Logger log = LoggerFactory.getLogger(CustomAccessControlerFilter.class);
 
     /**
      * 是否 允许 访问下一层
@@ -110,4 +111,3 @@ public class CustomAccessControlerFilter extends AccessControlFilter {
     }
 
 }
-

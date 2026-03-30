@@ -3,7 +3,7 @@ package com.feng.companyframe.exception;
 
 import com.feng.companyframe.exception.code.BaseResponseCode;
 import com.feng.companyframe.exception.code.ResponseCodeInterface;
-import lombok.Data;
+import java.util.Objects;
 
 /**
  * @ClassName: BusinessException
@@ -11,7 +11,6 @@ import lombok.Data;
  * @UpdateUser: 冯凡利
  * @Version: 0.0.1
  */
-@Data
 public class BusinessException extends RuntimeException{
     /**
      *  异常 code
@@ -48,5 +47,34 @@ public class BusinessException extends RuntimeException{
         super(defaultMessage);
         this.code = code;
         this.defaultMessage = defaultMessage;
+    }
+
+    public int getCode() {
+        return code;
+    }
+
+    public String getDefaultMessage() {
+        return defaultMessage;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        BusinessException that = (BusinessException) o;
+        return code == that.code && Objects.equals(defaultMessage, that.defaultMessage);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(code, defaultMessage);
+    }
+
+    @Override
+    public String toString() {
+        return "BusinessException{" +
+                "code=" + code +
+                ", defaultMessage='" + defaultMessage + '\'' +
+                '}';
     }
 }

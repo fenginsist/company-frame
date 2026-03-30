@@ -8,7 +8,8 @@ import com.feng.companyframe.vo.req.LogPageReqVO;
 import com.feng.companyframe.vo.resp.PageRespVO;
 import com.github.pagehelper.PageHelper;
 import java.lang.String;
-import lombok.extern.slf4j.Slf4j;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -22,9 +23,9 @@ import java.util.List;
  * @UpdateUser: 冯凡利
  * @Version: 0.0.1
  */
-@Slf4j
 @Service
 public class LogServiceImpl implements LogService {
+    private static final Logger log = LoggerFactory.getLogger(LogServiceImpl.class);
 
     @Resource
     private SysLogMapper sysLogMapper;
@@ -51,4 +52,3 @@ public class LogServiceImpl implements LogService {
         return sysLogMapper.batchDeletedLog(logIds);
     }
 }
-

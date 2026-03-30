@@ -1,9 +1,9 @@
 package com.feng.companyframe.vo.req;
 
 import io.swagger.annotations.ApiModelProperty;
-import lombok.Data;
 
 import javax.validation.constraints.NotBlank;
+import java.util.Objects;
 
 /**
  * @ClassName: DeptUpdateReqVO
@@ -13,7 +13,6 @@ import javax.validation.constraints.NotBlank;
  * @UpdateUser: 冯凡利
  * @Version: 0.0.1
  */
-@Data
 public class DeptUpdateReqVO {
 
     @ApiModelProperty(value = "部门id")
@@ -35,4 +34,93 @@ public class DeptUpdateReqVO {
     @ApiModelProperty(value = "部门经理电话")
     private String phone;
 
+    public DeptUpdateReqVO() {
+    }
+
+    public DeptUpdateReqVO(String id, String name, String pid, Integer status, String managerName, String phone) {
+        this.id = id;
+        this.name = name;
+        this.pid = pid;
+        this.status = status;
+        this.managerName = managerName;
+        this.phone = phone;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getPid() {
+        return pid;
+    }
+
+    public void setPid(String pid) {
+        this.pid = pid;
+    }
+
+    public Integer getStatus() {
+        return status;
+    }
+
+    public void setStatus(Integer status) {
+        this.status = status;
+    }
+
+    public String getManagerName() {
+        return managerName;
+    }
+
+    public void setManagerName(String managerName) {
+        this.managerName = managerName;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        DeptUpdateReqVO that = (DeptUpdateReqVO) o;
+        return Objects.equals(id, that.id)
+                && Objects.equals(name, that.name)
+                && Objects.equals(pid, that.pid)
+                && Objects.equals(status, that.status)
+                && Objects.equals(managerName, that.managerName)
+                && Objects.equals(phone, that.phone);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name, pid, status, managerName, phone);
+    }
+
+    @Override
+    public String toString() {
+        return "DeptUpdateReqVO{" +
+                "id='" + id + '\'' +
+                ", name='" + name + '\'' +
+                ", pid='" + pid + '\'' +
+                ", status=" + status +
+                ", managerName='" + managerName + '\'' +
+                ", phone='" + phone + '\'' +
+                '}';
+    }
 }

@@ -1,6 +1,7 @@
 package com.feng.companyframe.utils;
 
-import lombok.extern.slf4j.Slf4j;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.security.MessageDigest;
 
@@ -12,8 +13,8 @@ import java.security.MessageDigest;
  * @UpdateUser: 冯凡利
  * @Version: 0.0.1
  */
-@Slf4j
 public class PasswordEncoder {
+	private static final Logger log = LoggerFactory.getLogger(PasswordEncoder.class);
 
 	private final static String[] hexDigits = { "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "a", "b", "c", "d",
 			"e", "f" };

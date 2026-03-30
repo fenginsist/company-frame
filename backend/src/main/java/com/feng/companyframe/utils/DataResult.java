@@ -3,14 +3,13 @@ package com.feng.companyframe.utils;
 import com.feng.companyframe.exception.code.BaseResponseCode;
 import com.feng.companyframe.exception.code.ResponseCodeInterface;
 import io.swagger.annotations.ApiModelProperty;
-import lombok.Data;
+import java.util.Objects;
 
 /**
  * description: 与前端统一返回的数据 格式
  * author: 冯凡利
  * create:  2020/2/1 15:22
  */
-@Data
 public class DataResult<T> {
 
     /*
@@ -118,5 +117,51 @@ public class DataResult<T> {
      */
     public static <T> DataResult getResult(BaseResponseCode responseCode, T data) {
         return new <T>DataResult(responseCode, data);
+    }
+
+    public int getCode() {
+        return code;
+    }
+
+    public void setCode(int code) {
+        this.code = code;
+    }
+
+    public String getMsg() {
+        return msg;
+    }
+
+    public void setMsg(String msg) {
+        this.msg = msg;
+    }
+
+    public T getData() {
+        return data;
+    }
+
+    public void setData(T data) {
+        this.data = data;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        DataResult<?> dataResult = (DataResult<?>) o;
+        return code == dataResult.code && Objects.equals(msg, dataResult.msg) && Objects.equals(data, dataResult.data);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(code, msg, data);
+    }
+
+    @Override
+    public String toString() {
+        return "DataResult{" +
+                "code=" + code +
+                ", msg='" + msg + '\'' +
+                ", data=" + data +
+                '}';
     }
 }

@@ -13,7 +13,8 @@ import com.feng.companyframe.utils.RedisUtil;
 import com.feng.companyframe.vo.req.PermissionAddReqVO;
 import com.feng.companyframe.vo.req.PermissionUpdateReqVO;
 import com.feng.companyframe.vo.resp.PermissionRespNodeVO;
-import lombok.extern.slf4j.Slf4j;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -31,9 +32,9 @@ import java.util.concurrent.TimeUnit;
  * @UpdateUser: 冯凡利
  * @Version: 0.0.1
  */
-@Slf4j
 @Service
 public class PermissionServiceImpl implements PermissionService {
+    private static final Logger log = LoggerFactory.getLogger(PermissionServiceImpl.class);
 
     @Resource
     private SysPermissionMapper sysPermissionMapper;
@@ -427,4 +428,3 @@ public class PermissionServiceImpl implements PermissionService {
 
 
 }
-

@@ -1,10 +1,10 @@
 package com.feng.companyframe.vo.req;
 
 import io.swagger.annotations.ApiModelProperty;
-import lombok.Data;
 
 import javax.validation.constraints.NotBlank;
 import java.util.List;
+import java.util.Objects;
 
 /**
  * @ClassName: RoleAddReqVO
@@ -14,7 +14,6 @@ import java.util.List;
  * @UpdateUser: 冯凡利
  * @Version: 0.0.1
  */
-@Data
 public class RoleAddReqVO {
 
     @ApiModelProperty(value = "角色名称")
@@ -30,5 +29,71 @@ public class RoleAddReqVO {
     @ApiModelProperty(value = "拥有的权限 id 集合")
     private List<String> permissionIds;
 
-}
+    public RoleAddReqVO() {
+    }
 
+    public RoleAddReqVO(String name, String description, Integer status, List<String> permissionIds) {
+        this.name = name;
+        this.description = description;
+        this.status = status;
+        this.permissionIds = permissionIds;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public Integer getStatus() {
+        return status;
+    }
+
+    public void setStatus(Integer status) {
+        this.status = status;
+    }
+
+    public List<String> getPermissionIds() {
+        return permissionIds;
+    }
+
+    public void setPermissionIds(List<String> permissionIds) {
+        this.permissionIds = permissionIds;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        RoleAddReqVO that = (RoleAddReqVO) o;
+        return Objects.equals(name, that.name)
+                && Objects.equals(description, that.description)
+                && Objects.equals(status, that.status)
+                && Objects.equals(permissionIds, that.permissionIds);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, description, status, permissionIds);
+    }
+
+    @Override
+    public String toString() {
+        return "RoleAddReqVO{" +
+                "name='" + name + '\'' +
+                ", description='" + description + '\'' +
+                ", status=" + status +
+                ", permissionIds=" + permissionIds +
+                '}';
+    }
+}

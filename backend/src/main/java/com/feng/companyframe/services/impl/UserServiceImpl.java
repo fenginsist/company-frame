@@ -24,9 +24,10 @@ import com.feng.companyframe.vo.resp.LoginRespVO;
 import com.feng.companyframe.vo.resp.PageRespVO;
 import com.github.pagehelper.PageHelper;
 import java.lang.String;
-import lombok.extern.slf4j.Slf4j;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.subject.Subject;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
@@ -44,9 +45,9 @@ import java.util.concurrent.TimeUnit;
  * @UpdateUser: 冯凡利
  * @Version: 0.0.1
  */
-@Slf4j
 @Service
 public class UserServiceImpl implements UserService {
+    private static final Logger log = LoggerFactory.getLogger(UserServiceImpl.class);
 
     @Resource
     private SysUserMapper sysUserMapper;
@@ -483,4 +484,3 @@ public class UserServiceImpl implements UserService {
         return sysUsers;
     }
 }
-

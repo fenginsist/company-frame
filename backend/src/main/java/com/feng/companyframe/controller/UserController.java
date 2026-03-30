@@ -15,8 +15,9 @@ import io.jsonwebtoken.Claims;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
-import lombok.extern.slf4j.Slf4j;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
@@ -33,11 +34,11 @@ import java.util.List;
  * @Version: 0.0.1
  */
 @CrossOrigin
-@Slf4j
 @RestController
 @RequestMapping("/api")
 @Api(tags = "组织管理-用户管理", value = "用户模块相关接口")
 public class UserController {
+    private static final Logger log = LoggerFactory.getLogger(UserController.class);
 
     @Resource
     private UserService userService;
@@ -140,4 +141,3 @@ public class UserController {
     }
 
 }
-

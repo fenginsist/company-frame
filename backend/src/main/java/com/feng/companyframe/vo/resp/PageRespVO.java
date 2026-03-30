@@ -1,11 +1,9 @@
 package com.feng.companyframe.vo.resp;
 
 import io.swagger.annotations.ApiModelProperty;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
 
 import java.util.List;
+import java.util.Objects;
 
 /**
  * @ClassName: PageVO
@@ -15,9 +13,6 @@ import java.util.List;
  * @UpdateUser: 冯凡利
  * @Version: 0.0.1
  */
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
 public class PageRespVO<T> {
     /**
      * 总 记录数
@@ -51,5 +46,94 @@ public class PageRespVO<T> {
      */
     @ApiModelProperty(value = "数据列表")
     private List<T> dataList;
-}
 
+    public PageRespVO() {
+    }
+
+    public PageRespVO(Long totalRows, Integer totalPages, Integer nowPageNum, Integer pageSize, Integer curPageSize, List<T> dataList) {
+        this.totalRows = totalRows;
+        this.totalPages = totalPages;
+        this.nowPageNum = nowPageNum;
+        this.pageSize = pageSize;
+        this.curPageSize = curPageSize;
+        this.dataList = dataList;
+    }
+
+    public Long getTotalRows() {
+        return totalRows;
+    }
+
+    public void setTotalRows(Long totalRows) {
+        this.totalRows = totalRows;
+    }
+
+    public Integer getTotalPages() {
+        return totalPages;
+    }
+
+    public void setTotalPages(Integer totalPages) {
+        this.totalPages = totalPages;
+    }
+
+    public Integer getNowPageNum() {
+        return nowPageNum;
+    }
+
+    public void setNowPageNum(Integer nowPageNum) {
+        this.nowPageNum = nowPageNum;
+    }
+
+    public Integer getPageSize() {
+        return pageSize;
+    }
+
+    public void setPageSize(Integer pageSize) {
+        this.pageSize = pageSize;
+    }
+
+    public Integer getCurPageSize() {
+        return curPageSize;
+    }
+
+    public void setCurPageSize(Integer curPageSize) {
+        this.curPageSize = curPageSize;
+    }
+
+    public List<T> getDataList() {
+        return dataList;
+    }
+
+    public void setDataList(List<T> dataList) {
+        this.dataList = dataList;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        PageRespVO<?> that = (PageRespVO<?>) o;
+        return Objects.equals(totalRows, that.totalRows)
+                && Objects.equals(totalPages, that.totalPages)
+                && Objects.equals(nowPageNum, that.nowPageNum)
+                && Objects.equals(pageSize, that.pageSize)
+                && Objects.equals(curPageSize, that.curPageSize)
+                && Objects.equals(dataList, that.dataList);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(totalRows, totalPages, nowPageNum, pageSize, curPageSize, dataList);
+    }
+
+    @Override
+    public String toString() {
+        return "PageRespVO{" +
+                "totalRows=" + totalRows +
+                ", totalPages=" + totalPages +
+                ", nowPageNum=" + nowPageNum +
+                ", pageSize=" + pageSize +
+                ", curPageSize=" + curPageSize +
+                ", dataList=" + dataList +
+                '}';
+    }
+}

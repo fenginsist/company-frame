@@ -8,12 +8,13 @@ import com.feng.companyframe.jwt.JwtTokenUtil;
 import com.feng.companyframe.mapper.SysLogMapper;
 import com.feng.companyframe.utils.HttpContextUtils;
 import com.feng.companyframe.utils.IPUtils;
-import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Pointcut;
 import org.aspectj.lang.reflect.MethodSignature;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.Resource;
@@ -30,10 +31,10 @@ import java.util.UUID;
  * @UpdateUser: 冯凡利
  * @Version: 0.0.1
  */
-@Slf4j
 @Aspect
 @Component
 public class SysLogAspect {
+    private static final Logger log = LoggerFactory.getLogger(SysLogAspect.class);
 
     //环绕增强
     @Resource
@@ -123,4 +124,3 @@ public class SysLogAspect {
     }
 
 }
-

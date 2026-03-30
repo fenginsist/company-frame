@@ -1,9 +1,9 @@
 package com.feng.companyframe.vo.req;
 
 import io.swagger.annotations.ApiModelProperty;
-import lombok.Data;
 
 import javax.validation.constraints.NotBlank;
+import java.util.Objects;
 
 /**
  * @ClassName: DeptAddReqVO
@@ -13,7 +13,6 @@ import javax.validation.constraints.NotBlank;
  * @UpdateUser: 冯凡利
  * @Version: 0.0.1
  */
-@Data
 public class DeptAddReqVO {
 
     @ApiModelProperty(value = "部门名称")
@@ -32,6 +31,80 @@ public class DeptAddReqVO {
 
     @ApiModelProperty(value = "机构状态(1:正常；0:弃用)")
     private Integer status;
-}
 
+    public DeptAddReqVO() {
+    }
+
+    public DeptAddReqVO(String name, String pid, String managerName, String phone, Integer status) {
+        this.name = name;
+        this.pid = pid;
+        this.managerName = managerName;
+        this.phone = phone;
+        this.status = status;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getPid() {
+        return pid;
+    }
+
+    public void setPid(String pid) {
+        this.pid = pid;
+    }
+
+    public String getManagerName() {
+        return managerName;
+    }
+
+    public void setManagerName(String managerName) {
+        this.managerName = managerName;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public Integer getStatus() {
+        return status;
+    }
+
+    public void setStatus(Integer status) {
+        this.status = status;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        DeptAddReqVO that = (DeptAddReqVO) o;
+        return Objects.equals(name, that.name) && Objects.equals(pid, that.pid) && Objects.equals(managerName, that.managerName) && Objects.equals(phone, that.phone) && Objects.equals(status, that.status);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, pid, managerName, phone, status);
+    }
+
+    @Override
+    public String toString() {
+        return "DeptAddReqVO{" +
+                "name='" + name + '\'' +
+                ", pid='" + pid + '\'' +
+                ", managerName='" + managerName + '\'' +
+                ", phone='" + phone + '\'' +
+                ", status=" + status +
+                '}';
+    }
+}
 

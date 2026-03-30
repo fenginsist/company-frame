@@ -1,9 +1,7 @@
 package com.feng.companyframe.vo.req;
 
 import io.swagger.annotations.ApiModelProperty;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import java.util.Objects;
 
 /**
  * @ClassName: RolePageReqVO
@@ -13,9 +11,6 @@ import lombok.NoArgsConstructor;
  * @UpdateUser: 冯凡利
  * @Version: 0.0.1
  */
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
 public class RolePageReqVO {
 
     @ApiModelProperty(value = "第几页")
@@ -42,5 +37,104 @@ public class RolePageReqVO {
     private String endTime;
 
 
-}
+    public RolePageReqVO() {
+    }
 
+    public RolePageReqVO(Integer pageNum, Integer pageSize, String roleId, String roleName, String status, String startTime, String endTime) {
+        this.pageNum = pageNum;
+        this.pageSize = pageSize;
+        this.roleId = roleId;
+        this.roleName = roleName;
+        this.status = status;
+        this.startTime = startTime;
+        this.endTime = endTime;
+    }
+
+    public Integer getPageNum() {
+        return pageNum;
+    }
+
+    public void setPageNum(Integer pageNum) {
+        this.pageNum = pageNum;
+    }
+
+    public Integer getPageSize() {
+        return pageSize;
+    }
+
+    public void setPageSize(Integer pageSize) {
+        this.pageSize = pageSize;
+    }
+
+    public String getRoleId() {
+        return roleId;
+    }
+
+    public void setRoleId(String roleId) {
+        this.roleId = roleId;
+    }
+
+    public String getRoleName() {
+        return roleName;
+    }
+
+    public void setRoleName(String roleName) {
+        this.roleName = roleName;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public String getStartTime() {
+        return startTime;
+    }
+
+    public void setStartTime(String startTime) {
+        this.startTime = startTime;
+    }
+
+    public String getEndTime() {
+        return endTime;
+    }
+
+    public void setEndTime(String endTime) {
+        this.endTime = endTime;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        RolePageReqVO that = (RolePageReqVO) o;
+        return Objects.equals(pageNum, that.pageNum)
+                && Objects.equals(pageSize, that.pageSize)
+                && Objects.equals(roleId, that.roleId)
+                && Objects.equals(roleName, that.roleName)
+                && Objects.equals(status, that.status)
+                && Objects.equals(startTime, that.startTime)
+                && Objects.equals(endTime, that.endTime);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(pageNum, pageSize, roleId, roleName, status, startTime, endTime);
+    }
+
+    @Override
+    public String toString() {
+        return "RolePageReqVO{" +
+                "pageNum=" + pageNum +
+                ", pageSize=" + pageSize +
+                ", roleId='" + roleId + '\'' +
+                ", roleName='" + roleName + '\'' +
+                ", status='" + status + '\'' +
+                ", startTime='" + startTime + '\'' +
+                ", endTime='" + endTime + '\'' +
+                '}';
+    }
+}

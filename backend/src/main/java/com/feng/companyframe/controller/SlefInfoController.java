@@ -10,7 +10,8 @@ import com.feng.companyframe.vo.req.UserLoginUpdateDetailInfoReqVO;
 import com.feng.companyframe.vo.req.UserUpdatePWDReqVO;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
-import lombok.extern.slf4j.Slf4j;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
@@ -25,11 +26,11 @@ import javax.validation.Valid;
  * @UpdateUser: 冯凡利
  * @Version: 0.0.1
  */
-@Slf4j
 @RestController
 @RequestMapping("/api")
 @Api(tags = "组织管理-个人管理", value = "个人信息模块相关接口")
 public class SlefInfoController {
+    private static final Logger log = LoggerFactory.getLogger(SlefInfoController.class);
 
     @Resource
     private UserService userService;
@@ -68,4 +69,3 @@ public class SlefInfoController {
     }
 
 }
-

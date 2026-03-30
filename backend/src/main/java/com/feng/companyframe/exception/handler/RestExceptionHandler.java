@@ -3,8 +3,9 @@ package com.feng.companyframe.exception.handler;
 import com.feng.companyframe.exception.BusinessException;
 import com.feng.companyframe.exception.code.BaseResponseCode;
 import com.feng.companyframe.utils.DataResult;
-import lombok.extern.slf4j.Slf4j;
 import org.apache.shiro.authz.UnauthorizedException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -20,9 +21,9 @@ import java.util.List;
  * @UpdateUser: 冯凡利
  * @Version: 0.0.1
  */
-@Slf4j
 @RestControllerAdvice
 public class RestExceptionHandler {
+    private static final Logger log = LoggerFactory.getLogger(RestExceptionHandler.class);
 
     /**
      * 全局处理 Exception 异常
@@ -89,4 +90,3 @@ public class RestExceptionHandler {
         return DataResult.getResult(BaseResponseCode.NOT_PERMISSION);
     }
 }
-
