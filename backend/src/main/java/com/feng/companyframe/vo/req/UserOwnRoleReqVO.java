@@ -1,7 +1,6 @@
 package com.feng.companyframe.vo.req;
 
 import io.swagger.annotations.ApiModelProperty;
-import javafx.beans.NamedArg;
 import lombok.Data;
 
 import javax.validation.constraints.NotBlank;

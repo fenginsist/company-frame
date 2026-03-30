@@ -12,3 +12,6 @@
 
 
 /frontend/node_modules
+/frontend/dist
+/frontend/target
+.idea

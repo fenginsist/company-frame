@@ -18,7 +18,6 @@ import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
 
 import javax.annotation.Resource;
-import javax.xml.ws.RespectBinding;
 import java.util.Collection;
 import java.util.List;
 import java.util.Set;
