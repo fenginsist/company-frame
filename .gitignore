@@ -7,3 +7,8 @@
 *.iml
 *.ipr
 
+/backend/target
+/backend/logs
+
+
+/frontend/node_modules
