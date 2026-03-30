@@ -2,11 +2,14 @@ package com.feng.companyframe.utils;
 
 import com.feng.companyframe.exception.BusinessException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Component;
 
 import java.util.*;
+import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.TimeUnit;
+import java.util.concurrent.atomic.AtomicLong;
 
 /**
  * description: RedisUtils
@@ -15,8 +18,63 @@ import java.util.concurrent.TimeUnit;
  */
 @Component
 public class RedisUtil {
+    @Value("${app.cache.enabled:true}")
+    private boolean cacheEnabled;
+
     @Autowired
     private RedisTemplate<String, Object> redisTemplate;
+
+    private final Map<String, LocalValue> localStore = new ConcurrentHashMap<>();
+    private final Map<String, AtomicLong> localCounters = new ConcurrentHashMap<>();
+
+    private static final class LocalValue {
+        private final Object value;
+        private final Long expireAtMillis;
+
+        private LocalValue(Object value, Long expireAtMillis) {
+            this.value = value;
+            this.expireAtMillis = expireAtMillis;
+        }
+    }
+
+    private boolean isExpired(LocalValue localValue) {
+        if (localValue == null) {
+            return true;
+        }
+        if (localValue.expireAtMillis == null) {
+            return false;
+        }
+        return System.currentTimeMillis() >= localValue.expireAtMillis;
+    }
+
+    private LocalValue getLocalValue(String key) {
+        LocalValue localValue = localStore.get(key);
+        if (isExpired(localValue)) {
+            localStore.remove(key);
+            return null;
+        }
+        return localValue;
+    }
+
+    private Set<String> localKeys(String pattern) {
+        if (pattern == null) {
+            return Collections.emptySet();
+        }
+        if ("*".equals(pattern)) {
+            return new HashSet<>(localStore.keySet());
+        }
+        if (pattern.endsWith("*")) {
+            String prefix = pattern.substring(0, pattern.length() - 1);
+            Set<String> result = new HashSet<>();
+            for (String key : localStore.keySet()) {
+                if (key.startsWith(prefix) && getLocalValue(key) != null) {
+                    result.add(key);
+                }
+            }
+            return result;
+        }
+        return getLocalValue(pattern) == null ? Collections.emptySet() : Collections.singleton(pattern);
+    }
     /** -------------------key相关操作--------------------- */
 
     /**
@@ -32,6 +90,9 @@ public class RedisUtil {
     public Boolean hasKey(String key) {
         if (null == key) {
             return false;
+        }
+        if (!cacheEnabled) {
+            return getLocalValue(key) != null;
         }
         return redisTemplate.hasKey(key);
     }
@@ -50,6 +111,9 @@ public class RedisUtil {
         if (null == key) {
             return false;
         }
+        if (!cacheEnabled) {
+            return localStore.remove(key) != null;
+        }
         return redisTemplate.delete(key);
     }
 
@@ -66,6 +130,18 @@ public class RedisUtil {
      * @Version: 0.0.1
      */
     public Long delete(Collection<String> keys) {
+        if (!cacheEnabled) {
+            long count = 0L;
+            if (keys == null) {
+                return 0L;
+            }
+            for (String key : keys) {
+                if (localStore.remove(key) != null) {
+                    count++;
+                }
+            }
+            return count;
+        }
         return redisTemplate.delete(keys);
     }
 
@@ -86,6 +162,15 @@ public class RedisUtil {
         if (null == key || null == unit) {
             return false;
         }
+        if (!cacheEnabled) {
+            LocalValue localValue = getLocalValue(key);
+            if (localValue == null) {
+                return false;
+            }
+            long expireAtMillis = System.currentTimeMillis() + unit.toMillis(timeout);
+            localStore.put(key, new LocalValue(localValue.value, expireAtMillis));
+            return true;
+        }
         return redisTemplate.expire(key, timeout, unit);
     }
 
@@ -100,8 +185,11 @@ public class RedisUtil {
      * @Version: 0.0.1
      */
     public Set<String> keys(String pattern) {
+        if (!cacheEnabled) {
+            return localKeys(pattern);
+        }
         if (null == pattern) {
-            return null;
+            return Collections.emptySet();
         }
         return redisTemplate.keys(pattern);
     }
@@ -121,6 +209,14 @@ public class RedisUtil {
         if (null == key) {
             return false;
         }
+        if (!cacheEnabled) {
+            LocalValue localValue = getLocalValue(key);
+            if (localValue == null) {
+                return false;
+            }
+            localStore.put(key, new LocalValue(localValue.value, null));
+            return true;
+        }
         return redisTemplate.persist(key);
     }
 
@@ -138,6 +234,21 @@ public class RedisUtil {
     public Long getExpire(String key, TimeUnit unit) {
         if (null == key || null == unit) {
             throw new BusinessException(4001004, "key or TomeUnit 不能为空");
+        }
+        if (!cacheEnabled) {
+            LocalValue localValue = getLocalValue(key);
+            if (localValue == null) {
+                return -2L;
+            }
+            if (localValue.expireAtMillis == null) {
+                return -1L;
+            }
+            long remainingMillis = localValue.expireAtMillis - System.currentTimeMillis();
+            if (remainingMillis < 0) {
+                localStore.remove(key);
+                return -2L;
+            }
+            return unit.convert(remainingMillis, TimeUnit.MILLISECONDS);
         }
         return redisTemplate.getExpire(key, unit);
     }
@@ -160,6 +271,10 @@ public class RedisUtil {
         if (null == key || null == value) {
             return;
         }
+        if (!cacheEnabled) {
+            localStore.put(key, new LocalValue(value, null));
+            return;
+        }
         redisTemplate.opsForValue().set(key, value);
     }
 
@@ -179,6 +294,11 @@ public class RedisUtil {
     public void set(String key, Object value, long time, TimeUnit unit) {
 
         if (null == key || null == value || null == unit) {
+            return;
+        }
+        if (!cacheEnabled) {
+            long expireAtMillis = System.currentTimeMillis() + unit.toMillis(time);
+            localStore.put(key, new LocalValue(value, expireAtMillis));
             return;
         }
         redisTemplate.opsForValue().set(key, value, time, unit);
@@ -204,6 +324,15 @@ public class RedisUtil {
         if (null == key || null == value || null == unit) {
             throw new BusinessException(4001004, "kkey、value、unit都不能为空");
         }
+        if (!cacheEnabled) {
+            LocalValue existing = getLocalValue(key);
+            if (existing != null) {
+                return false;
+            }
+            long expireAtMillis = System.currentTimeMillis() + unit.toMillis(time);
+            localStore.put(key, new LocalValue(value, expireAtMillis));
+            return true;
+        }
         return redisTemplate.opsForValue().setIfAbsent(key, value, time, unit);
     }
 
@@ -222,6 +351,10 @@ public class RedisUtil {
 
         if (null == key) {
             return null;
+        }
+        if (!cacheEnabled) {
+            LocalValue localValue = getLocalValue(key);
+            return localValue == null ? null : localValue.value;
         }
         return redisTemplate.opsForValue().get(key);
     }
@@ -242,6 +375,11 @@ public class RedisUtil {
         if (null == key) {
             return null;
         }
+        if (!cacheEnabled) {
+            Object previous = get(key);
+            set(key, value);
+            return previous;
+        }
         return redisTemplate.opsForValue().getAndSet(key, value);
     }
 
@@ -259,6 +397,13 @@ public class RedisUtil {
 
         if (null == keys) {
             return Collections.emptyList();
+        }
+        if (!cacheEnabled) {
+            List<Object> result = new ArrayList<>(keys.size());
+            for (String key : keys) {
+                result.add(get(key));
+            }
+            return result;
         }
         return redisTemplate.opsForValue().multiGet(keys);
     }
@@ -278,6 +423,12 @@ public class RedisUtil {
     public long incrby(String key, long increment) {
         if (null == key) {
             throw new BusinessException(4001004, "key不能为空");
+        }
+        if (!cacheEnabled) {
+            AtomicLong counter = localCounters.computeIfAbsent(key, k -> new AtomicLong(0));
+            long current = counter.addAndGet(increment);
+            localStore.put(key, new LocalValue(current, null));
+            return current;
         }
         return redisTemplate.opsForValue().increment(key, increment);
     }
