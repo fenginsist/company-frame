@@ -20,7 +20,7 @@
     ]
   },
   "dependencies": {
-    "axios": "^0.18.0",
+    "axios": "^1.15.0",
     "echarts": "^4.2.0-rc.2",
     "element-ui": "^2.15.14",
     "js-cookie": "^2.2.0",
